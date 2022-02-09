@@ -1,0 +1,6 @@
+framework module Pods_Rahmet {
+  umbrella header "Pods-Rahmet-umbrella.h"
+
+  export *
+  module * { export * }
+}
