@@ -8,6 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		AB20632442E66626A0D78CB3 /* Pods_Rahmet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A7E2C126E18E96CEF8D587C /* Pods_Rahmet.framework */; };
+		C273914F27B3E8C000B309BA /* LayoutForNavigationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C273914E27B3E8C000B309BA /* LayoutForNavigationVC.swift */; };
+		C275C8EB27B39B93001AF463 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C275C8EA27B39B93001AF463 /* MainTabBarController.swift */; };
+		C275C8EE27B39D05001AF463 /* NavigationVCGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C275C8ED27B39D05001AF463 /* NavigationVCGenerator.swift */; };
+		C275C8F027B39F76001AF463 /* MyOrders.swift in Sources */ = {isa = PBXBuildFile; fileRef = C275C8EF27B39F76001AF463 /* MyOrders.swift */; };
+		C275C8F227B3A227001AF463 /* MainMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = C275C8F127B3A227001AF463 /* MainMenu.swift */; };
+		C2933EC927B3A89F00E3B8DD /* ImageResizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2933EC827B3A89F00E3B8DD /* ImageResizer.swift */; };
+		C2933ECB27B3AA3F00E3B8DD /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2933ECA27B3AA3F00E3B8DD /* UIImage+Extension.swift */; };
+		C2DD26F027B3A39C0012C60B /* RahmetVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2DD26EF27B3A39C0012C60B /* RahmetVC.swift */; };
 		E50967E027B386DA007D4809 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50967DF27B386DA007D4809 /* Constants.swift */; };
 		E5B251DA27B14DA800543C24 /* Registration.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B251D927B14DA800543C24 /* Registration.swift */; };
 		E5B4BE9E27B124DB00BE587C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B4BE9D27B124DB00BE587C /* AppDelegate.swift */; };
@@ -19,6 +27,14 @@
 /* Begin PBXFileReference section */
 		1F34CB717506F012A307DEDF /* Pods-Rahmet.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Rahmet.release.xcconfig"; path = "Target Support Files/Pods-Rahmet/Pods-Rahmet.release.xcconfig"; sourceTree = "<group>"; };
 		5A7E2C126E18E96CEF8D587C /* Pods_Rahmet.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Rahmet.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C273914E27B3E8C000B309BA /* LayoutForNavigationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutForNavigationVC.swift; sourceTree = "<group>"; };
+		C275C8EA27B39B93001AF463 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
+		C275C8ED27B39D05001AF463 /* NavigationVCGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationVCGenerator.swift; sourceTree = "<group>"; };
+		C275C8EF27B39F76001AF463 /* MyOrders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyOrders.swift; sourceTree = "<group>"; };
+		C275C8F127B3A227001AF463 /* MainMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenu.swift; sourceTree = "<group>"; };
+		C2933EC827B3A89F00E3B8DD /* ImageResizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageResizer.swift; sourceTree = "<group>"; };
+		C2933ECA27B3AA3F00E3B8DD /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
+		C2DD26EF27B3A39C0012C60B /* RahmetVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RahmetVC.swift; sourceTree = "<group>"; };
 		E50967DF27B386DA007D4809 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		E5B251D927B14DA800543C24 /* Registration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Registration.swift; sourceTree = "<group>"; };
 		E5B4BE9A27B124DB00BE587C /* Rahmet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Rahmet.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -59,26 +75,34 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
-		E5B251D527B148AC00543C24 /* Model */ = {
+		C273914D27B3E8A200B309BA /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
+				C273914E27B3E8C000B309BA /* LayoutForNavigationVC.swift */,
 			);
-			path = Model;
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		C275C8EC27B39CE4001AF463 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				C275C8ED27B39D05001AF463 /* NavigationVCGenerator.swift */,
+				C2933EC827B3A89F00E3B8DD /* ImageResizer.swift */,
+				C2933ECA27B3AA3F00E3B8DD /* UIImage+Extension.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 		E5B251D627B148C800543C24 /* View */ = {
 			isa = PBXGroup;
 			children = (
 				E5B251D927B14DA800543C24 /* Registration.swift */,
+				C275C8EA27B39B93001AF463 /* MainTabBarController.swift */,
+				C275C8EF27B39F76001AF463 /* MyOrders.swift */,
+				C275C8F127B3A227001AF463 /* MainMenu.swift */,
+				C2DD26EF27B3A39C0012C60B /* RahmetVC.swift */,
 			);
 			path = View;
-			sourceTree = "<group>";
-		};
-		E5B251D727B148CF00543C24 /* View Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "View Model";
 			sourceTree = "<group>";
 		};
 		E5B251D827B148E000543C24 /* Component */ = {
@@ -114,10 +138,10 @@
 		E5B4BE9C27B124DB00BE587C /* Rahmet */ = {
 			isa = PBXGroup;
 			children = (
+				C273914D27B3E8A200B309BA /* Protocols */,
+				C275C8EC27B39CE4001AF463 /* Helpers */,
 				E5B251D827B148E000543C24 /* Component */,
-				E5B251D727B148CF00543C24 /* View Model */,
 				E5B251D627B148C800543C24 /* View */,
-				E5B251D527B148AC00543C24 /* Model */,
 				E50967DF27B386DA007D4809 /* Constants.swift */,
 			);
 			path = Rahmet;
@@ -237,10 +261,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C275C8EE27B39D05001AF463 /* NavigationVCGenerator.swift in Sources */,
 				E5B251DA27B14DA800543C24 /* Registration.swift in Sources */,
+				C275C8F227B3A227001AF463 /* MainMenu.swift in Sources */,
 				E5B4BE9E27B124DB00BE587C /* AppDelegate.swift in Sources */,
+				C275C8EB27B39B93001AF463 /* MainTabBarController.swift in Sources */,
+				C2933EC927B3A89F00E3B8DD /* ImageResizer.swift in Sources */,
+				C275C8F027B39F76001AF463 /* MyOrders.swift in Sources */,
 				E5B4BEA027B124DB00BE587C /* SceneDelegate.swift in Sources */,
 				E50967E027B386DA007D4809 /* Constants.swift in Sources */,
+				C273914F27B3E8C000B309BA /* LayoutForNavigationVC.swift in Sources */,
+				C2933ECB27B3AA3F00E3B8DD /* UIImage+Extension.swift in Sources */,
+				C2DD26F027B3A39C0012C60B /* RahmetVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
