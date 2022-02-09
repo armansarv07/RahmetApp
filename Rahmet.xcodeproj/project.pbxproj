@@ -17,6 +17,9 @@
 		C2933ECB27B3AA3F00E3B8DD /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2933ECA27B3AA3F00E3B8DD /* UIImage+Extension.swift */; };
 		C2DD26F027B3A39C0012C60B /* RahmetVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2DD26EF27B3A39C0012C60B /* RahmetVC.swift */; };
 		E50967E027B386DA007D4809 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50967DF27B386DA007D4809 /* Constants.swift */; };
+		E50967E427B400C9007D4809 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50967E327B400C9007D4809 /* String+Extension.swift */; };
+		E50967E627B400EB007D4809 /* NSMutableAttributedString+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50967E527B400EB007D4809 /* NSMutableAttributedString+Extension.swift */; };
+		E50967E827B40C83007D4809 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50967E727B40C83007D4809 /* LoginVC.swift */; };
 		E5B251DA27B14DA800543C24 /* Registration.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B251D927B14DA800543C24 /* Registration.swift */; };
 		E5B4BE9E27B124DB00BE587C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B4BE9D27B124DB00BE587C /* AppDelegate.swift */; };
 		E5B4BEA027B124DB00BE587C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B4BE9F27B124DB00BE587C /* SceneDelegate.swift */; };
@@ -36,6 +39,9 @@
 		C2933ECA27B3AA3F00E3B8DD /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
 		C2DD26EF27B3A39C0012C60B /* RahmetVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RahmetVC.swift; sourceTree = "<group>"; };
 		E50967DF27B386DA007D4809 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		E50967E327B400C9007D4809 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
+		E50967E527B400EB007D4809 /* NSMutableAttributedString+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSMutableAttributedString+Extension.swift"; sourceTree = "<group>"; };
+		E50967E727B40C83007D4809 /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		E5B251D927B14DA800543C24 /* Registration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Registration.swift; sourceTree = "<group>"; };
 		E5B4BE9A27B124DB00BE587C /* Rahmet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Rahmet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5B4BE9D27B124DB00BE587C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -89,6 +95,8 @@
 				C275C8ED27B39D05001AF463 /* NavigationVCGenerator.swift */,
 				C2933EC827B3A89F00E3B8DD /* ImageResizer.swift */,
 				C2933ECA27B3AA3F00E3B8DD /* UIImage+Extension.swift */,
+				E50967E327B400C9007D4809 /* String+Extension.swift */,
+				E50967E527B400EB007D4809 /* NSMutableAttributedString+Extension.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -101,6 +109,7 @@
 				C275C8EF27B39F76001AF463 /* MyOrders.swift */,
 				C275C8F127B3A227001AF463 /* MainMenu.swift */,
 				C2DD26EF27B3A39C0012C60B /* RahmetVC.swift */,
+				E50967E727B40C83007D4809 /* LoginVC.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -265,8 +274,11 @@
 				E5B251DA27B14DA800543C24 /* Registration.swift in Sources */,
 				C275C8F227B3A227001AF463 /* MainMenu.swift in Sources */,
 				E5B4BE9E27B124DB00BE587C /* AppDelegate.swift in Sources */,
+				E50967E627B400EB007D4809 /* NSMutableAttributedString+Extension.swift in Sources */,
 				C275C8EB27B39B93001AF463 /* MainTabBarController.swift in Sources */,
+				E50967E827B40C83007D4809 /* LoginVC.swift in Sources */,
 				C2933EC927B3A89F00E3B8DD /* ImageResizer.swift in Sources */,
+				E50967E427B400C9007D4809 /* String+Extension.swift in Sources */,
 				C275C8F027B39F76001AF463 /* MyOrders.swift in Sources */,
 				E5B4BEA027B124DB00BE587C /* SceneDelegate.swift in Sources */,
 				E50967E027B386DA007D4809 /* Constants.swift in Sources */,
