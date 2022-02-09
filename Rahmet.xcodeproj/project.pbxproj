@@ -7,23 +7,27 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AB20632442E66626A0D78CB3 /* Pods_Rahmet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A7E2C126E18E96CEF8D587C /* Pods_Rahmet.framework */; };
+		E50967E027B386DA007D4809 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50967DF27B386DA007D4809 /* Constants.swift */; };
+		E5B251DA27B14DA800543C24 /* Registration.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B251D927B14DA800543C24 /* Registration.swift */; };
 		E5B4BE9E27B124DB00BE587C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B4BE9D27B124DB00BE587C /* AppDelegate.swift */; };
 		E5B4BEA027B124DB00BE587C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B4BE9F27B124DB00BE587C /* SceneDelegate.swift */; };
-		E5B4BEA227B124DB00BE587C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B4BEA127B124DB00BE587C /* ViewController.swift */; };
-		E5B4BEA527B124DB00BE587C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E5B4BEA327B124DB00BE587C /* Main.storyboard */; };
 		E5B4BEA727B124DB00BE587C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E5B4BEA627B124DB00BE587C /* Assets.xcassets */; };
 		E5B4BEAA27B124DB00BE587C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E5B4BEA827B124DB00BE587C /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1F34CB717506F012A307DEDF /* Pods-Rahmet.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Rahmet.release.xcconfig"; path = "Target Support Files/Pods-Rahmet/Pods-Rahmet.release.xcconfig"; sourceTree = "<group>"; };
+		5A7E2C126E18E96CEF8D587C /* Pods_Rahmet.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Rahmet.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E50967DF27B386DA007D4809 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		E5B251D927B14DA800543C24 /* Registration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Registration.swift; sourceTree = "<group>"; };
 		E5B4BE9A27B124DB00BE587C /* Rahmet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Rahmet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5B4BE9D27B124DB00BE587C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E5B4BE9F27B124DB00BE587C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		E5B4BEA127B124DB00BE587C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		E5B4BEA427B124DB00BE587C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E5B4BEA627B124DB00BE587C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E5B4BEA927B124DB00BE587C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E5B4BEAB27B124DB00BE587C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F2FBB0B7A07D9A2E688F9A21 /* Pods-Rahmet.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Rahmet.debug.xcconfig"; path = "Target Support Files/Pods-Rahmet/Pods-Rahmet.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,17 +35,71 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AB20632442E66626A0D78CB3 /* Pods_Rahmet.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		454D080DE89D7B49A8B74717 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5A7E2C126E18E96CEF8D587C /* Pods_Rahmet.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		4F8B36A8CB1955E734581897 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				F2FBB0B7A07D9A2E688F9A21 /* Pods-Rahmet.debug.xcconfig */,
+				1F34CB717506F012A307DEDF /* Pods-Rahmet.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		E5B251D527B148AC00543C24 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		E5B251D627B148C800543C24 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				E5B251D927B14DA800543C24 /* Registration.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		E5B251D727B148CF00543C24 /* View Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "View Model";
+			sourceTree = "<group>";
+		};
+		E5B251D827B148E000543C24 /* Component */ = {
+			isa = PBXGroup;
+			children = (
+				E5B4BE9F27B124DB00BE587C /* SceneDelegate.swift */,
+				E5B4BEA627B124DB00BE587C /* Assets.xcassets */,
+				E5B4BEA827B124DB00BE587C /* LaunchScreen.storyboard */,
+				E5B4BEAB27B124DB00BE587C /* Info.plist */,
+				E5B4BE9D27B124DB00BE587C /* AppDelegate.swift */,
+			);
+			path = Component;
+			sourceTree = "<group>";
+		};
 		E5B4BE9127B124DB00BE587C = {
 			isa = PBXGroup;
 			children = (
 				E5B4BE9C27B124DB00BE587C /* Rahmet */,
 				E5B4BE9B27B124DB00BE587C /* Products */,
+				4F8B36A8CB1955E734581897 /* Pods */,
+				454D080DE89D7B49A8B74717 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -56,13 +114,11 @@
 		E5B4BE9C27B124DB00BE587C /* Rahmet */ = {
 			isa = PBXGroup;
 			children = (
-				E5B4BE9D27B124DB00BE587C /* AppDelegate.swift */,
-				E5B4BE9F27B124DB00BE587C /* SceneDelegate.swift */,
-				E5B4BEA127B124DB00BE587C /* ViewController.swift */,
-				E5B4BEA327B124DB00BE587C /* Main.storyboard */,
-				E5B4BEA627B124DB00BE587C /* Assets.xcassets */,
-				E5B4BEA827B124DB00BE587C /* LaunchScreen.storyboard */,
-				E5B4BEAB27B124DB00BE587C /* Info.plist */,
+				E5B251D827B148E000543C24 /* Component */,
+				E5B251D727B148CF00543C24 /* View Model */,
+				E5B251D627B148C800543C24 /* View */,
+				E5B251D527B148AC00543C24 /* Model */,
+				E50967DF27B386DA007D4809 /* Constants.swift */,
 			);
 			path = Rahmet;
 			sourceTree = "<group>";
@@ -74,9 +130,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E5B4BEAE27B124DB00BE587C /* Build configuration list for PBXNativeTarget "Rahmet" */;
 			buildPhases = (
+				E45EABE9911249F36E1EA571 /* [CP] Check Pods Manifest.lock */,
 				E5B4BE9627B124DB00BE587C /* Sources */,
 				E5B4BE9727B124DB00BE587C /* Frameworks */,
 				E5B4BE9827B124DB00BE587C /* Resources */,
+				299383DF8189066682F9EFDD /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -127,34 +185,68 @@
 			files = (
 				E5B4BEAA27B124DB00BE587C /* LaunchScreen.storyboard in Resources */,
 				E5B4BEA727B124DB00BE587C /* Assets.xcassets in Resources */,
-				E5B4BEA527B124DB00BE587C /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		299383DF8189066682F9EFDD /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Rahmet/Pods-Rahmet-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Rahmet/Pods-Rahmet-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Rahmet/Pods-Rahmet-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E45EABE9911249F36E1EA571 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Rahmet-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		E5B4BE9627B124DB00BE587C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E5B4BEA227B124DB00BE587C /* ViewController.swift in Sources */,
+				E5B251DA27B14DA800543C24 /* Registration.swift in Sources */,
 				E5B4BE9E27B124DB00BE587C /* AppDelegate.swift in Sources */,
 				E5B4BEA027B124DB00BE587C /* SceneDelegate.swift in Sources */,
+				E50967E027B386DA007D4809 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		E5B4BEA327B124DB00BE587C /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				E5B4BEA427B124DB00BE587C /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		E5B4BEA827B124DB00BE587C /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -284,6 +376,7 @@
 		};
 		E5B4BEAF27B124DB00BE587C /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F2FBB0B7A07D9A2E688F9A21 /* Pods-Rahmet.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -294,7 +387,6 @@
 				INFOPLIST_FILE = Rahmet/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -302,7 +394,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = elvina.swift.Rahmet;
+				PRODUCT_BUNDLE_IDENTIFIER = swift.elvina.Rahmet;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -312,6 +404,7 @@
 		};
 		E5B4BEB027B124DB00BE587C /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1F34CB717506F012A307DEDF /* Pods-Rahmet.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -322,7 +415,6 @@
 				INFOPLIST_FILE = Rahmet/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -330,7 +422,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = elvina.swift.Rahmet;
+				PRODUCT_BUNDLE_IDENTIFIER = swift.elvina.Rahmet;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
