@@ -218,7 +218,7 @@ extension NSMutableAttributedString {
 //struct LoginVCProvider: PreviewProvider {
 //    static var previews: some View {
 //        ContainerView().edgesIgnoringSafeArea(.all)
-//    }
+//    }how
 //    struct ContainerView: UIViewControllerRepresentable {
 //        let loginVC = Registration()
 //        func makeUIViewController(context: Context) -> some UIViewController {
