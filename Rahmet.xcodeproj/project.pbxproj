@@ -17,6 +17,8 @@
 		C2933ECB27B3AA3F00E3B8DD /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2933ECA27B3AA3F00E3B8DD /* UIImage+Extension.swift */; };
 		C2DD26F027B3A39C0012C60B /* RahmetVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2DD26EF27B3A39C0012C60B /* RahmetVC.swift */; };
 		E50967E027B386DA007D4809 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50967DF27B386DA007D4809 /* Constants.swift */; };
+		E50F2DE127B4D804004A06BB /* Cafe.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50F2DE027B4D804004A06BB /* Cafe.swift */; };
+		E50F2DE427B4DC6D004A06BB /* CafeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50F2DE327B4DC6D004A06BB /* CafeCell.swift */; };
 		E5B251DA27B14DA800543C24 /* Registration.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B251D927B14DA800543C24 /* Registration.swift */; };
 		E5B4BE9E27B124DB00BE587C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B4BE9D27B124DB00BE587C /* AppDelegate.swift */; };
 		E5B4BEA027B124DB00BE587C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B4BE9F27B124DB00BE587C /* SceneDelegate.swift */; };
@@ -36,6 +38,8 @@
 		C2933ECA27B3AA3F00E3B8DD /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
 		C2DD26EF27B3A39C0012C60B /* RahmetVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RahmetVC.swift; sourceTree = "<group>"; };
 		E50967DF27B386DA007D4809 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		E50F2DE027B4D804004A06BB /* Cafe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cafe.swift; sourceTree = "<group>"; };
+		E50F2DE327B4DC6D004A06BB /* CafeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CafeCell.swift; sourceTree = "<group>"; };
 		E5B251D927B14DA800543C24 /* Registration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Registration.swift; sourceTree = "<group>"; };
 		E5B4BE9A27B124DB00BE587C /* Rahmet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Rahmet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5B4BE9D27B124DB00BE587C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -93,9 +97,26 @@
 			path = Helpers;
 			sourceTree = "<group>";
 		};
+		E50967E927B4D785007D4809 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				E50F2DE027B4D804004A06BB /* Cafe.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		E50F2DE227B4DC63004A06BB /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				E50F2DE327B4DC6D004A06BB /* CafeCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
 		E5B251D627B148C800543C24 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				E50F2DE227B4DC63004A06BB /* Cells */,
 				E5B251D927B14DA800543C24 /* Registration.swift */,
 				C275C8EA27B39B93001AF463 /* MainTabBarController.swift */,
 				C275C8EF27B39F76001AF463 /* MyOrders.swift */,
@@ -138,6 +159,7 @@
 		E5B4BE9C27B124DB00BE587C /* Rahmet */ = {
 			isa = PBXGroup;
 			children = (
+				E50967E927B4D785007D4809 /* Model */,
 				C273914D27B3E8A200B309BA /* Protocols */,
 				C275C8EC27B39CE4001AF463 /* Helpers */,
 				E5B251D827B148E000543C24 /* Component */,
@@ -263,6 +285,7 @@
 			files = (
 				C275C8EE27B39D05001AF463 /* NavigationVCGenerator.swift in Sources */,
 				E5B251DA27B14DA800543C24 /* Registration.swift in Sources */,
+				E50F2DE427B4DC6D004A06BB /* CafeCell.swift in Sources */,
 				C275C8F227B3A227001AF463 /* MainMenu.swift in Sources */,
 				E5B4BE9E27B124DB00BE587C /* AppDelegate.swift in Sources */,
 				C275C8EB27B39B93001AF463 /* MainTabBarController.swift in Sources */,
@@ -273,6 +296,7 @@
 				C273914F27B3E8C000B309BA /* LayoutForNavigationVC.swift in Sources */,
 				C2933ECB27B3AA3F00E3B8DD /* UIImage+Extension.swift in Sources */,
 				C2DD26F027B3A39C0012C60B /* RahmetVC.swift in Sources */,
+				E50F2DE127B4D804004A06BB /* Cafe.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
