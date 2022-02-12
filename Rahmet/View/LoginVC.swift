@@ -1,10 +1,9 @@
 //
-//  Login.swift
+//  LoginVC.swift
 //  Rahmet
 //
-//  Created by Elvina Shamoi on 09.02.2022.
+//  Created by Elvina Shamoi on 12.02.2022.
 //
-
 import UIKit
 
 class LoginVC: UIViewController {
