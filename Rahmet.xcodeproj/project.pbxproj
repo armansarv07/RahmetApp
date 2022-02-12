@@ -9,6 +9,14 @@
 /* Begin PBXBuildFile section */
 		AB20632442E66626A0D78CB3 /* Pods_Rahmet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A7E2C126E18E96CEF8D587C /* Pods_Rahmet.framework */; };
 		C273914F27B3E8C000B309BA /* LayoutForNavigationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C273914E27B3E8C000B309BA /* LayoutForNavigationVC.swift */; };
+		C273915127B416D400B309BA /* Bundle+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C273915027B416D400B309BA /* Bundle+Extension.swift */; };
+		C273915427B418DD00B309BA /* TemporaryOrder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C273915327B418DD00B309BA /* TemporaryOrder.swift */; };
+		C273915627B41A5300B309BA /* choco.json in Resources */ = {isa = PBXBuildFile; fileRef = C273915527B41A5200B309BA /* choco.json */; };
+		C273915927B41B0400B309BA /* OrderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C273915827B41B0400B309BA /* OrderCell.swift */; };
+		C273915B27B41F2C00B309BA /* ConfigurableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C273915A27B41F2C00B309BA /* ConfigurableCell.swift */; };
+		C273915D27B42B9300B309BA /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C273915C27B42B9300B309BA /* UIViewController+Extension.swift */; };
+		C273915F27B4ED9D00B309BA /* UIStackView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C273915E27B4ED9D00B309BA /* UIStackView+Extension.swift */; };
+		C273916127B5262E00B309BA /* BlueButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C273916027B5262E00B309BA /* BlueButton.swift */; };
 		C275C8EB27B39B93001AF463 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C275C8EA27B39B93001AF463 /* MainTabBarController.swift */; };
 		C275C8EE27B39D05001AF463 /* NavigationVCGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C275C8ED27B39D05001AF463 /* NavigationVCGenerator.swift */; };
 		C275C8F027B39F76001AF463 /* MyOrders.swift in Sources */ = {isa = PBXBuildFile; fileRef = C275C8EF27B39F76001AF463 /* MyOrders.swift */; };
@@ -28,6 +36,14 @@
 		1F34CB717506F012A307DEDF /* Pods-Rahmet.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Rahmet.release.xcconfig"; path = "Target Support Files/Pods-Rahmet/Pods-Rahmet.release.xcconfig"; sourceTree = "<group>"; };
 		5A7E2C126E18E96CEF8D587C /* Pods_Rahmet.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Rahmet.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C273914E27B3E8C000B309BA /* LayoutForNavigationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutForNavigationVC.swift; sourceTree = "<group>"; };
+		C273915027B416D400B309BA /* Bundle+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+Extension.swift"; sourceTree = "<group>"; };
+		C273915327B418DD00B309BA /* TemporaryOrder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemporaryOrder.swift; sourceTree = "<group>"; };
+		C273915527B41A5200B309BA /* choco.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = choco.json; sourceTree = "<group>"; };
+		C273915827B41B0400B309BA /* OrderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderCell.swift; sourceTree = "<group>"; };
+		C273915A27B41F2C00B309BA /* ConfigurableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurableCell.swift; sourceTree = "<group>"; };
+		C273915C27B42B9300B309BA /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
+		C273915E27B4ED9D00B309BA /* UIStackView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+Extension.swift"; sourceTree = "<group>"; };
+		C273916027B5262E00B309BA /* BlueButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlueButton.swift; sourceTree = "<group>"; };
 		C275C8EA27B39B93001AF463 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		C275C8ED27B39D05001AF463 /* NavigationVCGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationVCGenerator.swift; sourceTree = "<group>"; };
 		C275C8EF27B39F76001AF463 /* MyOrders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyOrders.swift; sourceTree = "<group>"; };
@@ -75,20 +91,71 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		C216D87227B69B7D0081185B /* TabBarViews */ = {
+			isa = PBXGroup;
+			children = (
+				C275C8EA27B39B93001AF463 /* MainTabBarController.swift */,
+				C275C8F127B3A227001AF463 /* MainMenu.swift */,
+				C275C8EF27B39F76001AF463 /* MyOrders.swift */,
+				C2DD26EF27B3A39C0012C60B /* RahmetVC.swift */,
+			);
+			path = TabBarViews;
+			sourceTree = "<group>";
+		};
+		C216D87327B69BA90081185B /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				E5B251D927B14DA800543C24 /* Registration.swift */,
+			);
+			path = Authentication;
+			sourceTree = "<group>";
+		};
+		C216D87427B69BC40081185B /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				C275C8ED27B39D05001AF463 /* NavigationVCGenerator.swift */,
+				C2933EC827B3A89F00E3B8DD /* ImageResizer.swift */,
+				C273915E27B4ED9D00B309BA /* UIStackView+Extension.swift */,
+				C2933ECA27B3AA3F00E3B8DD /* UIImage+Extension.swift */,
+				C273915027B416D400B309BA /* Bundle+Extension.swift */,
+				C273915C27B42B9300B309BA /* UIViewController+Extension.swift */,
+				C273916027B5262E00B309BA /* BlueButton.swift */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
 		C273914D27B3E8A200B309BA /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
 				C273914E27B3E8C000B309BA /* LayoutForNavigationVC.swift */,
+				C273915A27B41F2C00B309BA /* ConfigurableCell.swift */,
 			);
 			path = Protocols;
+			sourceTree = "<group>";
+		};
+		C273915227B418C800B309BA /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				C273915327B418DD00B309BA /* TemporaryOrder.swift */,
+				C273915527B41A5200B309BA /* choco.json */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		C273915727B41AFB00B309BA /* Сells */ = {
+			isa = PBXGroup;
+			children = (
+				C273915827B41B0400B309BA /* OrderCell.swift */,
+			);
+			path = "Сells";
 			sourceTree = "<group>";
 		};
 		C275C8EC27B39CE4001AF463 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				C275C8ED27B39D05001AF463 /* NavigationVCGenerator.swift */,
-				C2933EC827B3A89F00E3B8DD /* ImageResizer.swift */,
-				C2933ECA27B3AA3F00E3B8DD /* UIImage+Extension.swift */,
+				C273914D27B3E8A200B309BA /* Protocols */,
+				C216D87427B69BC40081185B /* UI */,
+				E50967DF27B386DA007D4809 /* Constants.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -96,11 +163,9 @@
 		E5B251D627B148C800543C24 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				E5B251D927B14DA800543C24 /* Registration.swift */,
-				C275C8EA27B39B93001AF463 /* MainTabBarController.swift */,
-				C275C8EF27B39F76001AF463 /* MyOrders.swift */,
-				C275C8F127B3A227001AF463 /* MainMenu.swift */,
-				C2DD26EF27B3A39C0012C60B /* RahmetVC.swift */,
+				C216D87227B69B7D0081185B /* TabBarViews */,
+				C273915727B41AFB00B309BA /* Сells */,
+				C216D87327B69BA90081185B /* Authentication */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -138,11 +203,10 @@
 		E5B4BE9C27B124DB00BE587C /* Rahmet */ = {
 			isa = PBXGroup;
 			children = (
-				C273914D27B3E8A200B309BA /* Protocols */,
+				C273915227B418C800B309BA /* Models */,
 				C275C8EC27B39CE4001AF463 /* Helpers */,
 				E5B251D827B148E000543C24 /* Component */,
 				E5B251D627B148C800543C24 /* View */,
-				E50967DF27B386DA007D4809 /* Constants.swift */,
 			);
 			path = Rahmet;
 			sourceTree = "<group>";
@@ -207,6 +271,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C273915627B41A5300B309BA /* choco.json in Resources */,
 				E5B4BEAA27B124DB00BE587C /* LaunchScreen.storyboard in Resources */,
 				E5B4BEA727B124DB00BE587C /* Assets.xcassets in Resources */,
 			);
@@ -261,11 +326,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C273915427B418DD00B309BA /* TemporaryOrder.swift in Sources */,
 				C275C8EE27B39D05001AF463 /* NavigationVCGenerator.swift in Sources */,
+				C273915B27B41F2C00B309BA /* ConfigurableCell.swift in Sources */,
 				E5B251DA27B14DA800543C24 /* Registration.swift in Sources */,
+				C273915F27B4ED9D00B309BA /* UIStackView+Extension.swift in Sources */,
+				C273915D27B42B9300B309BA /* UIViewController+Extension.swift in Sources */,
 				C275C8F227B3A227001AF463 /* MainMenu.swift in Sources */,
 				E5B4BE9E27B124DB00BE587C /* AppDelegate.swift in Sources */,
+				C273916127B5262E00B309BA /* BlueButton.swift in Sources */,
 				C275C8EB27B39B93001AF463 /* MainTabBarController.swift in Sources */,
+				C273915127B416D400B309BA /* Bundle+Extension.swift in Sources */,
+				C273915927B41B0400B309BA /* OrderCell.swift in Sources */,
 				C2933EC927B3A89F00E3B8DD /* ImageResizer.swift in Sources */,
 				C275C8F027B39F76001AF463 /* MyOrders.swift in Sources */,
 				E5B4BEA027B124DB00BE587C /* SceneDelegate.swift in Sources */,

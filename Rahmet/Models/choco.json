@@ -1,0 +1,34 @@
+[
+    {
+        
+        "restaurantName": "Mamma Mia",
+        "totalPrice": 6090,
+        "orderStatus": "processing",
+        "orderDate": "15.12.2021, 10:44",
+        "id": 1
+    },
+
+    {
+        "restaurantName": "Chococafe",
+        "totalPrice": 6090,
+        "orderStatus": "in the kitchen",
+        "orderDate": "17.11.2021, 08:44",
+        "id": 2
+    },
+    
+    {
+        "restaurantName": "Bahandi Burger",
+        "totalPrice": 3800,
+        "orderStatus": "ready",
+        "orderDate": "07.08.2021, 12:44",
+        "id": 3
+    },
+
+    {
+        "restaurantName": "Coffee first",
+        "totalPrice": 2300,
+        "orderStatus": "completed",
+        "orderDate": "21.01.2021, 11:44",
+        "id": 4
+    }
+]
