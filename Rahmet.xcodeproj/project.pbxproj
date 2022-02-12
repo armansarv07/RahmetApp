@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		AB20632442E66626A0D78CB3 /* Pods_Rahmet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A7E2C126E18E96CEF8D587C /* Pods_Rahmet.framework */; };
+		C216D87627B7C72D0081185B /* CafeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C216D87527B7C72D0081185B /* CafeCell.swift */; };
+		C216D87827B7C7590081185B /* Cafe.swift in Sources */ = {isa = PBXBuildFile; fileRef = C216D87727B7C7590081185B /* Cafe.swift */; };
+		C216D87A27B7C7AE0081185B /* NSMutableAttributedString+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C216D87927B7C7AE0081185B /* NSMutableAttributedString+Extension.swift */; };
+		C216D87C27B7C8010081185B /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C216D87B27B7C8010081185B /* String+Extension.swift */; };
+		C216D87E27B7C8330081185B /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C216D87D27B7C8330081185B /* LoginVC.swift */; };
 		C273914F27B3E8C000B309BA /* LayoutForNavigationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C273914E27B3E8C000B309BA /* LayoutForNavigationVC.swift */; };
 		C273915127B416D400B309BA /* Bundle+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C273915027B416D400B309BA /* Bundle+Extension.swift */; };
 		C273915427B418DD00B309BA /* TemporaryOrder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C273915327B418DD00B309BA /* TemporaryOrder.swift */; };
@@ -35,6 +40,11 @@
 /* Begin PBXFileReference section */
 		1F34CB717506F012A307DEDF /* Pods-Rahmet.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Rahmet.release.xcconfig"; path = "Target Support Files/Pods-Rahmet/Pods-Rahmet.release.xcconfig"; sourceTree = "<group>"; };
 		5A7E2C126E18E96CEF8D587C /* Pods_Rahmet.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Rahmet.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C216D87527B7C72D0081185B /* CafeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CafeCell.swift; sourceTree = "<group>"; };
+		C216D87727B7C7590081185B /* Cafe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cafe.swift; sourceTree = "<group>"; };
+		C216D87927B7C7AE0081185B /* NSMutableAttributedString+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSMutableAttributedString+Extension.swift"; sourceTree = "<group>"; };
+		C216D87B27B7C8010081185B /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
+		C216D87D27B7C8330081185B /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		C273914E27B3E8C000B309BA /* LayoutForNavigationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutForNavigationVC.swift; sourceTree = "<group>"; };
 		C273915027B416D400B309BA /* Bundle+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+Extension.swift"; sourceTree = "<group>"; };
 		C273915327B418DD00B309BA /* TemporaryOrder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemporaryOrder.swift; sourceTree = "<group>"; };
@@ -106,6 +116,7 @@
 			isa = PBXGroup;
 			children = (
 				E5B251D927B14DA800543C24 /* Registration.swift */,
+				C216D87D27B7C8330081185B /* LoginVC.swift */,
 			);
 			path = Authentication;
 			sourceTree = "<group>";
@@ -138,6 +149,7 @@
 			children = (
 				C273915327B418DD00B309BA /* TemporaryOrder.swift */,
 				C273915527B41A5200B309BA /* choco.json */,
+				C216D87727B7C7590081185B /* Cafe.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -146,6 +158,7 @@
 			isa = PBXGroup;
 			children = (
 				C273915827B41B0400B309BA /* OrderCell.swift */,
+				C216D87527B7C72D0081185B /* CafeCell.swift */,
 			);
 			path = "Сells";
 			sourceTree = "<group>";
@@ -156,6 +169,8 @@
 				C273914D27B3E8A200B309BA /* Protocols */,
 				C216D87427B69BC40081185B /* UI */,
 				E50967DF27B386DA007D4809 /* Constants.swift */,
+				C216D87927B7C7AE0081185B /* NSMutableAttributedString+Extension.swift */,
+				C216D87B27B7C8010081185B /* String+Extension.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -328,16 +343,20 @@
 			files = (
 				C273915427B418DD00B309BA /* TemporaryOrder.swift in Sources */,
 				C275C8EE27B39D05001AF463 /* NavigationVCGenerator.swift in Sources */,
+				C216D87E27B7C8330081185B /* LoginVC.swift in Sources */,
 				C273915B27B41F2C00B309BA /* ConfigurableCell.swift in Sources */,
 				E5B251DA27B14DA800543C24 /* Registration.swift in Sources */,
 				C273915F27B4ED9D00B309BA /* UIStackView+Extension.swift in Sources */,
 				C273915D27B42B9300B309BA /* UIViewController+Extension.swift in Sources */,
+				C216D87A27B7C7AE0081185B /* NSMutableAttributedString+Extension.swift in Sources */,
 				C275C8F227B3A227001AF463 /* MainMenu.swift in Sources */,
 				E5B4BE9E27B124DB00BE587C /* AppDelegate.swift in Sources */,
 				C273916127B5262E00B309BA /* BlueButton.swift in Sources */,
 				C275C8EB27B39B93001AF463 /* MainTabBarController.swift in Sources */,
 				C273915127B416D400B309BA /* Bundle+Extension.swift in Sources */,
+				C216D87C27B7C8010081185B /* String+Extension.swift in Sources */,
 				C273915927B41B0400B309BA /* OrderCell.swift in Sources */,
+				C216D87627B7C72D0081185B /* CafeCell.swift in Sources */,
 				C2933EC927B3A89F00E3B8DD /* ImageResizer.swift in Sources */,
 				C275C8F027B39F76001AF463 /* MyOrders.swift in Sources */,
 				E5B4BEA027B124DB00BE587C /* SceneDelegate.swift in Sources */,
@@ -345,6 +364,7 @@
 				C273914F27B3E8C000B309BA /* LayoutForNavigationVC.swift in Sources */,
 				C2933ECB27B3AA3F00E3B8DD /* UIImage+Extension.swift in Sources */,
 				C2DD26F027B3A39C0012C60B /* RahmetVC.swift in Sources */,
+				C216D87827B7C7590081185B /* Cafe.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
