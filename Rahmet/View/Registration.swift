@@ -82,6 +82,21 @@ class Registration: UIViewController {
         return button
     }()
     
+    var loginButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Войти по e-mail", for: .normal)
+        button.setTitleColor(.darkGray, for: .normal)
+        button.titleLabel?.font = .systemFont(ofSize: 14)
+        button.addTarget(self, action: #selector(openLoginVC), for: .touchUpInside)
+        return button
+    }()
+    
+    @objc func openLoginVC() {
+        let vc = LoginVC()
+        vc.modalPresentationStyle = .fullScreen
+        present(vc, animated: true, completion: nil)
+    }
+    
     var stackView: UIStackView = {
         let stackView = UIStackView()
         stackView.spacing = 15
@@ -163,7 +178,7 @@ class Registration: UIViewController {
         view.backgroundColor = .white
         navigationItem.leftBarButtonItem = UIBarButtonItem(customView: backbutton)
         backbutton.isHidden = true
-        [mainLabel, subMainLabel, submessageLabel, textField, agreementsText].forEach {stackView.addArrangedSubview($0)}
+        [mainLabel, subMainLabel, submessageLabel, textField, loginButton, agreementsText].forEach {stackView.addArrangedSubview($0)}
         view.addSubview(stackView)
         view.addSubview(nextButton)
     }
@@ -183,7 +198,7 @@ class Registration: UIViewController {
         }
         
         agreementsText.snp.makeConstraints { make in
-            make.height.equalTo(100)
+            make.height.equalTo(50)
         }
         
         nextButton.snp.makeConstraints { make in
@@ -192,24 +207,6 @@ class Registration: UIViewController {
             make.centerX.equalToSuperview()
             make.bottom.equalToSuperview().inset(50)
         }
-    }
-}
-
-
-extension String {
-    var isValidEmail: Bool {
-        NSPredicate(format: "SELF MATCHES %@", "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}").evaluate(with: self)
-    }
-}
-
-extension NSMutableAttributedString {
-    public func setAsLink(textToFind:String, linkURL:String) -> Bool {
-        let foundRange = self.mutableString.range(of: textToFind)
-        if foundRange.location != NSNotFound {
-            self.addAttribute(.link, value: linkURL, range: foundRange)
-            return true
-        }
-        return false
     }
 }
 
