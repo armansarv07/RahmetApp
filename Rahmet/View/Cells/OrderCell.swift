@@ -74,7 +74,9 @@ extension OrderCell {
         self.addSubview(orderDateLabel)
         orderDateLabel.snp.makeConstraints { make in
             make.top.equalToSuperview().inset(16)
-            make.trailing.equalTo(arrowImage).inset(25)
+
+            make.trailing.equalTo(arrowImage).offset(-20)
+
         }
         
         let globalStackView = UIStackView(arrangedSubviews: [titleStackView, orderAmountLabel, orderStatusLabel], axis: .vertical, spacing: 8)

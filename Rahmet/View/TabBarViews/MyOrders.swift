@@ -12,6 +12,10 @@ enum Section: Int, CaseIterable {
 }
 
 class MyOrders: UIViewController {
+
+    var loggedIn = true
+    
+
     let orders = Bundle.main.decode([TemporaryOrder].self, from: "choco.json")
     var collectionView: UICollectionView!
     var dataSource: UICollectionViewDiffableDataSource<Section, TemporaryOrder>!
@@ -19,15 +23,64 @@ class MyOrders: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .secondarySystemBackground
         setupNavigationBar()
-        setupCollectionView()
-        createDataSource()
-        reloadData()
+
+        setup()
+
         print(orders.count)
     }
 }
 
 
 extension MyOrders: LayoutForNavigationVC {
+
+    func setup() {
+        if !loggedIn {
+//            collectionView.isHidden = true
+            let requireLoginLabel: UILabel = {
+                let label = UILabel()
+                label.text = "Войдите в свой аккаунт"
+                label.font = .systemFont(ofSize: 18, weight: .bold)
+                label.textAlignment = .center
+                return label
+            }()
+            let loginDescriptionLabel: UILabel = {
+                let label = UILabel()
+                label.text = "Необходимо войти в свой аккаунт, чтобы увидеть историю заказов"
+                label.font = .systemFont(ofSize: 16, weight: .regular)
+                label.numberOfLines = 0
+                label.textAlignment = .center
+                return label
+            }()
+            
+            
+            let labelStack = UIStackView(arrangedSubviews: [requireLoginLabel, loginDescriptionLabel], axis: .vertical, spacing: 16)
+            
+            
+            let loginButton = BlueButton(text: "Войти")
+            
+            view.addSubview(labelStack)
+            
+            view.addSubview(loginButton)
+            
+            labelStack.snp.makeConstraints { make in
+                make.centerY.equalToSuperview()
+                make.leading.equalToSuperview().inset(32)
+                make.trailing.equalToSuperview().inset(32)
+                
+            }
+            loginButton.snp.makeConstraints { make in
+                make.trailing.leading.equalToSuperview().inset(45)
+                make.height.equalTo(44)
+                make.top.equalTo(labelStack.snp.bottom).offset(32)
+            }
+            
+        } else {
+            setupCollectionView()
+            createDataSource()
+            reloadData()
+        }
+    }
+    
     func setupConstraints() {
         
     }
