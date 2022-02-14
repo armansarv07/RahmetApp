@@ -9,6 +9,9 @@ import UIKit
 
 class Menu: UIViewController {
     let cafe: Cafe
+    
+    let fakeCategoriesData = FakeCategories.shared.fakeCategoriesData
+    
     let photos = FakePhotosDatabase.shared.database
     
     var pagingImages: UICollectionView!
@@ -16,7 +19,6 @@ class Menu: UIViewController {
     init(cafe: Cafe) {
         self.cafe = cafe
         super.init(nibName: nil, bundle: nil)
-        
     }
     
     required init?(coder: NSCoder) {
@@ -26,14 +28,62 @@ class Menu: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNavigationBar()
+        setupViews()
+    }
+    
+    private lazy var categoriesCollectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .horizontal
+        layout.minimumLineSpacing = 0
+        layout.itemSize = .init(width: Constants.screenWidth / 5, height: 50)
+        let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        cv.contentInsetAdjustmentBehavior = .never
+        cv.showsHorizontalScrollIndicator = false
+        cv.contentOffset = .zero
+        cv.register(CategoryCell.self, forCellWithReuseIdentifier: CategoryCell.reuseIdentifier)
+        cv.backgroundColor = .white
+        cv.delegate = self
+        cv.dataSource = self
+        return cv
+    }()
+    
+    private lazy var menuButton: UIButton = {
+        let button = UIButton()
+        button.alpha = 0.5
+        button.setImage(UIImage.init(named: "menu"), for: .normal)
+        button.addTarget(self, action: #selector(openMenuTableView), for: .touchUpInside)
+        return button
+    }()
+    
+    @objc func openMenuTableView() {
+        let vc = MenuTableView()
+        vc.modalPresentationStyle = .fullScreen
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    func setupViews() {
         setupCollectionView()
-        
+        view.addSubview(categoriesCollectionView)
+        view.addSubview(menuButton)
+        setupConstraints()
     }
     
 }
 
 extension Menu: LayoutForNavigationVC {
     func setupConstraints() {
+        categoriesCollectionView.snp.makeConstraints { make in
+            make.right.equalToSuperview()
+            make.left.equalToSuperview().offset(50)
+            make.top.equalToSuperview().offset(Constants.screenHeight / 4)
+            make.height.equalTo(40)
+        }
+        
+        menuButton.snp.makeConstraints { make in
+            make.left.equalToSuperview().offset(15)
+            make.top.equalTo(categoriesCollectionView).offset(8)
+            make.width.height.equalTo(25)
+        }
     }
     
     func setupNavigationBar() {
@@ -56,19 +106,35 @@ extension Menu: LayoutForNavigationVC {
 }
 
 
-extension Menu: UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
+extension Menu: UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        photos.count
+        if collectionView == pagingImages {
+            return photos.count
+        }
+        return fakeCategoriesData.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = pagingImages.dequeueReusableCell(withReuseIdentifier: "photo", for: indexPath)
-        cell.backgroundColor = .cyan
-        return cell
+       
+        if collectionView == pagingImages {
+            let cell = pagingImages.dequeueReusableCell(withReuseIdentifier: "photo", for: indexPath)
+            cell.backgroundColor = .cyan
+            return cell
+        } else {
+            guard let cell = categoriesCollectionView.dequeueReusableCell(withReuseIdentifier: CategoryCell.reuseIdentifier, for: indexPath) as? CategoryCell else {
+                fatalError("Wrong cell class dequeued")
+            }
+            cell.backgroundColor = .white
+            cell.category = fakeCategoriesData[indexPath.row]
+            return cell
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        CGSize(width: pagingImages.width, height: pagingImages.height)
+        if collectionView == pagingImages {
+            return CGSize(width: pagingImages.width, height: pagingImages.height)
+        }
+        return CGSize(width: Constants.screenWidth / 4, height: 35)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
