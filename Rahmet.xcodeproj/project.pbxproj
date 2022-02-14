@@ -33,6 +33,12 @@
 		E50F2DFC27B7CCE7004A06BB /* TemporaryOrder.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50F2DFB27B7CCE7004A06BB /* TemporaryOrder.swift */; };
 		E50F2DFE27B7CCFE004A06BB /* OrderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50F2DFD27B7CCFE004A06BB /* OrderCell.swift */; };
 		E50F2E0127B7CDBF004A06BB /* choco.json in Resources */ = {isa = PBXBuildFile; fileRef = E50F2DF927B7CCCE004A06BB /* choco.json */; };
+		E50F2E0327BA411A004A06BB /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50F2E0227BA411A004A06BB /* CategoryCell.swift */; };
+		E50F2E0527BA416B004A06BB /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50F2E0427BA416B004A06BB /* Category.swift */; };
+		E50F2E0727BA41DC004A06BB /* Dish.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50F2E0627BA41DC004A06BB /* Dish.swift */; };
+		E50F2E0927BA622E004A06BB /* MenuTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50F2E0827BA622E004A06BB /* MenuTableView.swift */; };
+		E50F2E0B27BA6315004A06BB /* FakeCategories.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50F2E0A27BA6315004A06BB /* FakeCategories.swift */; };
+		E50F2E0D27BA664A004A06BB /* MenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50F2E0C27BA664A004A06BB /* MenuCell.swift */; };
 		E5B251DA27B14DA800543C24 /* Registration.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B251D927B14DA800543C24 /* Registration.swift */; };
 		E5B4BE9E27B124DB00BE587C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B4BE9D27B124DB00BE587C /* AppDelegate.swift */; };
 		E5B4BEA027B124DB00BE587C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B4BE9F27B124DB00BE587C /* SceneDelegate.swift */; };
@@ -67,6 +73,12 @@
 		E50F2DF927B7CCCE004A06BB /* choco.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = choco.json; sourceTree = "<group>"; };
 		E50F2DFB27B7CCE7004A06BB /* TemporaryOrder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemporaryOrder.swift; sourceTree = "<group>"; };
 		E50F2DFD27B7CCFE004A06BB /* OrderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderCell.swift; sourceTree = "<group>"; };
+		E50F2E0227BA411A004A06BB /* CategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCell.swift; sourceTree = "<group>"; };
+		E50F2E0427BA416B004A06BB /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		E50F2E0627BA41DC004A06BB /* Dish.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dish.swift; sourceTree = "<group>"; };
+		E50F2E0827BA622E004A06BB /* MenuTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTableView.swift; sourceTree = "<group>"; };
+		E50F2E0A27BA6315004A06BB /* FakeCategories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeCategories.swift; sourceTree = "<group>"; };
+		E50F2E0C27BA664A004A06BB /* MenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCell.swift; sourceTree = "<group>"; };
 		E5B251D927B14DA800543C24 /* Registration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Registration.swift; sourceTree = "<group>"; };
 		E5B4BE9A27B124DB00BE587C /* Rahmet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Rahmet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5B4BE9D27B124DB00BE587C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -107,7 +119,6 @@
 			sourceTree = "<group>";
 		};
 		C275C8EC27B39CE4001AF463 /* Helpers */ = {
-
 			isa = PBXGroup;
 			children = (
 				C2F5E2D427B81BA600AEBBCF /* Fake Helpers */,
@@ -121,7 +132,7 @@
 			isa = PBXGroup;
 			children = (
 				C2F5E2D127B81B2800AEBBCF /* Menu.swift */,
-
+				E50F2E0827BA622E004A06BB /* MenuTableView.swift */,
 			);
 			path = MenuGroup;
 			sourceTree = "<group>";
@@ -130,6 +141,7 @@
 			isa = PBXGroup;
 			children = (
 				C2F5E2D527B81BB400AEBBCF /* FakePhotosDatabase.swift */,
+				E50F2E0A27BA6315004A06BB /* FakeCategories.swift */,
 			);
 			path = "Fake Helpers";
 			sourceTree = "<group>";
@@ -140,6 +152,8 @@
 				E50F2DE027B4D804004A06BB /* Cafe.swift */,
 				E50F2DF927B7CCCE004A06BB /* choco.json */,
 				E50F2DFB27B7CCE7004A06BB /* TemporaryOrder.swift */,
+				E50F2E0427BA416B004A06BB /* Category.swift */,
+				E50F2E0627BA41DC004A06BB /* Dish.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -149,6 +163,8 @@
 			children = (
 				E50F2DE327B4DC6D004A06BB /* CafeCell.swift */,
 				E50F2DFD27B7CCFE004A06BB /* OrderCell.swift */,
+				E50F2E0227BA411A004A06BB /* CategoryCell.swift */,
+				E50F2E0C27BA664A004A06BB /* MenuCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -164,9 +180,7 @@
 				E50F2DE727B7B486004A06BB /* String+Extension.swift */,
 				E50F2DF527B7CC6D004A06BB /* UIStackView+Extension.swift */,
 				E50F2DF727B7CC8C004A06BB /* UIViewController+Extension.swift */,
-
 				C2F5E2D727B850D200AEBBCF /* UIView+Extension.swift */,
-
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -206,9 +220,7 @@
 				E50F2E0027B7CD39004A06BB /* TabBarViews */,
 				E50F2DFF27B7CD11004A06BB /* Authentication */,
 				E50F2DE227B4DC63004A06BB /* Cells */,
-
 				C2F5E2D327B81B2E00AEBBCF /* MenuGroup */,
-
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -373,7 +385,9 @@
 				C275C8EE27B39D05001AF463 /* NavigationVCGenerator.swift in Sources */,
 				E5B251DA27B14DA800543C24 /* Registration.swift in Sources */,
 				E50F2DE427B4DC6D004A06BB /* CafeCell.swift in Sources */,
+				E50F2E0327BA411A004A06BB /* CategoryCell.swift in Sources */,
 				C275C8F227B3A227001AF463 /* MainMenu.swift in Sources */,
+				E50F2E0D27BA664A004A06BB /* MenuCell.swift in Sources */,
 				E50F2DF627B7CC6D004A06BB /* UIStackView+Extension.swift in Sources */,
 				E5B4BE9E27B124DB00BE587C /* AppDelegate.swift in Sources */,
 				E50F2DFC27B7CCE7004A06BB /* TemporaryOrder.swift in Sources */,
@@ -381,21 +395,23 @@
 				C2933EC927B3A89F00E3B8DD /* ImageResizer.swift in Sources */,
 				E50F2DEE27B7CB92004A06BB /* ConfigurableCell.swift in Sources */,
 				C275C8F027B39F76001AF463 /* MyOrders.swift in Sources */,
+				E50F2E0B27BA6315004A06BB /* FakeCategories.swift in Sources */,
 				E50F2DFA27B7CCCE004A06BB /* choco.json in Sources */,
-
 				C2F5E2D827B850D300AEBBCF /* UIView+Extension.swift in Sources */,
-
 				E5B4BEA027B124DB00BE587C /* SceneDelegate.swift in Sources */,
 				C2F5E2D627B81BB400AEBBCF /* FakePhotosDatabase.swift in Sources */,
 				E50967E027B386DA007D4809 /* Constants.swift in Sources */,
 				C2F5E2D227B81B2800AEBBCF /* Menu.swift in Sources */,
 				E50F2DEA27B7B4BD004A06BB /* LoginVC.swift in Sources */,
 				C273914F27B3E8C000B309BA /* LayoutForNavigationVC.swift in Sources */,
+				E50F2E0927BA622E004A06BB /* MenuTableView.swift in Sources */,
 				C2933ECB27B3AA3F00E3B8DD /* UIImage+Extension.swift in Sources */,
 				C2DD26F027B3A39C0012C60B /* RahmetVC.swift in Sources */,
 				E50F2DE827B7B486004A06BB /* String+Extension.swift in Sources */,
 				E50F2DE127B4D804004A06BB /* Cafe.swift in Sources */,
 				E50F2DF827B7CC8C004A06BB /* UIViewController+Extension.swift in Sources */,
+				E50F2E0727BA41DC004A06BB /* Dish.swift in Sources */,
+				E50F2E0527BA416B004A06BB /* Category.swift in Sources */,
 				E50F2DF227B7CC24004A06BB /* BlueButton.swift in Sources */,
 				E50F2DFE27B7CCFE004A06BB /* OrderCell.swift in Sources */,
 				E50F2DF427B7CC3B004A06BB /* Bundle+Extension.swift in Sources */,
