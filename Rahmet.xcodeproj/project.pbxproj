@@ -107,6 +107,7 @@
 			sourceTree = "<group>";
 		};
 		C275C8EC27B39CE4001AF463 /* Helpers */ = {
+
 			isa = PBXGroup;
 			children = (
 				C2F5E2D427B81BA600AEBBCF /* Fake Helpers */,
@@ -120,6 +121,7 @@
 			isa = PBXGroup;
 			children = (
 				C2F5E2D127B81B2800AEBBCF /* Menu.swift */,
+
 			);
 			path = MenuGroup;
 			sourceTree = "<group>";
@@ -162,7 +164,9 @@
 				E50F2DE727B7B486004A06BB /* String+Extension.swift */,
 				E50F2DF527B7CC6D004A06BB /* UIStackView+Extension.swift */,
 				E50F2DF727B7CC8C004A06BB /* UIViewController+Extension.swift */,
+
 				C2F5E2D727B850D200AEBBCF /* UIView+Extension.swift */,
+
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -202,7 +206,9 @@
 				E50F2E0027B7CD39004A06BB /* TabBarViews */,
 				E50F2DFF27B7CD11004A06BB /* Authentication */,
 				E50F2DE227B4DC63004A06BB /* Cells */,
+
 				C2F5E2D327B81B2E00AEBBCF /* MenuGroup */,
+
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -376,7 +382,9 @@
 				E50F2DEE27B7CB92004A06BB /* ConfigurableCell.swift in Sources */,
 				C275C8F027B39F76001AF463 /* MyOrders.swift in Sources */,
 				E50F2DFA27B7CCCE004A06BB /* choco.json in Sources */,
+
 				C2F5E2D827B850D300AEBBCF /* UIView+Extension.swift in Sources */,
+
 				E5B4BEA027B124DB00BE587C /* SceneDelegate.swift in Sources */,
 				C2F5E2D627B81BB400AEBBCF /* FakePhotosDatabase.swift in Sources */,
 				E50967E027B386DA007D4809 /* Constants.swift in Sources */,

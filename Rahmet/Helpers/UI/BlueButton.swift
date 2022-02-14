@@ -7,9 +7,11 @@ class BlueButton: UIButton {
         self.layer.cornerRadius = 12
         self.clipsToBounds = true
         self.isEnabled = isActive
+
         let attributes: [NSAttributedString.Key: Any] = [.font: UIFont.systemFont(ofSize: 16, weight: .bold), .foregroundColor: UIColor.white]
         let title = NSAttributedString(string: text, attributes: attributes)
         self.setAttributedTitle(title, for: .normal)
+
         
         if let rightText = rightText {
             let rightLabel = UILabel()
