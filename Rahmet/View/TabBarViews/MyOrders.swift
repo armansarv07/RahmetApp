@@ -12,8 +12,10 @@ enum Section: Int, CaseIterable {
 }
 
 class MyOrders: UIViewController {
+
     var loggedIn = true
     
+
     let orders = Bundle.main.decode([TemporaryOrder].self, from: "choco.json")
     var collectionView: UICollectionView!
     var dataSource: UICollectionViewDiffableDataSource<Section, TemporaryOrder>!
@@ -21,13 +23,23 @@ class MyOrders: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .secondarySystemBackground
         setupNavigationBar()
+
         setup()
+
         print(orders.count)
+    }
+}
+
+extension MyOrders: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let vc = OrderDetailed(order: orders[indexPath.row])
+        navigationController?.pushViewController(vc, animated: false)
     }
 }
 
 
 extension MyOrders: LayoutForNavigationVC {
+
     func setup() {
         if !loggedIn {
 //            collectionView.isHidden = true
@@ -88,6 +100,7 @@ extension MyOrders: LayoutForNavigationVC {
         collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: createCompositionalLayout())
         collectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         collectionView.backgroundColor = .secondarySystemBackground
+        collectionView.delegate = self
         view.addSubview(collectionView)
         collectionView.register(OrderCell.self, forCellWithReuseIdentifier: OrderCell.reuseId)
     }

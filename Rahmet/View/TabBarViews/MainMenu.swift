@@ -22,11 +22,10 @@ class MainMenu: UIViewController {
     
     var fakeData: [Cafe] = [
         Cafe(name: "Del Papa", address: "ул. Бухар жырау, 66, уг. ул. Ауэзова", imgName: "cafeImage"),
-        Cafe(name: "Del Papa2", address: "ул. Бухар жырау, 66, уг. ул. Ауэзова", imgName: "cafeImage"),
-        Cafe(name: "Del Papa3", address: "ул. Бухар жырау, 66, уг. ул. Ауэзова", imgName: "cafeImage"),
-        Cafe(name: "Del Papa4", address: "ул. Бухар жырау, 66, уг. ул. Ауэзова", imgName: "cafeImage"),
-        Cafe(name: "Del Papa5", address: "ул. Бухар жырау, 66, уг. ул. Ауэзова", imgName: "cafeImage"),
-        Cafe(name: "Del Papa6", address: "ул. Бухар жырау, 66, уг. ул. Ауэзова", imgName: "cafeImage")
+        Cafe(name: "Ресторан «Свет»", address: "ул. Кабанбай батыра 83", imgName: "rest1"),
+        Cafe(name: "Mamma mia", address: "ул. Панфилова 109", imgName: "rest2"),
+        Cafe(name: "Bahandi Burger", address: "ул. Байтурсынова 61", imgName: "rest3"),
+        Cafe(name: "Mamma mia", address: "ул. Панфилова 109", imgName: "rest4")
     ]
     
     var tableView: UITableView = {
@@ -68,12 +67,14 @@ extension MainMenu: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
        return 120
     }
+
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         let cafe = fakeData[indexPath.row]
         navigationController?.pushViewController(Menu(cafe: cafe), animated: false)
     }
+
 }
 
 

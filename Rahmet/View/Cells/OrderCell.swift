@@ -57,7 +57,7 @@ class OrderCell: UICollectionViewCell, ConfigurableCell {
         restaurantTitleLabel.text = order.restaurantName
         orderDateLabel.text = order.orderDate
         orderAmountLabel.text = "\(order.totalPrice) тг"
-        statusCreator(status: order.orderStatus)
+        statusCreator(status: order.orderStatus ?? "done")
     }
 }
 
@@ -74,7 +74,9 @@ extension OrderCell {
         self.addSubview(orderDateLabel)
         orderDateLabel.snp.makeConstraints { make in
             make.top.equalToSuperview().inset(16)
+
             make.trailing.equalTo(arrowImage).offset(-20)
+
         }
         
         let globalStackView = UIStackView(arrangedSubviews: [titleStackView, orderAmountLabel, orderStatusLabel], axis: .vertical, spacing: 8)

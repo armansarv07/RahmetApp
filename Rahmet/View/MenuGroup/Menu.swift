@@ -43,7 +43,6 @@ class Menu: UIViewController {
         self.cafe = cafe
         self.page = 0
         super.init(nibName: nil, bundle: nil)
-        
     }
     
     let pageLabel: UILabel = {
@@ -63,9 +62,45 @@ class Menu: UIViewController {
         super.viewDidLoad()
         
         setupNavigationBar()
+        setupViews()
+    }
+    
+    private lazy var categoriesCollectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .horizontal
+        layout.minimumLineSpacing = 0
+        layout.itemSize = .init(width: Constants.screenWidth / 5, height: 50)
+        let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        cv.contentInsetAdjustmentBehavior = .never
+        cv.showsHorizontalScrollIndicator = false
+        cv.contentOffset = .zero
+        cv.register(CategoryCell.self, forCellWithReuseIdentifier: CategoryCell.reuseIdentifier)
+        cv.backgroundColor = .white
+        cv.delegate = self
+        cv.dataSource = self
+        return cv
+    }()
+    
+    private lazy var menuButton: UIButton = {
+        let button = UIButton()
+        button.alpha = 0.5
+        button.setImage(UIImage.init(named: "menu"), for: .normal)
+        button.addTarget(self, action: #selector(openMenuTableView), for: .touchUpInside)
+        return button
+    }()
+    
+    @objc func openMenuTableView() {
+        let vc = CartView() // change!!!
+        vc.modalPresentationStyle = .fullScreen
+        navigationController?.pushViewController(vc, animated: false)
+    }
+    
+    func setupViews() {
         setupCollectionView()
+
         createDataSource()
         reloadData()
+
         setupConstraints()
     }
     
@@ -96,6 +131,7 @@ extension Menu: LayoutForNavigationVC {
         collectionView.register(SectionHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: SectionHeader.reuseId)
     }
     
+
 
     
     func createCompositionalLayout() -> UICollectionViewLayout {
@@ -170,6 +206,7 @@ extension Menu: LayoutForNavigationVC {
         snapshot.appendItems(gallery, toSection: .photos)
         snapshot.appendItems(segments, toSection: .segments)
         gallerySource.apply(snapshot, animatingDifferences: true)
+
     }
     
     private func createSegmentsSection() -> NSCollectionLayoutSection {

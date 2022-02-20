@@ -9,11 +9,12 @@ import Foundation
 
 
 struct TemporaryOrder: Decodable, Hashable {
-    let restaurantName: String
-    let totalPrice: Int
-    let orderStatus: String
-    let orderDate: String
-    let id: Int
+    let restaurantName: String?
+    let totalPrice: Int?
+    let orderStatus: String?
+    let orderDate: String?
+    let id: Int?
+    var orderItems: [OrderItem]?
     
     func hash(into hasher: inout Hasher) {
       hasher.combine(id)
