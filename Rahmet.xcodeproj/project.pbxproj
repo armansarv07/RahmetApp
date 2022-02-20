@@ -23,7 +23,6 @@
 		C2D8952127BDCB4800A64051 /* SectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D8952027BDCB4800A64051 /* SectionHeader.swift */; };
 		C2DD26F027B3A39C0012C60B /* RahmetVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2DD26EF27B3A39C0012C60B /* RahmetVC.swift */; };
 		C2F5E2D227B81B2800AEBBCF /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F5E2D127B81B2800AEBBCF /* Menu.swift */; };
-		C2F5E2D627B81BB400AEBBCF /* MenuModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F5E2D527B81BB400AEBBCF /* MenuModel.swift */; };
 		C2F5E2D827B850D300AEBBCF /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F5E2D727B850D200AEBBCF /* UIView+Extension.swift */; };
 		E50967E027B386DA007D4809 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50967DF27B386DA007D4809 /* Constants.swift */; };
 		E50F2DE127B4D804004A06BB /* Cafe.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50F2DE027B4D804004A06BB /* Cafe.swift */; };
@@ -82,7 +81,6 @@
 		C2D8952027BDCB4800A64051 /* SectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeader.swift; sourceTree = "<group>"; };
 		C2DD26EF27B3A39C0012C60B /* RahmetVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RahmetVC.swift; sourceTree = "<group>"; };
 		C2F5E2D127B81B2800AEBBCF /* Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
-		C2F5E2D527B81BB400AEBBCF /* MenuModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuModel.swift; sourceTree = "<group>"; };
 		C2F5E2D727B850D200AEBBCF /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		E50967DF27B386DA007D4809 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		E50F2DE027B4D804004A06BB /* Cafe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cafe.swift; sourceTree = "<group>"; };
@@ -164,6 +162,18 @@
 			path = Helpers;
 			sourceTree = "<group>";
 		};
+		C28D983227C21CD700498E65 /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				C264733527BAD27B00573D32 /* PhotoCell.swift */,
+				C253B5CD27BE5FDA00F803D4 /* PhotoModel.swift */,
+				C211978827BB80AF0080951E /* FakePhotosDatabase.swift */,
+				C2D8951D27BCDDFE00A64051 /* SegmentedCell.swift */,
+				C270CCC227C1779C001A130B /* Segment.swift */,
+			);
+			name = "Recovered References";
+			sourceTree = "<group>";
+		};
 		C2D8951F27BDCB3800A64051 /* Header Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -184,10 +194,7 @@
 		C2F5E2D427B81BA600AEBBCF /* Fake Helpers */ = {
 			isa = PBXGroup;
 			children = (
-
-				C2F5E2D527B81BB400AEBBCF /* FakePhotosDatabase.swift */,
 				E50F2E0A27BA6315004A06BB /* FakeCategories.swift */,
-
 			);
 			path = "Fake Helpers";
 			sourceTree = "<group>";
@@ -214,13 +221,11 @@
 				E50F2DE327B4DC6D004A06BB /* CafeCell.swift */,
 				E50F2E1627BF736E004A06BB /* OrderPositionsCell.swift */,
 				E50F2DFD27B7CCFE004A06BB /* OrderCell.swift */,
-
 				E50F2E0227BA411A004A06BB /* CategoryCell.swift */,
 				E50F2E0C27BA664A004A06BB /* MenuCell.swift */,
 				E5C1F9CB27BFA541000AE42B /* CartCell.swift */,
 				E5C1F9D827C21B90000AE42B /* PhotoCell.swift */,
 				E5C1F9DA27C21B9E000AE42B /* SegmentedCell.swift */,
-
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -302,6 +307,7 @@
 				E5B4BE9B27B124DB00BE587C /* Products */,
 				4F8B36A8CB1955E734581897 /* Pods */,
 				454D080DE89D7B49A8B74717 /* Frameworks */,
+				C28D983227C21CD700498E65 /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -477,11 +483,7 @@
 				C2F5E2D827B850D300AEBBCF /* UIView+Extension.swift in Sources */,
 				C2D8952127BDCB4800A64051 /* SectionHeader.swift in Sources */,
 				E5B4BEA027B124DB00BE587C /* SceneDelegate.swift in Sources */,
-
-				C2F5E2D627B81BB400AEBBCF /* MenuModel.swift in Sources */,
-				C2F5E2D627B81BB400AEBBCF /* FakePhotosDatabase.swift in Sources */,
 				E5C1F9CC27BFA541000AE42B /* CartCell.swift in Sources */,
-
 				E50967E027B386DA007D4809 /* Constants.swift in Sources */,
 				C2F5E2D227B81B2800AEBBCF /* Menu.swift in Sources */,
 				E50F2DEA27B7B4BD004A06BB /* LoginVC.swift in Sources */,
