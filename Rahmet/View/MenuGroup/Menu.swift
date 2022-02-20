@@ -56,9 +56,9 @@ class Menu: UIViewController {
     }()
     
     @objc func openMenuTableView() {
-        let vc = MenuTableView()
+        let vc = CartView() // change!!!
         vc.modalPresentationStyle = .fullScreen
-        navigationController?.pushViewController(vc, animated: true)
+        navigationController?.pushViewController(vc, animated: false)
     }
     
     func setupViews() {

@@ -19,7 +19,6 @@ class MenuTableView: UITableViewController {
     func setupViews() {
         tableView.register(MenuCell.self, forCellReuseIdentifier: "menuCell")
         navigationItem.title = "Меню"
-        title = "Меню"
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

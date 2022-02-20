@@ -30,6 +30,13 @@ class MyOrders: UIViewController {
     }
 }
 
+extension MyOrders: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let vc = OrderDetailed(order: orders[indexPath.row])
+        navigationController?.pushViewController(vc, animated: false)
+    }
+}
+
 
 extension MyOrders: LayoutForNavigationVC {
 
@@ -93,6 +100,7 @@ extension MyOrders: LayoutForNavigationVC {
         collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: createCompositionalLayout())
         collectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         collectionView.backgroundColor = .secondarySystemBackground
+        collectionView.delegate = self
         view.addSubview(collectionView)
         collectionView.register(OrderCell.self, forCellWithReuseIdentifier: OrderCell.reuseId)
     }
