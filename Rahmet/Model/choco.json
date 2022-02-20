@@ -5,7 +5,19 @@
             "totalPrice": 6090,
             "orderStatus": "processing",
             "orderDate": "15.12.2021, 10:44",
-            "id": 1
+            "id": 1,
+            "orderItems": [
+                {
+                    "itemName": "something something",
+                    "numberOfItems": 1,
+                    "itemPrice": 1900
+                },
+                {
+                    "itemName": "something something1",
+                    "numberOfItems": 2,
+                    "itemPrice": 200
+                }
+            ]
         },
 
         {
