@@ -66,7 +66,6 @@ extension MyOrders: LayoutForNavigationVC {
             let loginButton = BlueButton(text: "Войти")
             
             view.addSubview(labelStack)
-            
             view.addSubview(loginButton)
             
             labelStack.snp.makeConstraints { make in

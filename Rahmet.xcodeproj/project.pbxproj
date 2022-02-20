@@ -50,6 +50,12 @@
 		E5B4BEA727B124DB00BE587C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E5B4BEA627B124DB00BE587C /* Assets.xcassets */; };
 		E5B4BEAA27B124DB00BE587C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E5B4BEA827B124DB00BE587C /* LaunchScreen.storyboard */; };
 		E5C1F9CC27BFA541000AE42B /* CartCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5C1F9CB27BFA541000AE42B /* CartCell.swift */; };
+		E5C1F9D327C21B43000AE42B /* Segment.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5C1F9D227C21B43000AE42B /* Segment.swift */; };
+		E5C1F9D527C21B53000AE42B /* PhotoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5C1F9D427C21B53000AE42B /* PhotoModel.swift */; };
+		E5C1F9D727C21B61000AE42B /* MenuModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5C1F9D627C21B61000AE42B /* MenuModel.swift */; };
+		E5C1F9D927C21B90000AE42B /* PhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5C1F9D827C21B90000AE42B /* PhotoCell.swift */; };
+		E5C1F9DB27C21B9E000AE42B /* SegmentedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5C1F9DA27C21B9E000AE42B /* SegmentedCell.swift */; };
+		E5C1F9DE27C21BCF000AE42B /* SectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5C1F9DD27C21BCF000AE42B /* SectionHeader.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -98,6 +104,12 @@
 		E5B4BEA927B124DB00BE587C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E5B4BEAB27B124DB00BE587C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E5C1F9CB27BFA541000AE42B /* CartCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartCell.swift; sourceTree = "<group>"; };
+		E5C1F9D227C21B43000AE42B /* Segment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Segment.swift; sourceTree = "<group>"; };
+		E5C1F9D427C21B53000AE42B /* PhotoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoModel.swift; sourceTree = "<group>"; };
+		E5C1F9D627C21B61000AE42B /* MenuModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuModel.swift; sourceTree = "<group>"; };
+		E5C1F9D827C21B90000AE42B /* PhotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCell.swift; sourceTree = "<group>"; };
+		E5C1F9DA27C21B9E000AE42B /* SegmentedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentedCell.swift; sourceTree = "<group>"; };
+		E5C1F9DD27C21BCF000AE42B /* SectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeader.swift; sourceTree = "<group>"; };
 		F2FBB0B7A07D9A2E688F9A21 /* Pods-Rahmet.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Rahmet.debug.xcconfig"; path = "Target Support Files/Pods-Rahmet/Pods-Rahmet.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -167,6 +179,9 @@
 				E50F2E0427BA416B004A06BB /* Category.swift */,
 				E50F2E0627BA41DC004A06BB /* Dish.swift */,
 				E50F2E1227BC0991004A06BB /* OrderItem.swift */,
+				E5C1F9D227C21B43000AE42B /* Segment.swift */,
+				E5C1F9D427C21B53000AE42B /* PhotoModel.swift */,
+				E5C1F9D627C21B61000AE42B /* MenuModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -180,6 +195,8 @@
 				E50F2E0227BA411A004A06BB /* CategoryCell.swift */,
 				E50F2E0C27BA664A004A06BB /* MenuCell.swift */,
 				E5C1F9CB27BFA541000AE42B /* CartCell.swift */,
+				E5C1F9D827C21B90000AE42B /* PhotoCell.swift */,
+				E5C1F9DA27C21B9E000AE42B /* SegmentedCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -276,6 +293,7 @@
 		E5B4BE9C27B124DB00BE587C /* Rahmet */ = {
 			isa = PBXGroup;
 			children = (
+				E5C1F9DC27C21BBE000AE42B /* Header Views */,
 				E50967E927B4D785007D4809 /* Model */,
 				C275C8EC27B39CE4001AF463 /* Helpers */,
 				E50967DF27B386DA007D4809 /* Constants.swift */,
@@ -283,6 +301,14 @@
 				E5B251D627B148C800543C24 /* View */,
 			);
 			path = Rahmet;
+			sourceTree = "<group>";
+		};
+		E5C1F9DC27C21BBE000AE42B /* Header Views */ = {
+			isa = PBXGroup;
+			children = (
+				E5C1F9DD27C21BCF000AE42B /* SectionHeader.swift */,
+			);
+			path = "Header Views";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -411,8 +437,10 @@
 				E50F2DFC27B7CCE7004A06BB /* TemporaryOrder.swift in Sources */,
 				C275C8EB27B39B93001AF463 /* MainTabBarController.swift in Sources */,
 				E50F2E0F27BC08D1004A06BB /* OrderDetailed.swift in Sources */,
+				E5C1F9D327C21B43000AE42B /* Segment.swift in Sources */,
 				C2933EC927B3A89F00E3B8DD /* ImageResizer.swift in Sources */,
 				E50F2DEE27B7CB92004A06BB /* ConfigurableCell.swift in Sources */,
+				E5C1F9D927C21B90000AE42B /* PhotoCell.swift in Sources */,
 				C275C8F027B39F76001AF463 /* MyOrders.swift in Sources */,
 				E50F2E0B27BA6315004A06BB /* FakeCategories.swift in Sources */,
 				E50F2DFA27B7CCCE004A06BB /* choco.json in Sources */,
@@ -430,12 +458,16 @@
 				C2DD26F027B3A39C0012C60B /* RahmetVC.swift in Sources */,
 				E50F2DE827B7B486004A06BB /* String+Extension.swift in Sources */,
 				E50F2DE127B4D804004A06BB /* Cafe.swift in Sources */,
+				E5C1F9DE27C21BCF000AE42B /* SectionHeader.swift in Sources */,
 				E50F2E1327BC0991004A06BB /* OrderItem.swift in Sources */,
 				E50F2DF827B7CC8C004A06BB /* UIViewController+Extension.swift in Sources */,
+				E5C1F9DB27C21B9E000AE42B /* SegmentedCell.swift in Sources */,
 				E50F2E0727BA41DC004A06BB /* Dish.swift in Sources */,
+				E5C1F9D527C21B53000AE42B /* PhotoModel.swift in Sources */,
 				E50F2E0527BA416B004A06BB /* Category.swift in Sources */,
 				E50F2DF227B7CC24004A06BB /* BlueButton.swift in Sources */,
 				E50F2DFE27B7CCFE004A06BB /* OrderCell.swift in Sources */,
+				E5C1F9D727C21B61000AE42B /* MenuModel.swift in Sources */,
 				E50F2E1527BF52BE004A06BB /* ParametersView.swift in Sources */,
 				E50F2E1927BF9FD0004A06BB /* CartView.swift in Sources */,
 				E50F2DF427B7CC3B004A06BB /* Bundle+Extension.swift in Sources */,
