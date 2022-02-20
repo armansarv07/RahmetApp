@@ -1,15 +1,17 @@
 //
-//  PhotosDatabase.swift
+//  FakePhotosDatabase.swift
 //  Rahmet
 //
-//  Created by Arman on 12.02.2022.
+//  Created by Arman on 15.02.2022.
 //
 
-import UIKit
-import SwiftUI
+import Foundation
 
-class FakePhotosDatabase {
-    static let shared = FakePhotosDatabase()
-    let database: [UIImage] = [#imageLiteral(resourceName: "rest1"), #imageLiteral(resourceName: "rest2"), #imageLiteral(resourceName: "rest4"), #imageLiteral(resourceName: "cafeImage"), #imageLiteral(resourceName: "rest3")]
+
+class FakeMenuDatabase {
+    static let shared = FakeMenuDatabase()
+    let menus: [MenuModel] = [
+        MenuModel(id: 1)
+    ]
     private init() {}
 }
