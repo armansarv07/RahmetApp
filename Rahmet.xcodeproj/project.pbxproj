@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		AB20632442E66626A0D78CB3 /* Pods_Rahmet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A7E2C126E18E96CEF8D587C /* Pods_Rahmet.framework */; };
+		C211978927BB80AF0080951E /* FakePhotosDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C211978827BB80AF0080951E /* FakePhotosDatabase.swift */; };
+		C253B5CE27BE5FDA00F803D4 /* PhotoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C253B5CD27BE5FDA00F803D4 /* PhotoModel.swift */; };
+		C264733627BAD27B00573D32 /* PhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C264733527BAD27B00573D32 /* PhotoCell.swift */; };
+		C270CCC327C1779C001A130B /* Segment.swift in Sources */ = {isa = PBXBuildFile; fileRef = C270CCC227C1779C001A130B /* Segment.swift */; };
 		C273914F27B3E8C000B309BA /* LayoutForNavigationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C273914E27B3E8C000B309BA /* LayoutForNavigationVC.swift */; };
 		C275C8EB27B39B93001AF463 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C275C8EA27B39B93001AF463 /* MainTabBarController.swift */; };
 		C275C8EE27B39D05001AF463 /* NavigationVCGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C275C8ED27B39D05001AF463 /* NavigationVCGenerator.swift */; };
@@ -15,9 +19,11 @@
 		C275C8F227B3A227001AF463 /* MainMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = C275C8F127B3A227001AF463 /* MainMenu.swift */; };
 		C2933EC927B3A89F00E3B8DD /* ImageResizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2933EC827B3A89F00E3B8DD /* ImageResizer.swift */; };
 		C2933ECB27B3AA3F00E3B8DD /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2933ECA27B3AA3F00E3B8DD /* UIImage+Extension.swift */; };
+		C2D8951E27BCDDFE00A64051 /* SegmentedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D8951D27BCDDFE00A64051 /* SegmentedCell.swift */; };
+		C2D8952127BDCB4800A64051 /* SectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D8952027BDCB4800A64051 /* SectionHeader.swift */; };
 		C2DD26F027B3A39C0012C60B /* RahmetVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2DD26EF27B3A39C0012C60B /* RahmetVC.swift */; };
 		C2F5E2D227B81B2800AEBBCF /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F5E2D127B81B2800AEBBCF /* Menu.swift */; };
-		C2F5E2D627B81BB400AEBBCF /* FakePhotosDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F5E2D527B81BB400AEBBCF /* FakePhotosDatabase.swift */; };
+		C2F5E2D627B81BB400AEBBCF /* MenuModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F5E2D527B81BB400AEBBCF /* MenuModel.swift */; };
 		C2F5E2D827B850D300AEBBCF /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F5E2D727B850D200AEBBCF /* UIView+Extension.swift */; };
 		E50967E027B386DA007D4809 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50967DF27B386DA007D4809 /* Constants.swift */; };
 		E50F2DE127B4D804004A06BB /* Cafe.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50F2DE027B4D804004A06BB /* Cafe.swift */; };
@@ -61,6 +67,10 @@
 /* Begin PBXFileReference section */
 		1F34CB717506F012A307DEDF /* Pods-Rahmet.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Rahmet.release.xcconfig"; path = "Target Support Files/Pods-Rahmet/Pods-Rahmet.release.xcconfig"; sourceTree = "<group>"; };
 		5A7E2C126E18E96CEF8D587C /* Pods_Rahmet.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Rahmet.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C211978827BB80AF0080951E /* FakePhotosDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakePhotosDatabase.swift; sourceTree = "<group>"; };
+		C253B5CD27BE5FDA00F803D4 /* PhotoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoModel.swift; sourceTree = "<group>"; };
+		C264733527BAD27B00573D32 /* PhotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCell.swift; sourceTree = "<group>"; };
+		C270CCC227C1779C001A130B /* Segment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Segment.swift; sourceTree = "<group>"; };
 		C273914E27B3E8C000B309BA /* LayoutForNavigationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutForNavigationVC.swift; sourceTree = "<group>"; };
 		C275C8EA27B39B93001AF463 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		C275C8ED27B39D05001AF463 /* NavigationVCGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationVCGenerator.swift; sourceTree = "<group>"; };
@@ -68,9 +78,11 @@
 		C275C8F127B3A227001AF463 /* MainMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenu.swift; sourceTree = "<group>"; };
 		C2933EC827B3A89F00E3B8DD /* ImageResizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageResizer.swift; sourceTree = "<group>"; };
 		C2933ECA27B3AA3F00E3B8DD /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
+		C2D8951D27BCDDFE00A64051 /* SegmentedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentedCell.swift; sourceTree = "<group>"; };
+		C2D8952027BDCB4800A64051 /* SectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeader.swift; sourceTree = "<group>"; };
 		C2DD26EF27B3A39C0012C60B /* RahmetVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RahmetVC.swift; sourceTree = "<group>"; };
 		C2F5E2D127B81B2800AEBBCF /* Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
-		C2F5E2D527B81BB400AEBBCF /* FakePhotosDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakePhotosDatabase.swift; sourceTree = "<group>"; };
+		C2F5E2D527B81BB400AEBBCF /* MenuModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuModel.swift; sourceTree = "<group>"; };
 		C2F5E2D727B850D200AEBBCF /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		E50967DF27B386DA007D4809 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		E50F2DE027B4D804004A06BB /* Cafe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cafe.swift; sourceTree = "<group>"; };
@@ -152,6 +164,14 @@
 			path = Helpers;
 			sourceTree = "<group>";
 		};
+		C2D8951F27BDCB3800A64051 /* Header Views */ = {
+			isa = PBXGroup;
+			children = (
+				C2D8952027BDCB4800A64051 /* SectionHeader.swift */,
+			);
+			path = "Header Views";
+			sourceTree = "<group>";
+		};
 		C2F5E2D327B81B2E00AEBBCF /* MenuGroup */ = {
 			isa = PBXGroup;
 			children = (
@@ -164,8 +184,10 @@
 		C2F5E2D427B81BA600AEBBCF /* Fake Helpers */ = {
 			isa = PBXGroup;
 			children = (
+
 				C2F5E2D527B81BB400AEBBCF /* FakePhotosDatabase.swift */,
 				E50F2E0A27BA6315004A06BB /* FakeCategories.swift */,
+
 			);
 			path = "Fake Helpers";
 			sourceTree = "<group>";
@@ -192,11 +214,13 @@
 				E50F2DE327B4DC6D004A06BB /* CafeCell.swift */,
 				E50F2E1627BF736E004A06BB /* OrderPositionsCell.swift */,
 				E50F2DFD27B7CCFE004A06BB /* OrderCell.swift */,
+
 				E50F2E0227BA411A004A06BB /* CategoryCell.swift */,
 				E50F2E0C27BA664A004A06BB /* MenuCell.swift */,
 				E5C1F9CB27BFA541000AE42B /* CartCell.swift */,
 				E5C1F9D827C21B90000AE42B /* PhotoCell.swift */,
 				E5C1F9DA27C21B9E000AE42B /* SegmentedCell.swift */,
+
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -205,11 +229,9 @@
 			isa = PBXGroup;
 			children = (
 				E50F2DF127B7CC24004A06BB /* BlueButton.swift */,
-				E50F2DF327B7CC3B004A06BB /* Bundle+Extension.swift */,
 				C2933EC827B3A89F00E3B8DD /* ImageResizer.swift */,
 				C275C8ED27B39D05001AF463 /* NavigationVCGenerator.swift */,
 				C2933ECA27B3AA3F00E3B8DD /* UIImage+Extension.swift */,
-				E50F2DE727B7B486004A06BB /* String+Extension.swift */,
 				E50F2DF527B7CC6D004A06BB /* UIStackView+Extension.swift */,
 				E50F2DF727B7CC8C004A06BB /* UIViewController+Extension.swift */,
 				C2F5E2D727B850D200AEBBCF /* UIView+Extension.swift */,
@@ -252,6 +274,7 @@
 		E5B251D627B148C800543C24 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				C2D8951F27BDCB3800A64051 /* Header Views */,
 				E50F2E0027B7CD39004A06BB /* TabBarViews */,
 				E50F2DFF27B7CD11004A06BB /* Authentication */,
 				E50F2DE227B4DC63004A06BB /* Cells */,
@@ -296,6 +319,8 @@
 				E5C1F9DC27C21BBE000AE42B /* Header Views */,
 				E50967E927B4D785007D4809 /* Model */,
 				C275C8EC27B39CE4001AF463 /* Helpers */,
+				E50F2DF327B7CC3B004A06BB /* Bundle+Extension.swift */,
+				E50F2DE727B7B486004A06BB /* String+Extension.swift */,
 				E50967DF27B386DA007D4809 /* Constants.swift */,
 				E5B251D827B148E000543C24 /* Component */,
 				E5B251D627B148C800543C24 /* View */,
@@ -426,6 +451,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C264733627BAD27B00573D32 /* PhotoCell.swift in Sources */,
 				C275C8EE27B39D05001AF463 /* NavigationVCGenerator.swift in Sources */,
 				E5B251DA27B14DA800543C24 /* Registration.swift in Sources */,
 				E50F2DE427B4DC6D004A06BB /* CafeCell.swift in Sources */,
@@ -433,8 +459,10 @@
 				C275C8F227B3A227001AF463 /* MainMenu.swift in Sources */,
 				E50F2E0D27BA664A004A06BB /* MenuCell.swift in Sources */,
 				E50F2DF627B7CC6D004A06BB /* UIStackView+Extension.swift in Sources */,
+				C253B5CE27BE5FDA00F803D4 /* PhotoModel.swift in Sources */,
 				E5B4BE9E27B124DB00BE587C /* AppDelegate.swift in Sources */,
 				E50F2DFC27B7CCE7004A06BB /* TemporaryOrder.swift in Sources */,
+				C211978927BB80AF0080951E /* FakePhotosDatabase.swift in Sources */,
 				C275C8EB27B39B93001AF463 /* MainTabBarController.swift in Sources */,
 				E50F2E0F27BC08D1004A06BB /* OrderDetailed.swift in Sources */,
 				E5C1F9D327C21B43000AE42B /* Segment.swift in Sources */,
@@ -444,10 +472,16 @@
 				C275C8F027B39F76001AF463 /* MyOrders.swift in Sources */,
 				E50F2E0B27BA6315004A06BB /* FakeCategories.swift in Sources */,
 				E50F2DFA27B7CCCE004A06BB /* choco.json in Sources */,
+				C2D8951E27BCDDFE00A64051 /* SegmentedCell.swift in Sources */,
+				C270CCC327C1779C001A130B /* Segment.swift in Sources */,
 				C2F5E2D827B850D300AEBBCF /* UIView+Extension.swift in Sources */,
+				C2D8952127BDCB4800A64051 /* SectionHeader.swift in Sources */,
 				E5B4BEA027B124DB00BE587C /* SceneDelegate.swift in Sources */,
+
+				C2F5E2D627B81BB400AEBBCF /* MenuModel.swift in Sources */,
 				C2F5E2D627B81BB400AEBBCF /* FakePhotosDatabase.swift in Sources */,
 				E5C1F9CC27BFA541000AE42B /* CartCell.swift in Sources */,
+
 				E50967E027B386DA007D4809 /* Constants.swift in Sources */,
 				C2F5E2D227B81B2800AEBBCF /* Menu.swift in Sources */,
 				E50F2DEA27B7B4BD004A06BB /* LoginVC.swift in Sources */,
