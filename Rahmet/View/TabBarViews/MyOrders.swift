@@ -23,16 +23,19 @@ class MyOrders: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .secondarySystemBackground
         setupNavigationBar()
-
         setup()
-
         print(orders.count)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.tabBarController?.tabBar.isHidden = false
     }
 }
 
 extension MyOrders: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let vc = OrderDetailed(order: orders[indexPath.row])
+//        let vc = OrderDetailed(order: orders[indexPath.row])
+        let vc = CartView()
         navigationController?.pushViewController(vc, animated: false)
     }
 }
@@ -41,6 +44,7 @@ extension MyOrders: UICollectionViewDelegate {
 extension MyOrders: LayoutForNavigationVC {
 
     func setup() {
+        self.tabBarController?.tabBar.isHidden = false
         if !loggedIn {
 //            collectionView.isHidden = true
             let requireLoginLabel: UILabel = {

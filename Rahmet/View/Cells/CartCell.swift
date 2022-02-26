@@ -12,6 +12,7 @@ class CartCell: UITableViewCell {
     var item: OrderItem? {
         didSet {
             if let num = item?.numberOfItems, let name = item?.itemName, let price = item?.itemPrice, let img = item?.imgName {
+                counterView.cnt = num
                 nameLabel.text = name
                 priceLabel.text = "\(price) тг"
                 itemImageView.image = UIImage.init(named: img)
@@ -21,6 +22,7 @@ class CartCell: UITableViewCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        contentView.isUserInteractionEnabled = true
         setupViews()
         setupConstraints()
     }
@@ -50,29 +52,33 @@ class CartCell: UITableViewCell {
     
     let itemImageView: UIImageView = {
         var img = UIImageView()
-        img.contentMode = .scaleAspectFit
+        img.contentMode = .scaleToFill
         img.layer.cornerRadius = 8
         return img
     }()
+    
+    lazy var counterView = CounterView()
 }
 
 extension CartCell {
     static var reuseId: String = "CartCell"
     
     func setupViews() {
-        [nameLabel, priceLabel, itemImageView].forEach {
-            self.addSubview($0)
+        counterView.layer.backgroundColor = UIColor.secondarySystemBackground.cgColor
+        
+        [nameLabel, priceLabel, itemImageView, counterView].forEach {
+            contentView.addSubview($0)
         }
     }
     
     func setupConstraints() {
         nameLabel.snp.makeConstraints { make in
-            make.left.equalToSuperview().offset(20)
+            make.left.equalToSuperview().offset(15)
             make.right.equalTo(Constants.screenWidth * 0.7)
             make.top.equalToSuperview().offset(8)
         }
         priceLabel.snp.makeConstraints { make in
-            make.left.equalToSuperview().offset(20)
+            make.left.equalToSuperview().offset(15)
             make.right.equalTo(Constants.screenWidth * 0.7)
             make.top.equalToSuperview().offset(5)
             make.bottom.equalToSuperview()
@@ -81,7 +87,13 @@ extension CartCell {
             make.left.equalTo(Constants.screenWidth * 0.75)
             make.right.equalToSuperview().inset(20)
             make.centerY.equalToSuperview()
-            make.height.equalTo(80)
+            make.height.equalTo(70)
+        }
+        counterView.snp.makeConstraints { make in
+            make.width.equalTo(itemImageView.width)
+            make.left.right.equalTo(itemImageView)
+            make.bottom.equalToSuperview().inset(5)
+            make.height.equalTo(30)
         }
     }
 }
