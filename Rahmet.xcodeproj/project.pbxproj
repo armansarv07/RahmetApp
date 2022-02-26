@@ -44,6 +44,15 @@
 		E50F2E1527BF52BE004A06BB /* ParametersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50F2E1427BF52BE004A06BB /* ParametersView.swift */; };
 		E50F2E1727BF736E004A06BB /* OrderPositionsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50F2E1627BF736E004A06BB /* OrderPositionsCell.swift */; };
 		E50F2E1927BF9FD0004A06BB /* CartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50F2E1827BF9FD0004A06BB /* CartView.swift */; };
+		E584EBB927CA55110072AC0D /* Restaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = E584EBB827CA55110072AC0D /* Restaurant.swift */; };
+		E584EBBB27CA55B00072AC0D /* RestaurantData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E584EBBA27CA55B00072AC0D /* RestaurantData.swift */; };
+		E584EBBD27CA56210072AC0D /* DetailedRestaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = E584EBBC27CA56210072AC0D /* DetailedRestaurant.swift */; };
+		E584EBBF27CA56E80072AC0D /* RestaurantImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E584EBBE27CA56E80072AC0D /* RestaurantImage.swift */; };
+		E584EBC127CA57C70072AC0D /* MenuDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E584EBC027CA57C70072AC0D /* MenuDataModel.swift */; };
+		E584EBC327CA57F60072AC0D /* MenuData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E584EBC227CA57F60072AC0D /* MenuData.swift */; };
+		E584EBC527CA58950072AC0D /* MenuRestaurantImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E584EBC427CA58950072AC0D /* MenuRestaurantImage.swift */; };
+		E584EBC727CA592D0072AC0D /* ProductCategories.swift in Sources */ = {isa = PBXBuildFile; fileRef = E584EBC627CA592D0072AC0D /* ProductCategories.swift */; };
+		E584EBC927CA598F0072AC0D /* Products.swift in Sources */ = {isa = PBXBuildFile; fileRef = E584EBC827CA598F0072AC0D /* Products.swift */; };
 		E5B251DA27B14DA800543C24 /* Registration.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B251D927B14DA800543C24 /* Registration.swift */; };
 		E5B4BE9E27B124DB00BE587C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B4BE9D27B124DB00BE587C /* AppDelegate.swift */; };
 		E5B4BEA027B124DB00BE587C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B4BE9F27B124DB00BE587C /* SceneDelegate.swift */; };
@@ -56,6 +65,7 @@
 		E5C1F9D927C21B90000AE42B /* PhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5C1F9D827C21B90000AE42B /* PhotoCell.swift */; };
 		E5C1F9DB27C21B9E000AE42B /* SegmentedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5C1F9DA27C21B9E000AE42B /* SegmentedCell.swift */; };
 		E5C1F9DE27C21BCF000AE42B /* SectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5C1F9DD27C21BCF000AE42B /* SectionHeader.swift */; };
+		E5C1F9E427C3C073000AE42B /* CounterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5C1F9E327C3C073000AE42B /* CounterView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -96,6 +106,15 @@
 		E50F2E1427BF52BE004A06BB /* ParametersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParametersView.swift; sourceTree = "<group>"; };
 		E50F2E1627BF736E004A06BB /* OrderPositionsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = OrderPositionsCell.swift; path = Rahmet/View/Cells/OrderPositionsCell.swift; sourceTree = SOURCE_ROOT; };
 		E50F2E1827BF9FD0004A06BB /* CartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartView.swift; sourceTree = "<group>"; };
+		E584EBB827CA55110072AC0D /* Restaurant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Restaurant.swift; sourceTree = "<group>"; };
+		E584EBBA27CA55B00072AC0D /* RestaurantData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantData.swift; sourceTree = "<group>"; };
+		E584EBBC27CA56210072AC0D /* DetailedRestaurant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedRestaurant.swift; sourceTree = "<group>"; };
+		E584EBBE27CA56E80072AC0D /* RestaurantImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantImage.swift; sourceTree = "<group>"; };
+		E584EBC027CA57C70072AC0D /* MenuDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuDataModel.swift; sourceTree = "<group>"; };
+		E584EBC227CA57F60072AC0D /* MenuData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuData.swift; sourceTree = "<group>"; };
+		E584EBC427CA58950072AC0D /* MenuRestaurantImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuRestaurantImage.swift; sourceTree = "<group>"; };
+		E584EBC627CA592D0072AC0D /* ProductCategories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCategories.swift; sourceTree = "<group>"; };
+		E584EBC827CA598F0072AC0D /* Products.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Products.swift; sourceTree = "<group>"; };
 		E5B251D927B14DA800543C24 /* Registration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Registration.swift; sourceTree = "<group>"; };
 		E5B4BE9A27B124DB00BE587C /* Rahmet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Rahmet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5B4BE9D27B124DB00BE587C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -110,6 +129,7 @@
 		E5C1F9D827C21B90000AE42B /* PhotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCell.swift; sourceTree = "<group>"; };
 		E5C1F9DA27C21B9E000AE42B /* SegmentedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentedCell.swift; sourceTree = "<group>"; };
 		E5C1F9DD27C21BCF000AE42B /* SectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeader.swift; sourceTree = "<group>"; };
+		E5C1F9E327C3C073000AE42B /* CounterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterView.swift; sourceTree = "<group>"; };
 		F2FBB0B7A07D9A2E688F9A21 /* Pods-Rahmet.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Rahmet.debug.xcconfig"; path = "Target Support Files/Pods-Rahmet/Pods-Rahmet.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -173,15 +193,16 @@
 		E50967E927B4D785007D4809 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				E50F2DE027B4D804004A06BB /* Cafe.swift */,
+				E584EBCB27CA5CA70072AC0D /* Restaurant */,
+				E584EBCA27CA5C8A0072AC0D /* Menu */,
 				E50F2DF927B7CCCE004A06BB /* choco.json */,
+				E50F2DE027B4D804004A06BB /* Cafe.swift */,
 				E50F2DFB27B7CCE7004A06BB /* TemporaryOrder.swift */,
 				E50F2E0427BA416B004A06BB /* Category.swift */,
 				E50F2E0627BA41DC004A06BB /* Dish.swift */,
 				E50F2E1227BC0991004A06BB /* OrderItem.swift */,
 				E5C1F9D227C21B43000AE42B /* Segment.swift */,
 				E5C1F9D427C21B53000AE42B /* PhotoModel.swift */,
-				E5C1F9D627C21B61000AE42B /* MenuModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -245,8 +266,33 @@
 				E50F2E0E27BC08D1004A06BB /* OrderDetailed.swift */,
 				C275C8F127B3A227001AF463 /* MainMenu.swift */,
 				E50F2E1827BF9FD0004A06BB /* CartView.swift */,
+				E5C1F9E327C3C073000AE42B /* CounterView.swift */,
 			);
 			path = TabBarViews;
+			sourceTree = "<group>";
+		};
+		E584EBCA27CA5C8A0072AC0D /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				E5C1F9D627C21B61000AE42B /* MenuModel.swift */,
+				E584EBC027CA57C70072AC0D /* MenuDataModel.swift */,
+				E584EBC227CA57F60072AC0D /* MenuData.swift */,
+				E584EBC627CA592D0072AC0D /* ProductCategories.swift */,
+				E584EBC827CA598F0072AC0D /* Products.swift */,
+				E584EBC427CA58950072AC0D /* MenuRestaurantImage.swift */,
+			);
+			path = Menu;
+			sourceTree = "<group>";
+		};
+		E584EBCB27CA5CA70072AC0D /* Restaurant */ = {
+			isa = PBXGroup;
+			children = (
+				E584EBB827CA55110072AC0D /* Restaurant.swift */,
+				E584EBBA27CA55B00072AC0D /* RestaurantData.swift */,
+				E584EBBC27CA56210072AC0D /* DetailedRestaurant.swift */,
+				E584EBBE27CA56E80072AC0D /* RestaurantImage.swift */,
+			);
+			path = Restaurant;
 			sourceTree = "<group>";
 		};
 		E5B251D627B148C800543C24 /* View */ = {
@@ -426,7 +472,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E584EBC327CA57F60072AC0D /* MenuData.swift in Sources */,
 				C275C8EE27B39D05001AF463 /* NavigationVCGenerator.swift in Sources */,
+				E584EBB927CA55110072AC0D /* Restaurant.swift in Sources */,
+				E584EBBB27CA55B00072AC0D /* RestaurantData.swift in Sources */,
 				E5B251DA27B14DA800543C24 /* Registration.swift in Sources */,
 				E50F2DE427B4DC6D004A06BB /* CafeCell.swift in Sources */,
 				E50F2E0327BA411A004A06BB /* CategoryCell.swift in Sources */,
@@ -435,6 +484,7 @@
 				E50F2DF627B7CC6D004A06BB /* UIStackView+Extension.swift in Sources */,
 				E5B4BE9E27B124DB00BE587C /* AppDelegate.swift in Sources */,
 				E50F2DFC27B7CCE7004A06BB /* TemporaryOrder.swift in Sources */,
+				E584EBC927CA598F0072AC0D /* Products.swift in Sources */,
 				C275C8EB27B39B93001AF463 /* MainTabBarController.swift in Sources */,
 				E50F2E0F27BC08D1004A06BB /* OrderDetailed.swift in Sources */,
 				E5C1F9D327C21B43000AE42B /* Segment.swift in Sources */,
@@ -449,20 +499,25 @@
 				C2F5E2D627B81BB400AEBBCF /* FakePhotosDatabase.swift in Sources */,
 				E5C1F9CC27BFA541000AE42B /* CartCell.swift in Sources */,
 				E50967E027B386DA007D4809 /* Constants.swift in Sources */,
+				E584EBC527CA58950072AC0D /* MenuRestaurantImage.swift in Sources */,
 				C2F5E2D227B81B2800AEBBCF /* Menu.swift in Sources */,
 				E50F2DEA27B7B4BD004A06BB /* LoginVC.swift in Sources */,
 				C273914F27B3E8C000B309BA /* LayoutForNavigationVC.swift in Sources */,
 				E50F2E1727BF736E004A06BB /* OrderPositionsCell.swift in Sources */,
 				E50F2E0927BA622E004A06BB /* MenuTableView.swift in Sources */,
+				E584EBC127CA57C70072AC0D /* MenuDataModel.swift in Sources */,
 				C2933ECB27B3AA3F00E3B8DD /* UIImage+Extension.swift in Sources */,
+				E5C1F9E427C3C073000AE42B /* CounterView.swift in Sources */,
 				C2DD26F027B3A39C0012C60B /* RahmetVC.swift in Sources */,
 				E50F2DE827B7B486004A06BB /* String+Extension.swift in Sources */,
 				E50F2DE127B4D804004A06BB /* Cafe.swift in Sources */,
 				E5C1F9DE27C21BCF000AE42B /* SectionHeader.swift in Sources */,
+				E584EBBF27CA56E80072AC0D /* RestaurantImage.swift in Sources */,
 				E50F2E1327BC0991004A06BB /* OrderItem.swift in Sources */,
 				E50F2DF827B7CC8C004A06BB /* UIViewController+Extension.swift in Sources */,
 				E5C1F9DB27C21B9E000AE42B /* SegmentedCell.swift in Sources */,
 				E50F2E0727BA41DC004A06BB /* Dish.swift in Sources */,
+				E584EBBD27CA56210072AC0D /* DetailedRestaurant.swift in Sources */,
 				E5C1F9D527C21B53000AE42B /* PhotoModel.swift in Sources */,
 				E50F2E0527BA416B004A06BB /* Category.swift in Sources */,
 				E50F2DF227B7CC24004A06BB /* BlueButton.swift in Sources */,
@@ -471,6 +526,7 @@
 				E50F2E1527BF52BE004A06BB /* ParametersView.swift in Sources */,
 				E50F2E1927BF9FD0004A06BB /* CartView.swift in Sources */,
 				E50F2DF427B7CC3B004A06BB /* Bundle+Extension.swift in Sources */,
+				E584EBC727CA592D0072AC0D /* ProductCategories.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
