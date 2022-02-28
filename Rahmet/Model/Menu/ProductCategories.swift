@@ -8,7 +8,7 @@
 struct ProductCategories: Codable {
     var id: Int?
     var name: String?
-    var products: [Products]?
+    var products: [Product]?
     
     enum CodingKeys: String, CodingKey {
         case id = "product_category_id"

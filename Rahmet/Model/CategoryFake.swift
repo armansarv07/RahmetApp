@@ -5,8 +5,9 @@
 //  Created by Elvina Shamoi on 14.02.2022.
 //
 
-struct Category {
+struct CategoryFake {
     var id: Int?
     var name: String?
     var dishes: [Dish]?
 }
+

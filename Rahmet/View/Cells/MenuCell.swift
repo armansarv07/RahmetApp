@@ -9,7 +9,7 @@ import UIKit
 
 class MenuCell: UITableViewCell {
 
-    var category: Category? {
+    var category: CategoryFake? {
         didSet {
             guard let category = category else {return}
             if let name = category.name {
