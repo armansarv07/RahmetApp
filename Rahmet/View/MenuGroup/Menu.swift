@@ -12,7 +12,7 @@ enum MenuSection: Int, CaseIterable {
 }
 
 class Menu: UIViewController {
-    let cafe: Cafe
+    let cafe: Restaurant
     
     let menu: MenuModel = MenuModel(id: 1)
     let gallery: [PhotoModel] = [
@@ -39,7 +39,7 @@ class Menu: UIViewController {
     
     var page: Double
     
-    init(cafe: Cafe) {
+    init(cafe: Restaurant) {
         self.cafe = cafe
         self.page = 0
         super.init(nibName: nil, bundle: nil)
@@ -111,7 +111,7 @@ extension Menu: LayoutForNavigationVC {
     func setupNavigationBar() {
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         navigationItem.leftBarButtonItem = nil
-        navigationItem.title = cafe.name
+        navigationItem.title = cafe.restaurant?.restaurantData?.name
     }
     
     
@@ -227,18 +227,18 @@ extension Menu: LayoutForNavigationVC {
 
 
 
-
-import SwiftUI
-struct MenuVCProvider: PreviewProvider {
-    static var previews: some View {
-        ContainerView().edgesIgnoringSafeArea(.all)
-    }
-    struct ContainerView: UIViewControllerRepresentable {
-        let menuVC = Menu(cafe: Cafe(name: "Mamma Mia", address: "ул. Бухар жырау, 66, уг. ул. Ауэзова", imgName: "cafeImage"))
-        func makeUIViewController(context: Context) -> some UIViewController {
-            return NavigationVCGenerator.generateNavigationController(rootViewController: menuVC, image: UIImage(), title: "Title", prefersLargeTitle: true)
-        }
-        func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {
-        }
-    }
-}
+//
+//import SwiftUI
+//struct MenuVCProvider: PreviewProvider {
+//    static var previews: some View {
+//        ContainerView().edgesIgnoringSafeArea(.all)
+//    }
+//    struct ContainerView: UIViewControllerRepresentable {
+//        let menuVC = Menu(cafe: Cafe(name: "Mamma Mia", address: "ул. Бухар жырау, 66, уг. ул. Ауэзова", imgName: "cafeImage"))
+//        func makeUIViewController(context: Context) -> some UIViewController {
+//            return NavigationVCGenerator.generateNavigationController(rootViewController: menuVC, image: UIImage(), title: "Title", prefersLargeTitle: true)
+//        }
+//        func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {
+//        }
+//    }
+//}

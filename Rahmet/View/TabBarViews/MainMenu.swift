@@ -7,12 +7,14 @@
 
 import UIKit
 import SnapKit
+import Alamofire
 
 class MainMenu: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .secondarySystemBackground
+        fetchData()
         setupNavigationBar()
         setupViews()
         setupConstraints()
@@ -27,6 +29,8 @@ class MainMenu: UIViewController {
         Cafe(name: "Bahandi Burger", address: "ул. Байтурсынова 61", imgName: "rest3"),
         Cafe(name: "Mamma mia", address: "ул. Панфилова 109", imgName: "rest4")
     ]
+    
+    var restaurants: [Restaurant] = []
     
     var tableView: UITableView = {
         let tableView = UITableView()
@@ -51,16 +55,28 @@ extension MainMenu: LayoutForNavigationVC {
         view.addSubview(tableView)
         tableView.register(CafeCell.self, forCellReuseIdentifier: "cafeCell")
     }
+    
+    func fetchData() {
+        AF.request("http://142.93.107.238/api/restaurants")
+          .validate()
+          .responseDecodable(of: [Restaurant].self) { (response) in
+            guard let rests = response.value else { return }
+              self.restaurants = rests
+              self.tableView.reloadData()
+          }
+      }
 }
 
 extension MainMenu: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        fakeData.count
+//        fakeData.count
+        restaurants.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cafeCell", for: indexPath) as! CafeCell
-        cell.cafe = fakeData[indexPath.row]
+//        cell.cafe = fakeData[indexPath.row]
+        cell.cafe = restaurants[indexPath.row].restaurant
         return cell
     }
     
@@ -71,7 +87,8 @@ extension MainMenu: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        let cafe = fakeData[indexPath.row]
+//        let cafe = fakeData[indexPath.row]
+        let cafe = restaurants[indexPath.row]
         navigationController?.pushViewController(Menu(cafe: cafe), animated: false)
     }
 

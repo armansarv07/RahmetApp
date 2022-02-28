@@ -376,6 +376,13 @@
 			path = Utilities;
 			sourceTree = "<group>";
 		};
+		E5A1259027CCB58A006508E9 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		E5B251D627B148C800543C24 /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -421,6 +428,7 @@
 		E5B4BE9C27B124DB00BE587C /* Rahmet */ = {
 			isa = PBXGroup;
 			children = (
+				E5A1259027CCB58A006508E9 /* ViewModel */,
 				E5A1256827CC9866006508E9 /* Resources */,
 				E5B251D627B148C800543C24 /* View */,
 				E50967E927B4D785007D4809 /* Model */,

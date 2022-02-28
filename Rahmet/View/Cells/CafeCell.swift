@@ -9,17 +9,20 @@ import UIKit
 
 class CafeCell: UITableViewCell {
 
-    var cafe: Cafe? {
+    var cafe: RestaurantDataModel? {
         didSet {
             guard let cafeItem = cafe else {return}
-            if let name = cafeItem.name {
+            if let name = cafeItem.restaurantData?.name {
                 nameLabel.text = name
             }
-            if let address = cafeItem.address {
+            if let address = cafeItem.restaurantData?.location {
                 addressLabel.text = address
             }
-            if let cafeImgName = cafeItem.imgName {
-                cafeImageView.image = UIImage(named: cafeImgName)
+            if let cafeImgName = cafeItem.image?.imageURL {
+                var urlImage = URL(string: cafeImgName)
+                if let url = urlImage {
+                    cafeImageView.load(url: url)
+                }
             }
         }
     }

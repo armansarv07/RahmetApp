@@ -6,5 +6,5 @@
 //
 
 struct Restaurant: Codable {
-    var restaurant: RestaurantData?
+    var restaurant: RestaurantDataModel?
 }
