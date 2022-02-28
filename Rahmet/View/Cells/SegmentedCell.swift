@@ -22,10 +22,21 @@ class SegmentedCell: UICollectionViewCell, ConfigurableCell {
     
     let menuItem: UIImageView = {
         let imageView = UIImageView()
+        imageView.image = ImageResizer.resizeImage(image: #imageLiteral(resourceName: "menu"), width: 30, height: 30)
+        imageView.contentMode = .scaleAspectFit
         return imageView
     }()
     
-    var isFirst: Bool = false
+    var isFirst: Bool = false {
+        didSet {
+            if isFirst {
+                title.isHidden = true
+            } else {
+                title.isHidden = false
+                menuItem.isHidden = true
+            }
+        }
+    }
     
     let title: UILabel = {
         let label = UILabel()
@@ -38,12 +49,21 @@ class SegmentedCell: UICollectionViewCell, ConfigurableCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.addSubview(title)
+        self.addSubview(menuItem)
         setupConstraints()
     }
     
     func setupConstraints() {
         title.snp.makeConstraints { make in
             make.trailing.bottom.trailing.top.equalToSuperview()
+        }
+        menuItem.snp.makeConstraints { make in
+            make.top.bottom.trailing.leading.equalToSuperview()
+        }
+        if isFirst {
+            title.isHidden = true
+        } else {
+            title.isHidden = false
         }
     }
     

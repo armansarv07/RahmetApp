@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		AB20632442E66626A0D78CB3 /* Pods_Rahmet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A7E2C126E18E96CEF8D587C /* Pods_Rahmet.framework */; };
+		C2612AAD27CCAAA800DB50C1 /* TableViewSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2612AAC27CCAAA700DB50C1 /* TableViewSection.swift */; };
 		C273914F27B3E8C000B309BA /* LayoutForNavigationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C273914E27B3E8C000B309BA /* LayoutForNavigationVC.swift */; };
 		C275C8EB27B39B93001AF463 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C275C8EA27B39B93001AF463 /* MainTabBarController.swift */; };
 		C275C8EE27B39D05001AF463 /* NavigationVCGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C275C8ED27B39D05001AF463 /* NavigationVCGenerator.swift */; };
@@ -84,6 +85,7 @@
 /* Begin PBXFileReference section */
 		1F34CB717506F012A307DEDF /* Pods-Rahmet.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Rahmet.release.xcconfig"; path = "Target Support Files/Pods-Rahmet/Pods-Rahmet.release.xcconfig"; sourceTree = "<group>"; };
 		5A7E2C126E18E96CEF8D587C /* Pods_Rahmet.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Rahmet.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C2612AAC27CCAAA700DB50C1 /* TableViewSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewSection.swift; sourceTree = "<group>"; };
 		C273914E27B3E8C000B309BA /* LayoutForNavigationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutForNavigationVC.swift; sourceTree = "<group>"; };
 		C275C8EA27B39B93001AF463 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		C275C8ED27B39D05001AF463 /* NavigationVCGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationVCGenerator.swift; sourceTree = "<group>"; };
@@ -203,6 +205,7 @@
 			children = (
 				C2F5E2D127B81B2800AEBBCF /* Menu.swift */,
 				E50F2E0827BA622E004A06BB /* MenuTableView.swift */,
+				C2612AAC27CCAAA700DB50C1 /* TableViewSection.swift */,
 			);
 			path = MenuGroup;
 			sourceTree = "<group>";
@@ -613,6 +616,7 @@
 				E5C1F9D527C21B53000AE42B /* PhotoModel.swift in Sources */,
 				E50F2E0527BA416B004A06BB /* CategoryFake.swift in Sources */,
 				E50F2DF227B7CC24004A06BB /* BlueButton.swift in Sources */,
+				C2612AAD27CCAAA800DB50C1 /* TableViewSection.swift in Sources */,
 				E50F2DFE27B7CCFE004A06BB /* OrderCell.swift in Sources */,
 				E5C1F9D727C21B61000AE42B /* MenuModel.swift in Sources */,
 				E50F2E1527BF52BE004A06BB /* ParametersView.swift in Sources */,

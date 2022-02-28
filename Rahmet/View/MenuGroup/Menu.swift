@@ -45,6 +45,8 @@ class Menu: UIViewController {
         super.init(nibName: nil, bundle: nil)
     }
     
+    var scrollView: UIScrollView!
+    
     let pageLabel: UILabel = {
         let label = UILabel()
         label.backgroundColor = .gray
@@ -54,32 +56,23 @@ class Menu: UIViewController {
         return label
     }()
     
+    let tableView: UITableView = {
+        let tableView = UITableView()
+        return tableView
+    }()
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        scrollView = .init(frame: view.bounds)
+        view.addSubview(scrollView)
         setupNavigationBar()
         setupViews()
     }
     
-    private lazy var categoriesCollectionView: UICollectionView = {
-        let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .horizontal
-        layout.minimumLineSpacing = 0
-        layout.itemSize = .init(width: Constants.screenWidth / 5, height: 50)
-        let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        cv.contentInsetAdjustmentBehavior = .never
-        cv.showsHorizontalScrollIndicator = false
-        cv.contentOffset = .zero
-        cv.register(CategoryCell.self, forCellWithReuseIdentifier: CategoryCell.reuseIdentifier)
-        cv.backgroundColor = .white
-//        cv.delegate = self
-//        cv.dataSource = self
-        return cv
-    }()
     
     private lazy var menuButton: UIButton = {
         let button = UIButton()
@@ -90,28 +83,28 @@ class Menu: UIViewController {
     }()
     
     @objc func openMenuTableView() {
-        let vc = MenuTableView() 
+        let vc = MenuTableView()
         vc.modalPresentationStyle = .fullScreen
         navigationController?.pushViewController(vc, animated: false)
     }
     
     func setupViews() {
         setupCollectionView()
-
+        setupConstraints()
         createDataSource()
         reloadData()
 
-        setupConstraints()
     }
     
 }
 
 extension Menu: LayoutForNavigationVC {
     func setupConstraints() {
-        collectionView.addSubview(pageLabel)
-        pageLabel.snp.makeConstraints { make in
-            make.top.equalTo(collectionView).inset(180)
-            make.leading.equalTo(collectionView).inset(16)
+        scrollView.addSubview(tableView)
+        tableView.snp.makeConstraints { make in
+            make.top.equalTo(collectionView.bottom)
+            make.trailing.trailing.equalToSuperview()
+            make.height.equalTo(700)
         }
     }
     
@@ -123,9 +116,9 @@ extension Menu: LayoutForNavigationVC {
     
     
     func setupCollectionView() {
-        collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: createCompositionalLayout())
+        collectionView = UICollectionView(frame: CGRect(x: 0, y: 0, width: Constants.screenWidth, height: 400), collectionViewLayout: createCompositionalLayout())
         collectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        view.addSubview(collectionView)
+        scrollView.addSubview(collectionView)
         collectionView.register(PhotoCell.self, forCellWithReuseIdentifier: PhotoCell.reuseId)
         collectionView.register(SegmentedCell.self, forCellWithReuseIdentifier: SegmentedCell.reuseId)
         collectionView.register(SectionHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: SectionHeader.reuseId)
@@ -183,6 +176,7 @@ extension Menu: LayoutForNavigationVC {
             case .segments:
                 let segmentCell = collectionView.dequeueReusableCell(withReuseIdentifier: SegmentedCell.reuseId, for: indexPath) as! SegmentedCell
                 segmentCell.title.text = self.segments[indexPath.item].title
+                segmentCell.isFirst = indexPath.item == 0 ? true : false
                 return segmentCell
             }
         })
@@ -212,10 +206,11 @@ extension Menu: LayoutForNavigationVC {
     private func createSegmentsSection() -> NSCollectionLayoutSection {
         let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1))
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
-        let groupSize = NSCollectionLayoutSize(widthDimension: .estimated(100), heightDimension: .absolute(30))
+        let groupSize = NSCollectionLayoutSize(widthDimension: .estimated(60), heightDimension: .absolute(30))
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
         let section = NSCollectionLayoutSection(group: group)
         section.orthogonalScrollingBehavior = .continuous
+        section.interGroupSpacing = 30
         return section
     }
     
@@ -223,6 +218,10 @@ extension Menu: LayoutForNavigationVC {
         let sectionHeaderSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(1))
         let sectionHeader = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: sectionHeaderSize, elementKind: UICollectionView.elementKindSectionHeader, alignment: .bottom)
         return sectionHeader
+    }
+    
+    private func dynamicFrame() -> Int {
+        0
     }
 }
 
