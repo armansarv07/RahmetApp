@@ -10,17 +10,17 @@ import UIKit
 class FakeCategories {
     static let shared = FakeCategories()
     
-    let fakeCategoriesData: [Category] = [
-        Category(id: 0, name: "Пицца", dishes: [
+    let fakeCategoriesData: [CategoryFake] = [
+        CategoryFake(id: 0, name: "Пицца", dishes: [
             Dish(id: 0, name: "Пицца Маргарита", price: 1600, image: "pizzaimg1", description: "Любая маленькая пицца на выбор, порция фри и Coca Cola")
         ]),
-        Category(id: 1, name: "Бургеры", dishes: []),
-        Category(id: 2, name: "Паста", dishes: []),
-        Category(id: 3, name: "Салаты", dishes: []),
-        Category(id: 4, name: "Супы", dishes: []),
-        Category(id: 5, name: "Напитки", dishes: []),
-        Category(id: 6, name: "Десерты", dishes: []),
-        Category(id: 7, name: "Веган", dishes: []),
-        Category(id: 8, name: "Алкоголь", dishes: [])
+        CategoryFake(id: 1, name: "Бургеры", dishes: []),
+        CategoryFake(id: 2, name: "Паста", dishes: []),
+        CategoryFake(id: 3, name: "Салаты", dishes: []),
+        CategoryFake(id: 4, name: "Супы", dishes: []),
+        CategoryFake(id: 5, name: "Напитки", dishes: []),
+        CategoryFake(id: 6, name: "Десерты", dishes: []),
+        CategoryFake(id: 7, name: "Веган", dishes: []),
+        CategoryFake(id: 8, name: "Алкоголь", dishes: [])
     ]
 }

@@ -9,7 +9,7 @@ struct MenuData: Codable {
     var restaurantID: Int?
     var restaurantName: String?
     var location: String?
-    var restaurantImage: MenuRestaurantImage?
+    var restaurantImage: [MenuRestaurantImage]?
     var productCategories: [ProductCategories]?
     
     enum CodingKeys: String, CodingKey {
