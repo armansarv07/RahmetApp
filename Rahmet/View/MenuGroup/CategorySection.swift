@@ -9,5 +9,5 @@ import UIKit
 
 struct CategorySection {
     var category: String
-    var dishes: [Product]
+    var dishes: [String]
 }
