@@ -138,8 +138,18 @@ class Registration: UIViewController {
 
     
     @objc func nextStep() {
-        if password != "" && password.count >= 9 && email != "" && isPassword{
-            print(email, password)
+        if password != "" && password.count >= 9 && email != "" && isPassword {
+            APIClient.register(email: self.email, password: self.password) { result in
+                print("CHECK", self.email, self.password)
+                switch result {
+                case .success(let message):
+                    print(message)
+                    let appDelegate = UIApplication.shared.delegate
+                    appDelegate?.window??.rootViewController = UINavigationController(rootViewController: MainTabBarController())
+                case .failure(let error):
+                    print(error.localizedDescription)
+                }
+            }
         } else if password.count < 9 && isPassword {
             let alert = UIAlertController(title: "Ошибка", message: "Пароль должен состоять минимум из 9 символов", preferredStyle: UIAlertController.Style.alert)
             alert.addAction(UIAlertAction(title: "Понятно", style: UIAlertAction.Style.default, handler: nil))

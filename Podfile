@@ -8,4 +8,5 @@ target 'Rahmet' do
   # Pods for Rahmet
 pod 'SnapKit', '~> 5.0.0'
 pod 'Alamofire', '~> 5.5'
+pod 'SwiftKeychainWrapper'
 end

@@ -22,14 +22,6 @@ class MainMenu: UIViewController {
         tableView.dataSource = self
     }
     
-    var fakeData: [Cafe] = [
-        Cafe(name: "Del Papa", address: "ул. Бухар жырау, 66, уг. ул. Ауэзова", imgName: "cafeImage"),
-        Cafe(name: "Ресторан «Свет»", address: "ул. Кабанбай батыра 83", imgName: "rest1"),
-        Cafe(name: "Mamma mia", address: "ул. Панфилова 109", imgName: "rest2"),
-        Cafe(name: "Bahandi Burger", address: "ул. Байтурсынова 61", imgName: "rest3"),
-        Cafe(name: "Mamma mia", address: "ул. Панфилова 109", imgName: "rest4")
-    ]
-    
     var restaurants: [Restaurant] = []
     
     var tableView: UITableView = {
@@ -69,13 +61,11 @@ extension MainMenu: LayoutForNavigationVC {
 
 extension MainMenu: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        fakeData.count
         restaurants.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cafeCell", for: indexPath) as! CafeCell
-//        cell.cafe = fakeData[indexPath.row]
         cell.cafe = restaurants[indexPath.row].restaurant
         return cell
     }
@@ -87,7 +77,6 @@ extension MainMenu: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-//        let cafe = fakeData[indexPath.row]
         let cafe = restaurants[indexPath.row]
         navigationController?.pushViewController(Menu(cafe: cafe), animated: false)
     }
