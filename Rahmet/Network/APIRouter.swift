@@ -5,6 +5,7 @@
 //  Created by Elvina Shamoi on 28.02.2022.
 //
 import Alamofire
+import SwiftKeychainWrapper
 
 enum APIRouter: URLRequestConvertible {
     
@@ -13,13 +14,15 @@ enum APIRouter: URLRequestConvertible {
     case order(id: Int)
     case orders
     case login(email: String, password: String)
+    case register(email: String, password: String)
+    case logout
     
     // MARK: - HTTPMethod
     private var method: HTTPMethod {
         switch self {
         case .restaurants, .menu, .order:
             return .get
-        case .orders, .login:
+        case .orders, .login, .register, .logout:
             return .post
         }
     }
@@ -37,16 +40,21 @@ enum APIRouter: URLRequestConvertible {
             return "/orders"
         case .login:
             return "/login"
+        case .register:
+            return "/register"
+        case .logout:
+            return "/logout"
         }
     }
     
     // MARK: - Parameters
     private var parameters: Parameters? {
         switch self {
-        case .restaurants, .menu, .order, .orders:
+        case .restaurants, .menu, .order, .orders, .logout:
             return nil
-        case .login(let email, let password):
-            return ["something": email, "smth": password]
+        case .login(let email, let password), .register(let email, let password):
+            print(["email": email, "password": password])
+            return ["email": email, "password": password]
         }
     }
     
@@ -55,13 +63,15 @@ enum APIRouter: URLRequestConvertible {
                 
         var urlRequest = URLRequest(url: url.appendingPathComponent(path))
         
+//        var token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xNDIuOTMuMTA3LjIzOFwvYXBpXC9sb2dpbiIsImlhdCI6MTY0NjEyNTYxNCwiZXhwIjoxNjQ2MTI5MjE0LCJuYmYiOjE2NDYxMjU2MTQsImp0aSI6IkJiQ3BXOXZIbEVSak81UWQiLCJzdWIiOjUsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.zmNT8rVGjqLbBV0Uol7yzj-mhXzbznOzYPiWfcXQVSg"
+        
         // HTTP Method
         urlRequest.httpMethod = method.rawValue
         
         // Common Headers
-//        urlRequest.setValue(ContentType.json.rawValue, forHTTPHeaderField: HTTPHeaderField.acceptType.rawValue)
-//        urlRequest.setValue(ContentType.json.rawValue, forHTTPHeaderField: HTTPHeaderField.contentType.rawValue)
- 
+        urlRequest.setValue(ContentType.json.rawValue, forHTTPHeaderField: HTTPHeaderField.acceptType.rawValue)
+        urlRequest.setValue(ContentType.json.rawValue, forHTTPHeaderField: HTTPHeaderField.contentType.rawValue)
+        urlRequest.addValue("Bearer \(Constants.accessToken)", forHTTPHeaderField: HTTPHeaderField.authentication.rawValue)
         // Parameters
         if let parameters = parameters {
             do {

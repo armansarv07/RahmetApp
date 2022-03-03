@@ -76,7 +76,6 @@ extension MyOrders: LayoutForNavigationVC {
                 make.centerY.equalToSuperview()
                 make.leading.equalToSuperview().inset(32)
                 make.trailing.equalToSuperview().inset(32)
-                
             }
             loginButton.snp.makeConstraints { make in
                 make.trailing.leading.equalToSuperview().inset(45)

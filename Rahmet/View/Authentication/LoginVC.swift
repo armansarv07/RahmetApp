@@ -5,6 +5,7 @@
 //  Created by Elvina Shamoi on 12.02.2022.
 //
 import UIKit
+import SwiftKeychainWrapper
 
 class LoginVC: UIViewController {
     
@@ -65,10 +66,9 @@ class LoginVC: UIViewController {
         self.dismiss(animated: true)
     }
     
-    var nextButton: UIButton = {
+    lazy var nextLogin: UIButton = {
         let button = UIButton()
         button.setTitle("Войти", for: .normal)
-        button.isEnabled = false
         button.layer.cornerRadius = 5
         button.backgroundColor = UIColor.init(red: 222/255, green: 45/255, blue: 73/255, alpha: 1)
         button.tintColor = .white
@@ -77,7 +77,22 @@ class LoginVC: UIViewController {
     }()
     
     @objc func nextStep() {
-        print("ok")
+        if let email = emailTextField.text, let password = passwordTextField.text {
+            APIClient.login(email: email, password: password) { result in
+                switch result {
+                case .success(let message):
+                    if let accessToken = message.data?.accessToken, let type = message.data?.tokenType {
+                        let saveAccessToken: Bool = KeychainWrapper.standard.set(accessToken, forKey: Constants.tokenKey)
+                        print("The access token saved results \(saveAccessToken) \(type) \(accessToken)")
+                        print(message)
+                        let appDelegate = UIApplication.shared.delegate
+                        appDelegate?.window??.rootViewController = UINavigationController(rootViewController: MainTabBarController())
+                    }
+                case .failure(let error):
+                    print(error.localizedDescription)
+                }
+            }
+        }
     }
     
     func setUpViews() {
@@ -87,7 +102,7 @@ class LoginVC: UIViewController {
             stackView.addArrangedSubview($0)
         }
         view.addSubview(stackView)
-        view.addSubview(nextButton)
+        view.addSubview(nextLogin)
     }
     
     
@@ -111,10 +126,10 @@ class LoginVC: UIViewController {
             make.height.equalTo(50)
         }
         
-        nextButton.snp.makeConstraints { make in
-            make.width.equalTo(170)
-            make.height.equalTo(45)
+        nextLogin.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
+            make.height.equalTo(45)
+            make.width.equalTo(170)
             make.bottom.equalToSuperview().inset(50)
         }
     }

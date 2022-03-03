@@ -68,7 +68,10 @@
 		E5A1258627CCA735006508E9 /* OrdersData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5A1258527CCA735006508E9 /* OrdersData.swift */; };
 		E5A1258827CCA79B006508E9 /* OrderByID.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5A1258727CCA79B006508E9 /* OrderByID.swift */; };
 		E5A1258D27CCA9BB006508E9 /* RestaurantDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5A1258C27CCA9BB006508E9 /* RestaurantDataModel.swift */; };
-		E5A1258F27CCAA51006508E9 /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5A1258E27CCAA50006508E9 /* Login.swift */; };
+		E5A1258F27CCAA51006508E9 /* LoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5A1258E27CCAA50006508E9 /* LoginResponse.swift */; };
+		E5A1259227CCD6E2006508E9 /* APIConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5A1259127CCD6E2006508E9 /* APIConfiguration.swift */; };
+		E5A1259427CCD74D006508E9 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5A1259327CCD74D006508E9 /* APIClient.swift */; };
+		E5A1259627CCD77F006508E9 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5A1259527CCD77F006508E9 /* User.swift */; };
 		E5B251DA27B14DA800543C24 /* Registration.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B251D927B14DA800543C24 /* Registration.swift */; };
 		E5B4BE9E27B124DB00BE587C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B4BE9D27B124DB00BE587C /* AppDelegate.swift */; };
 		E5B4BEA027B124DB00BE587C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B4BE9F27B124DB00BE587C /* SceneDelegate.swift */; };
@@ -146,7 +149,10 @@
 		E5A1258527CCA735006508E9 /* OrdersData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrdersData.swift; sourceTree = "<group>"; };
 		E5A1258727CCA79B006508E9 /* OrderByID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderByID.swift; sourceTree = "<group>"; };
 		E5A1258C27CCA9BB006508E9 /* RestaurantDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantDataModel.swift; sourceTree = "<group>"; };
-		E5A1258E27CCAA50006508E9 /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
+		E5A1258E27CCAA50006508E9 /* LoginResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginResponse.swift; sourceTree = "<group>"; };
+		E5A1259127CCD6E2006508E9 /* APIConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConfiguration.swift; sourceTree = "<group>"; };
+		E5A1259327CCD74D006508E9 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
+		E5A1259527CCD77F006508E9 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		E5B251D927B14DA800543C24 /* Registration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Registration.swift; sourceTree = "<group>"; };
 		E5B4BE9A27B124DB00BE587C /* Rahmet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Rahmet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5B4BE9D27B124DB00BE587C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -335,19 +341,22 @@
 			path = Restaurant;
 			sourceTree = "<group>";
 		};
-		E5A1256827CC9866006508E9 /* Resources */ = {
+		E5A1256827CC9866006508E9 /* Network */ = {
 			isa = PBXGroup;
 			children = (
 				E5A1256927CC9874006508E9 /* APIRouter.swift */,
+				E5A1259127CCD6E2006508E9 /* APIConfiguration.swift */,
+				E5A1259327CCD74D006508E9 /* APIClient.swift */,
 			);
-			path = Resources;
+			path = Network;
 			sourceTree = "<group>";
 		};
 		E5A1256B27CC9E63006508E9 /* Auth */ = {
 			isa = PBXGroup;
 			children = (
 				E5A1256C27CC9E6A006508E9 /* JWTToken.swift */,
-				E5A1258E27CCAA50006508E9 /* Login.swift */,
+				E5A1258E27CCAA50006508E9 /* LoginResponse.swift */,
+				E5A1259527CCD77F006508E9 /* User.swift */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -435,7 +444,7 @@
 			isa = PBXGroup;
 			children = (
 				E5A1259027CCB58A006508E9 /* ViewModel */,
-				E5A1256827CC9866006508E9 /* Resources */,
+				E5A1256827CC9866006508E9 /* Network */,
 				E5B251D627B148C800543C24 /* View */,
 				E50967E927B4D785007D4809 /* Model */,
 				C275C8EC27B39CE4001AF463 /* Helpers */,
@@ -605,6 +614,7 @@
 				E5C1F9CC27BFA541000AE42B /* CartCell.swift in Sources */,
 				E50967E027B386DA007D4809 /* Constants.swift in Sources */,
 				E584EBC527CA58950072AC0D /* MenuRestaurantImage.swift in Sources */,
+				E5A1258F27CCAA51006508E9 /* LoginResponse.swift in Sources */,
 				E5A1258F27CCAA51006508E9 /* Login.swift in Sources */,
 				C2D01D5F27CE29AC00BD9950 /* MenuViewController.swift in Sources */,
 				E5A1256D27CC9E6A006508E9 /* JWTToken.swift in Sources */,
@@ -617,9 +627,11 @@
 				C2933ECB27B3AA3F00E3B8DD /* UIImage+Extension.swift in Sources */,
 				E5C1F9E427C3C073000AE42B /* CounterView.swift in Sources */,
 				C2DD26F027B3A39C0012C60B /* RahmetVC.swift in Sources */,
+				E5A1259227CCD6E2006508E9 /* APIConfiguration.swift in Sources */,
 				E5A1258227CCA69C006508E9 /* OrderDetail.swift in Sources */,
 				E50F2DE827B7B486004A06BB /* String+Extension.swift in Sources */,
 				E50F2DE127B4D804004A06BB /* Cafe.swift in Sources */,
+				E5A1259427CCD74D006508E9 /* APIClient.swift in Sources */,
 				E5C1F9DE27C21BCF000AE42B /* SectionHeader.swift in Sources */,
 				E584EBBF27CA56E80072AC0D /* RestaurantImage.swift in Sources */,
 				E50F2E1327BC0991004A06BB /* OrderItem.swift in Sources */,
@@ -636,6 +648,7 @@
 				E50F2DFE27B7CCFE004A06BB /* OrderCell.swift in Sources */,
 				E5C1F9D727C21B61000AE42B /* MenuModel.swift in Sources */,
 				E50F2E1527BF52BE004A06BB /* ParametersView.swift in Sources */,
+				E5A1259627CCD77F006508E9 /* User.swift in Sources */,
 				E50F2E1927BF9FD0004A06BB /* CartView.swift in Sources */,
 				E50F2DF427B7CC3B004A06BB /* Bundle+Extension.swift in Sources */,
 				E584EBC727CA592D0072AC0D /* ProductCategories.swift in Sources */,
