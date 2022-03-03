@@ -12,7 +12,7 @@
 		C273914F27B3E8C000B309BA /* LayoutForNavigationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C273914E27B3E8C000B309BA /* LayoutForNavigationVC.swift */; };
 		C275C8EB27B39B93001AF463 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C275C8EA27B39B93001AF463 /* MainTabBarController.swift */; };
 		C275C8EE27B39D05001AF463 /* NavigationVCGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C275C8ED27B39D05001AF463 /* NavigationVCGenerator.swift */; };
-		C275C8F027B39F76001AF463 /* MyOrders.swift in Sources */ = {isa = PBXBuildFile; fileRef = C275C8EF27B39F76001AF463 /* MyOrders.swift */; };
+		C275C8F027B39F76001AF463 /* MyOrdersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C275C8EF27B39F76001AF463 /* MyOrdersViewController.swift */; };
 		C275C8F227B3A227001AF463 /* MainMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = C275C8F127B3A227001AF463 /* MainMenu.swift */; };
 		C2933EC927B3A89F00E3B8DD /* ImageResizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2933EC827B3A89F00E3B8DD /* ImageResizer.swift */; };
 		C2933ECB27B3AA3F00E3B8DD /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2933ECA27B3AA3F00E3B8DD /* UIImage+Extension.swift */; };
@@ -91,7 +91,7 @@
 		C273914E27B3E8C000B309BA /* LayoutForNavigationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutForNavigationVC.swift; sourceTree = "<group>"; };
 		C275C8EA27B39B93001AF463 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		C275C8ED27B39D05001AF463 /* NavigationVCGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationVCGenerator.swift; sourceTree = "<group>"; };
-		C275C8EF27B39F76001AF463 /* MyOrders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyOrders.swift; sourceTree = "<group>"; };
+		C275C8EF27B39F76001AF463 /* MyOrdersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyOrdersViewController.swift; sourceTree = "<group>"; };
 		C275C8F127B3A227001AF463 /* MainMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenu.swift; sourceTree = "<group>"; };
 		C2933EC827B3A89F00E3B8DD /* ImageResizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageResizer.swift; sourceTree = "<group>"; };
 		C2933ECA27B3AA3F00E3B8DD /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
@@ -301,7 +301,7 @@
 			children = (
 				C2DD26EF27B3A39C0012C60B /* RahmetVC.swift */,
 				C275C8EA27B39B93001AF463 /* MainTabBarController.swift */,
-				C275C8EF27B39F76001AF463 /* MyOrders.swift */,
+				C275C8EF27B39F76001AF463 /* MyOrdersViewController.swift */,
 				E50F2E0E27BC08D1004A06BB /* OrderDetailed.swift */,
 				C275C8F127B3A227001AF463 /* MainMenu.swift */,
 				E50F2E1827BF9FD0004A06BB /* CartView.swift */,
@@ -595,7 +595,7 @@
 				E5C1F9D927C21B90000AE42B /* PhotoCell.swift in Sources */,
 				E5A1258827CCA79B006508E9 /* OrderByID.swift in Sources */,
 				E5A1258427CCA6DA006508E9 /* OrderRestaurant.swift in Sources */,
-				C275C8F027B39F76001AF463 /* MyOrders.swift in Sources */,
+				C275C8F027B39F76001AF463 /* MyOrdersViewController.swift in Sources */,
 				E50F2E0B27BA6315004A06BB /* FakeCategories.swift in Sources */,
 				E5A1256A27CC9874006508E9 /* APIRouter.swift in Sources */,
 				E50F2DFA27B7CCCE004A06BB /* choco.json in Sources */,

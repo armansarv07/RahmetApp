@@ -11,11 +11,10 @@ enum Section: Int, CaseIterable {
     case order
 }
 
-class MyOrders: UIViewController {
+class MyOrdersViewController: UIViewController {
 
     var loggedIn = true
     
-
     let orders = Bundle.main.decode([TemporaryOrder].self, from: "choco.json")
     var collectionView: UICollectionView!
     var dataSource: UICollectionViewDiffableDataSource<Section, TemporaryOrder>!
@@ -32,7 +31,7 @@ class MyOrders: UIViewController {
     }
 }
 
-extension MyOrders: UICollectionViewDelegate {
+extension MyOrdersViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 //        let vc = OrderDetailed(order: orders[indexPath.row])
         let vc = CartView()
@@ -41,7 +40,7 @@ extension MyOrders: UICollectionViewDelegate {
 }
 
 
-extension MyOrders: LayoutForNavigationVC {
+extension MyOrdersViewController: LayoutForNavigationVC {
 
     func setup() {
         self.tabBarController?.tabBar.isHidden = false

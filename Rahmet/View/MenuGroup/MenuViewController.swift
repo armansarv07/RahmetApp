@@ -52,6 +52,10 @@ class MenuViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+}
+
+
+extension MenuViewController: UITableViewDelegate, UITableViewDataSource {
     private func setupTableView() {
         sections = [
             CategorySection(category: "Пицца", dishes: self.pizzas),
@@ -60,15 +64,13 @@ class MenuViewController: UIViewController {
         ]
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.separatorInset = .init(top: 0, left: 16, bottom: 0, right: 16)
         let headerView = MenuHeaderView(frame: CGRect(x: 0, y: 0, width: Constants.screenWidth, height: 270))
         tableView.tableHeaderView = headerView
         tableView.tableFooterView = MenuFooter(frame: CGRect(x: 0, y: 0, width: Constants.screenWidth, height: 90))
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "dish")
     }
-}
-
-
-extension MenuViewController: UITableViewDelegate, UITableViewDataSource {
+    
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         self.sections[section].category
     }
@@ -113,6 +115,14 @@ extension MenuViewController: LayoutForNavigationVC {
         tableView.snp.makeConstraints { make in
             make.top.bottom.leading.trailing.equalToSuperview()
         }
+    }
+    
+    func remakeConstraints() {
+        tableView.snp.makeConstraints { make in
+            make.top.leading.trailing.equalToSuperview()
+            make.bottom.equalToSuperview().offset(150)
+        }
+        
     }
     
     func setupNavigationBar() {
