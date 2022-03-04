@@ -24,11 +24,22 @@ class MenuViewController: UIViewController {
         Segment(id: 5, title: "Супы")
     ]
     
-    var sections = [CategorySection]()
     
-    let pizzas = ["Пицца Пепперони", "Пицца Маргарита", "Пицца Мексиканская"]
-    let drinks = ["Коктейль", "Лимонад", "Пиво"]
-    let soups = ["Chicken Soup", "Борщ"]
+    let pizzas: [Product] = [
+        Product(id: 0, name: "Маргарита", price: 1600, description: nil, image: "pizza1"),
+        Product(id: 1, name: "Пепперони", price: 1800, description: "Любая маленькая пицца на выбор, порция фри и Coca Cola", image: "pizza2"),
+        Product(id: 2, name: "Мексиканская", price: 2000, description: "Одна строка описания чего-то", image: "pizza3")
+    ]
+    
+    let drinks: [Product] = [
+        Product(id: 1, name: "Beer", price: 800, description: nil, image: nil),
+        Product(id: 2, name: "Vine", price: 1200, description: nil, image: nil),
+        Product(id: 3, name: "Vodka", price: 1000, description: nil, image: nil)
+    ]
+    
+    var categories: [ProductCategories] = []
+    
+    var sections = [CategorySection]()
     
     let restaurant: Restaurant
     
@@ -38,6 +49,7 @@ class MenuViewController: UIViewController {
     
     // MARK: Internal methods of View Controller
     override func viewDidLoad() {
+        setupData()
         setupNavigationBar()
         setupConstraints()
         setupTableView()
@@ -52,40 +64,42 @@ class MenuViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private func setupTableView() {
-        sections = [
-            CategorySection(category: "Пицца", dishes: self.pizzas),
-            CategorySection(category: "Напитки", dishes: self.drinks),
-            CategorySection(category: "Супы", dishes: self.soups)
+    private func setupData() {
+        categories = [
+            ProductCategories(id: 0, name: "Пицца", products: pizzas),
+            ProductCategories(id: 1, name: "Напитки", products: drinks)
         ]
+    }
+    
+    private func setupTableView() {
         tableView.delegate = self
         tableView.dataSource = self
         let headerView = MenuHeaderView(frame: CGRect(x: 0, y: 0, width: Constants.screenWidth, height: 270))
         tableView.tableHeaderView = headerView
         tableView.tableFooterView = MenuFooter(frame: CGRect(x: 0, y: 0, width: Constants.screenWidth, height: 90))
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "dish")
+        tableView.register(MenuItemCell.self, forCellReuseIdentifier: MenuItemCell.reuseId)
     }
 }
 
 
 extension MenuViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        self.sections[section].category
+        self.categories[section].name
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "dish", for: indexPath)
-        cell.textLabel?.text = self.sections[indexPath.section].dishes[indexPath.row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: MenuItemCell.reuseId, for: indexPath) as! MenuItemCell
+        cell.product = categories[indexPath.section].products?[indexPath.row]
         cell.selectionStyle = .none
         return cell
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        self.sections[section].dishes.count
+        self.categories[section].products?.count ?? 0
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        self.sections.count
+        self.categories.count
     }
     
     func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {

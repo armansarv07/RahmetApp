@@ -12,13 +12,24 @@ class CounterView: UIView {
     var cnt = 0 {
         didSet {
             counterLabel.text = String(cnt)
+            switch cnt {
+            case 0:
+                remakeViews()
+                remakeContraints()
+            case 1...:
+                setupViews()
+                setupConstraints()
+            default:
+                break
+            }
         }
     }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setupViews()
-        setupConstraints()
+        [minusButton, counterLabel, plusButton].forEach {
+            self.addSubview($0)
+        }
     }
 
     required init(coder aDecoder: NSCoder) {
@@ -49,11 +60,30 @@ class CounterView: UIView {
     }()
     
     @objc func minusClicked() {
-        if cnt > 1 {
+        if cnt >= 1 {
             cnt -= 1
         }
+        
         print(cnt)
         // else: delete from cart
+    }
+    
+    func remakeViews() {
+        if minusButton.isHidden == false && counterLabel.isHidden == false {
+            minusButton.isHidden = true
+            counterLabel.isHidden = true
+        } else {
+            plusButton.isHidden = false
+        }
+    }
+    
+    func remakeContraints() {
+        plusButton.snp.makeConstraints { make in
+            make.centerY.centerX.equalToSuperview()
+        }
+//        self.snp.makeConstraints { make in
+//            make.width.equalTo(25)
+//        }
     }
     
     @objc func plusClicked() {
@@ -62,11 +92,20 @@ class CounterView: UIView {
 
     
     func setupViews() {
-        self.layer.cornerRadius = 10
-        
-        [minusButton, counterLabel, plusButton].forEach {
-            self.addSubview($0)
+        if plusButton.isHidden == false {
+            plusButton.snp.remakeConstraints { make in
+                make.centerY.equalToSuperview()
+                make.right.equalToSuperview().inset(3)
+            }
         }
+        if minusButton.isHidden && counterLabel.isHidden {
+            minusButton.isHidden = false
+            counterLabel.isHidden = false
+        }
+        self.layer.cornerRadius = 10
+//        [minusButton, counterLabel, plusButton].forEach {
+//            self.addSubview($0)
+//        }
     }
     
     func setupConstraints() {
