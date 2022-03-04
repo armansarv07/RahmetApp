@@ -92,28 +92,27 @@ class MenuItemCell: UITableViewCell {
     
     func setupViews() {
         counterView.layer.backgroundColor = UIColor.secondarySystemBackground.cgColor
+        counterView.layer.cornerRadius = 10
         [nameLabel, descriptionLabel, priceLabel].forEach { stackView.addArrangedSubview($0)}
         [productImageView, stackView, counterView].forEach { contentView.addSubview($0) }
     }
     
     func setupConstraints() {
-        productImageView.snp.makeConstraints { make in
-            make.centerY.equalToSuperview()
-            make.right.equalToSuperview().inset(15)
-            make.width.equalTo(90)
-            make.height.equalTo(90)
-        }
-        
         stackView.snp.makeConstraints { make in
-            make.centerY.equalToSuperview()
-            make.right.equalTo(productImageView.snp.left).offset(-15)
             make.left.equalToSuperview().offset(20)
+            make.right.equalTo(productImageView.snp.left).offset(-15)
+            make.top.equalToSuperview().offset(8)
         }
-        
+
+        productImageView.snp.makeConstraints { make in
+            make.left.equalTo(Constants.screenWidth * 0.72)
+            make.right.equalToSuperview().inset(15)
+            make.centerY.equalToSuperview()
+            make.width.equalTo(100)
+        }
         counterView.snp.makeConstraints { make in
             make.width.equalTo(productImageView.width)
-            make.left.equalTo(productImageView)
-//            make.left.right.equalTo(productImageView)
+            make.left.right.equalTo(productImageView)
             make.bottom.equalToSuperview().inset(5)
             make.height.equalTo(30)
         }
