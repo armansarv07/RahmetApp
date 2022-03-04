@@ -12,20 +12,19 @@ class MenuHeaderView: UIView {
     var collectionView: UICollectionView!
     var dataSource: UICollectionViewDiffableDataSource<MenuSection, AnyHashable>!
     
-    let gallery: [PhotoModel] = [
-        PhotoModel(id: 1, photoName: "rest1"),
-        PhotoModel(id: 2, photoName: "rest2"),
-        PhotoModel(id: 3, photoName: "rest3"),
-        PhotoModel(id: 4, photoName: "rest4")
-    ]
+    var gallery: [PhotoModel] = [] {
+        didSet {
+            self.reloadData()
+        }
+    }
     
-    let segments = [
-        Segment(id: 1, title: "Menu"),
-        Segment(id: 2, title: "Пицца"),
-        Segment(id: 3, title: "Напитки"),
-        Segment(id: 4, title: "Салаты"),
-        Segment(id: 5, title: "Супы")
-    ]
+    var segments: [Segment] = [] {
+        didSet {
+            self.reloadData()
+        }
+    }
+    
+    var address: String!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -80,7 +79,10 @@ extension MenuHeaderView {
             case .photos:
                 let photo = data as! PhotoModel
                 let photoCell = collectionView.dequeueReusableCell(withReuseIdentifier: PhotoCell.reuseId, for: indexPath) as! PhotoCell
-                photoCell.imageView.image = UIImage(named: photo.photoName)!
+                let urlImage = URL(string: photo.photoUrl)
+                if let url = urlImage {
+                    photoCell.imageView.load(url: url)
+                }
                 photoCell.paginationLabel.text = "\(indexPath.item + 1)/\(self.gallery.count)"
                 return photoCell
             case .segments:
@@ -91,11 +93,11 @@ extension MenuHeaderView {
             }
         })
         dataSource.supplementaryViewProvider = {
-            collectionView, kind, indexPath in
+            [weak self] collectionView, kind, indexPath in
             guard let sectionHeader = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: SectionHeader.reuseId, for: indexPath) as? SectionHeader else {
                 fatalError("Section header is invalid")
             }
-            sectionHeader.configure(text: "ул. Панфилова 109", font: .systemFont(ofSize: 14), textColor: .gray)
+            sectionHeader.configure(text: self?.address ?? "", font: .systemFont(ofSize: 14), textColor: .gray)
             return sectionHeader
         }
     }
@@ -126,7 +128,7 @@ extension MenuHeaderView {
     private func createSegmentsSection() -> NSCollectionLayoutSection {
         let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1))
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
-        let groupSize = NSCollectionLayoutSize(widthDimension: .estimated(60), heightDimension: .absolute(30))
+        let groupSize = NSCollectionLayoutSize(widthDimension: .estimated(200), heightDimension: .absolute(30))
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
         let section = NSCollectionLayoutSection(group: group)
         section.orthogonalScrollingBehavior = .continuous

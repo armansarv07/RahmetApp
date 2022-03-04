@@ -5,6 +5,6 @@
 //  Created by Elvina Shamoi on 26.02.2022.
 //
 
-struct MenuDataModel: Codable {
+struct Menu: Codable {
     var data: MenuData?
 }

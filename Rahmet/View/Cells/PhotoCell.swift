@@ -11,7 +11,7 @@ class PhotoCell: UICollectionViewCell, ConfigurableCell {
     static var reuseId: String = "PhotoCell"
     
     func configure<U>(with value: U) where U : Hashable {
-        guard let photos: MenuModel = value as? MenuModel else { return }
+        guard let photos: PhotoModel = value as? PhotoModel else { return }
         
     }
     
