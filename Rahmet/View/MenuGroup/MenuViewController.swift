@@ -6,14 +6,17 @@
 //
 
 import UIKit
+import Alamofire
+import JGProgressHUD
 
 class MenuViewController: UIViewController {
+    private let spinner = JGProgressHUD(style: .dark)
     
     let gallery: [PhotoModel] = [
-        PhotoModel(id: 1, photoName: "rest1"),
-        PhotoModel(id: 2, photoName: "rest2"),
-        PhotoModel(id: 3, photoName: "rest3"),
-        PhotoModel(id: 4, photoName: "rest4")
+        PhotoModel(id: 1, photoUrl: "rest1"),
+        PhotoModel(id: 2, photoUrl: "rest2"),
+        PhotoModel(id: 3, photoUrl: "rest3"),
+        PhotoModel(id: 4, photoUrl: "rest4")
     ]
     
     let segments = [
@@ -25,31 +28,24 @@ class MenuViewController: UIViewController {
     ]
     
     
-    let pizzas: [Product] = [
-        Product(id: 0, name: "Маргарита", price: 1600, description: nil, image: "pizza1"),
-        Product(id: 1, name: "Пепперони", price: 1800, description: "Любая маленькая пицца на выбор, порция фри и Coca Cola", image: "pizza2"),
-        Product(id: 2, name: "Мексиканская", price: 2000, description: "Одна строка описания чего-то", image: "pizza3")
-    ]
-    
-    let drinks: [Product] = [
-        Product(id: 1, name: "Beer", price: 800, description: nil, image: nil),
-        Product(id: 2, name: "Vine", price: 1200, description: nil, image: nil),
-        Product(id: 3, name: "Vodka", price: 1000, description: nil, image: nil)
-    ]
-    
     var categories: [ProductCategories] = []
     
     var sections = [CategorySection]()
     
     let restaurant: Restaurant
     
+    
+    var imagesData: [MenuRestaurantImage] = []
+    
     // MARK: UI Elements declaration
     
     let tableView = UITableView(frame: .zero, style: .plain)
     
+    var headerView: MenuHeaderView!
+    
     // MARK: Internal methods of View Controller
     override func viewDidLoad() {
-        setupData()
+        fetchData()
         setupNavigationBar()
         setupConstraints()
         setupTableView()
@@ -64,20 +60,48 @@ class MenuViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private func setupData() {
-        categories = [
-            ProductCategories(id: 0, name: "Пицца", products: pizzas),
-            ProductCategories(id: 1, name: "Напитки", products: drinks)
-        ]
-    }
-    
+   
     private func setupTableView() {
         tableView.delegate = self
         tableView.dataSource = self
-        let headerView = MenuHeaderView(frame: CGRect(x: 0, y: 0, width: Constants.screenWidth, height: 270))
+        headerView = MenuHeaderView(frame: CGRect(x: 0, y: 0, width: Constants.screenWidth, height: 270))
         tableView.tableHeaderView = headerView
         tableView.tableFooterView = MenuFooter(frame: CGRect(x: 0, y: 0, width: Constants.screenWidth, height: 90))
         tableView.register(MenuItemCell.self, forCellReuseIdentifier: MenuItemCell.reuseId)
+    }
+}
+// MARK: Methods of Network logic
+extension MenuViewController {
+    private func fetchData() {
+        spinner.show(in: tableView)
+        AF.request(Constants.baseURL + "/menu/1").validate().responseDecodable(of: Menu.self) { [weak self] (response) in
+            guard let menu = response.value else { return }
+            self?.imagesData = menu.data?.restaurantImages ?? []
+            self?.categories = menu.data?.productCategories ?? []
+            self?.spinner.dismiss(animated: true)
+            self?.headerView.segments = (self?.createSegments(menu.data?.productCategories ?? []))!
+            self?.headerView.gallery = (self?.createPhotoModels(menu.data?.restaurantImages ?? []))!
+            self?.headerView.address = menu.data?.location ?? ""
+            self?.tableView.reloadData()
+        }
+    }
+    
+    private func createSegments(_ value: [ProductCategories]) -> [Segment] {
+        var segments = [Segment]()
+        for category in value {
+            let segment = Segment(id: category.id!, title: category.name!)
+            segments.append(segment)
+        }
+        return segments
+    }
+    
+    private func createPhotoModels(_ value: [MenuRestaurantImage]) -> [PhotoModel] {
+        var photos = [PhotoModel]()
+        for photo in value {
+            let photoCell = PhotoModel(id: photo.imageID!, photoUrl: photo.url!)
+            photos.append(photoCell)
+        }
+        return photos
     }
 }
 
@@ -108,7 +132,7 @@ extension MenuViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        120
+        180
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {

@@ -21,7 +21,9 @@ class MenuItemCell: UITableViewCell {
                 descriptionLabel.text = desc
             }
             if let imageName = product.image {
-                productImageView.image = UIImage.init(named: imageName)
+                if let url = URL(string: imageName) {
+                    productImageView.load(url: url)
+                }
             }
             if let price = product.price {
                 priceLabel.text = "\(price) тг"
@@ -52,6 +54,7 @@ class MenuItemCell: UITableViewCell {
         img.contentMode = .scaleAspectFill
         img.layer.cornerRadius = 10
         img.clipsToBounds = true
+        img.contentMode = .scaleAspectFit
         return img
     }()
     

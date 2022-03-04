@@ -10,7 +10,7 @@ import Foundation
 
 struct PhotoModel: Hashable, Codable {
     let id: Int
-    let photoName: String
+    let photoUrl: String
     func hash(into hasher: inout Hasher) {
       hasher.combine(id)
     }

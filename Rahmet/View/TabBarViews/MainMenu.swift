@@ -49,7 +49,7 @@ extension MainMenu: LayoutForNavigationVC {
     }
     
     func fetchData() {
-        AF.request("http://142.93.107.238/api/restaurants")
+        AF.request("https://intern.rahmetapp.kz/api/restaurants")
           .validate()
           .responseDecodable(of: [Restaurant].self) { (response) in
             guard let rests = response.value else { return }
