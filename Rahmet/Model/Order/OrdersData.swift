@@ -16,6 +16,7 @@ struct OrdersData: Codable {
         case orderID = "order_id"
         case userID = "user_id"
         case restaurant
+        case total
         case orderDetail = "order_detail"
     }
 }

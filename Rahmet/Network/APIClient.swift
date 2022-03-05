@@ -30,4 +30,8 @@ class APIClient {
         performRequest(route: APIRouter.logout, completion: completion)
     }
     
+    static func getOrders(id: Int, completion: @escaping (AFResult<OrderByID>) -> Void) {
+        performRequest(route: APIRouter.order(id: id), completion: completion)
+    }
+    
 }

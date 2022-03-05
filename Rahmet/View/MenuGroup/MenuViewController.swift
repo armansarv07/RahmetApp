@@ -69,6 +69,13 @@ class MenuViewController: UIViewController {
         tableView.tableFooterView = MenuFooter(frame: CGRect(x: 0, y: 0, width: Constants.screenWidth, height: 90))
         tableView.register(MenuItemCell.self, forCellReuseIdentifier: MenuItemCell.reuseId)
     }
+    
+    let titleLabel: UILabel = {
+        let label = UILabel()
+        label.numberOfLines = 2
+        label.font = .boldSystemFont(ofSize: 22)
+        return label
+    }()
 }
 // MARK: Methods of Network logic
 extension MenuViewController {
@@ -142,7 +149,6 @@ extension MenuViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: false)
     }
-    
 }
 
 extension MenuViewController: LayoutForNavigationVC {
@@ -154,7 +160,8 @@ extension MenuViewController: LayoutForNavigationVC {
     }
     
     func setupNavigationBar() {
-        navigationItem.title = restaurant.restaurant?.restaurantData?.name
+        navigationItem.titleView = titleLabel
+        titleLabel.text = restaurant.restaurant?.restaurantData?.name
     }
 }
 

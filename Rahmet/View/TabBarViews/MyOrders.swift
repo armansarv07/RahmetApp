@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SwiftKeychainWrapper
 
 enum Section: Int, CaseIterable {
     case order
@@ -13,10 +14,10 @@ enum Section: Int, CaseIterable {
 
 class MyOrders: UIViewController {
 
-    var loggedIn = true
+    var loggedIn = KeychainWrapper.standard.string(forKey: Constants.tokenKey) != nil ? true : false
     
-
     let orders = Bundle.main.decode([TemporaryOrder].self, from: "choco.json")
+    var userOrders: [OrderByID] = []
     var collectionView: UICollectionView!
     var dataSource: UICollectionViewDiffableDataSource<Section, TemporaryOrder>!
     override func viewDidLoad() {
@@ -24,11 +25,24 @@ class MyOrders: UIViewController {
         view.backgroundColor = .secondarySystemBackground
         setupNavigationBar()
         setup()
-        print(orders.count)
+        getData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         self.tabBarController?.tabBar.isHidden = false
+    }
+    
+    func getData() {
+        APIClient.getOrders(id: 1) { result in // temp
+            switch result {
+            case .success(let message):
+                print(message)
+            case .failure(let error):
+                print(error.errorDescription)
+                print(result)
+                
+            }
+        }
     }
 }
 
