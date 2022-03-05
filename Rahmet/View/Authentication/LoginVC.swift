@@ -6,6 +6,7 @@
 //
 import UIKit
 import SwiftKeychainWrapper
+import JGProgressHUD
 
 class LoginVC: UIViewController {
     
@@ -14,6 +15,8 @@ class LoginVC: UIViewController {
         setUpViews()
         createConstraints()
     }
+    
+    let spinner = JGProgressHUD(style: .dark)
     
     var stackView: UIStackView = {
         let stackView = UIStackView()
@@ -78,9 +81,11 @@ class LoginVC: UIViewController {
     
     @objc func nextStep() {
         if let email = emailTextField.text, let password = passwordTextField.text {
+            spinner.show(in: view)
             APIClient.login(email: email, password: password) { result in
                 switch result {
                 case .success(let message):
+                    self.spinner.dismiss(animated: true)
                     if let accessToken = message.data?.accessToken, let type = message.data?.tokenType {
                         let saveAccessToken: Bool = KeychainWrapper.standard.set(accessToken, forKey: Constants.tokenKey)
                         print("The access token saved results \(saveAccessToken) \(type) \(accessToken)")

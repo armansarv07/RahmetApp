@@ -11,14 +11,19 @@ import UIKit
 class MenuHeaderView: UIView {
     var collectionView: UICollectionView!
     var dataSource: UICollectionViewDiffableDataSource<MenuSection, AnyHashable>!
+    var gallery: [PhotoModel] = [] {
+        didSet {
+            self.reloadData()
+        }
+    }
     
-    let segments = [
-        Segment(id: 1, title: "Menu"),
-        Segment(id: 2, title: "Пицца"),
-        Segment(id: 3, title: "Напитки"),
-        Segment(id: 4, title: "Салаты"),
-        Segment(id: 5, title: "Супы")
-    ]
+    var segments: [Segment] = [] {
+        didSet {
+            self.reloadData()
+        }
+    }
+    
+    var address: String!
     
     var restaurantData: RestaurantDataModel
     var gallery: [RestaurantImage] = []
@@ -80,6 +85,9 @@ extension MenuHeaderView {
                     if let url = urlImage {
                         photoCell.imageView.load(url: url)
                     }
+                let urlImage = URL(string: photo.photoUrl)
+                if let url = urlImage {
+                    photoCell.imageView.load(url: url)
                 }
                 photoCell.paginationLabel.text = "\(indexPath.item + 1)/\(self.gallery.count)"
                 return photoCell
@@ -91,7 +99,7 @@ extension MenuHeaderView {
             }
         })
         dataSource.supplementaryViewProvider = {
-            collectionView, kind, indexPath in
+            [weak self] collectionView, kind, indexPath in
             guard let sectionHeader = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: SectionHeader.reuseId, for: indexPath) as? SectionHeader else {
                 fatalError("Section header is invalid")
             }
@@ -127,7 +135,7 @@ extension MenuHeaderView {
     private func createSegmentsSection() -> NSCollectionLayoutSection {
         let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1))
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
-        let groupSize = NSCollectionLayoutSize(widthDimension: .estimated(60), heightDimension: .absolute(30))
+        let groupSize = NSCollectionLayoutSize(widthDimension: .estimated(200), heightDimension: .absolute(30))
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
         let section = NSCollectionLayoutSection(group: group)
         section.orthogonalScrollingBehavior = .continuous

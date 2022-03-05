@@ -7,6 +7,7 @@
 
 import UIKit
 import SnapKit
+import JGProgressHUD
 
 class Registration: UIViewController {
     
@@ -14,11 +15,14 @@ class Registration: UIViewController {
     var password = ""
     var isPassword = false
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpViews()
         createConstraints()
     }
+    
+    let spinner = JGProgressHUD(style: .dark)
     
     var mainLabel: UILabel = {
         let label = UILabel()
@@ -139,8 +143,10 @@ class Registration: UIViewController {
     
     @objc func nextStep() {
         if password != "" && password.count >= 9 && email != "" && isPassword {
+            spinner.show(in: view)
             APIClient.register(email: self.email, password: self.password) { result in
                 print("CHECK", self.email, self.password)
+                self.spinner.dismiss(animated: true)
                 switch result {
                 case .success(let message):
                     print(message)
