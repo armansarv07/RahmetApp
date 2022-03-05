@@ -12,13 +12,6 @@ import JGProgressHUD
 class MenuViewController: UIViewController {
     private let spinner = JGProgressHUD(style: .dark)
     
-    let gallery: [PhotoModel] = [
-        PhotoModel(id: 1, photoUrl: "rest1"),
-        PhotoModel(id: 2, photoUrl: "rest2"),
-        PhotoModel(id: 3, photoUrl: "rest3"),
-        PhotoModel(id: 4, photoUrl: "rest4")
-    ]
-    
     let segments = [
         Segment(id: 1, title: "Menu"),
         Segment(id: 2, title: "Пицца"),
@@ -32,7 +25,7 @@ class MenuViewController: UIViewController {
     
     var sections = [CategorySection]()
     
-    let restaurant: Restaurant
+    let restaurant: RestaurantDataModel
     
     
     var imagesData: [MenuRestaurantImage] = []
@@ -51,7 +44,7 @@ class MenuViewController: UIViewController {
         setupTableView()
     }
     
-    init(restaurant: Restaurant) {
+    init(restaurant: RestaurantDataModel) {
         self.restaurant = restaurant
         super.init(nibName: nil, bundle: nil)
     }
@@ -64,7 +57,7 @@ class MenuViewController: UIViewController {
     private func setupTableView() {
         tableView.delegate = self
         tableView.dataSource = self
-        headerView = MenuHeaderView(frame: CGRect(x: 0, y: 0, width: Constants.screenWidth, height: 270))
+        let headerView = MenuHeaderView(restaurantData: self.restaurant, frame: CGRect(x: 0, y: 0, width: Constants.screenWidth, height: 270))
         tableView.tableHeaderView = headerView
         tableView.tableFooterView = MenuFooter(frame: CGRect(x: 0, y: 0, width: Constants.screenWidth, height: 90))
         tableView.register(MenuItemCell.self, forCellReuseIdentifier: MenuItemCell.reuseId)
@@ -154,24 +147,24 @@ extension MenuViewController: LayoutForNavigationVC {
     }
     
     func setupNavigationBar() {
-        navigationItem.title = restaurant.restaurant?.restaurantData?.name
+        navigationItem.title = restaurant.restaurantData?.name
     }
 }
 
 
 
 
-import SwiftUI
-struct MenuVCProvider: PreviewProvider {
-    static var previews: some View {
-        ContainerView().edgesIgnoringSafeArea(.all)
-    }
-    struct ContainerView: UIViewControllerRepresentable {
-        let menuVC = MenuViewController(restaurant: Restaurant(restaurant: RestaurantDataModel(restaurantData: DetailedRestaurant(id: 1, name: "Mamma Mia", location: "Baker Street 221B", createdAt: "20.02.2022", updatedAt: "20.02.2022", images: []), image: nil)))
-        func makeUIViewController(context: Context) -> some UIViewController {
-            return NavigationVCGenerator.generateNavigationController(rootViewController: menuVC, image: UIImage(), title: "Title", prefersLargeTitle: true)
-        }
-        func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {
-        }
-    }
-}
+//import SwiftUI
+//struct MenuVCProvider: PreviewProvider {
+//    static var previews: some View {
+//        ContainerView().edgesIgnoringSafeArea(.all)
+//    }
+//    struct ContainerView: UIViewControllerRepresentable {
+//        let menuVC = MenuViewController(restaurant: Restaurant(restaurant: RestaurantDataModel(restaurantData: DetailedRestaurant(id: 1, name: "Mamma Mia", location: "Baker Street 221B", createdAt: "20.02.2022", updatedAt: "20.02.2022", images: []), image: nil)))
+//        func makeUIViewController(context: Context) -> some UIViewController {
+//            return NavigationVCGenerator.generateNavigationController(rootViewController: menuVC, image: UIImage(), title: "Title", prefersLargeTitle: true)
+//        }
+//        func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {
+//        }
+//    }
+//}

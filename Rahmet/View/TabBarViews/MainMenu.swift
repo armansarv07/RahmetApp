@@ -51,15 +51,17 @@ extension MainMenu: LayoutForNavigationVC {
     
     func fetchData() {
         spinner.show(in: self.tableView)
-        AF.request("https://intern.rahmetapp.kz/api/restaurants")
-          .validate()
-          .responseDecodable(of: [Restaurant].self) { (response) in
-            guard let rests = response.value else { return }
-              self.spinner.dismiss(animated: true)
-              self.restaurants = rests
-              self.tableView.reloadData()
-          }
-      }
+        APIClient.getRestaurantsData { result in
+            switch result {
+            case .success(let data):
+                self.spinner.dismiss(animated: true)
+                self.restaurants = data
+                self.tableView.reloadData()
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+    }
 }
 
 extension MainMenu: UITableViewDataSource, UITableViewDelegate {
@@ -80,10 +82,10 @@ extension MainMenu: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        let cafe = restaurants[indexPath.row]
-        navigationController?.pushViewController(MenuViewController(restaurant: cafe), animated: true)
+        if let data = restaurants[indexPath.row].restaurant {
+            navigationController?.pushViewController(MenuViewController(restaurant: data), animated: true)
+        }
     }
-
 }
 
 
