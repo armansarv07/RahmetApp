@@ -22,6 +22,10 @@ class MainMenu: UIViewController {
         tableView.dataSource = self
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        tabBarController?.tabBar.isHidden = false
+    }
+    
     var restaurants: [Restaurant] = []
     
     var tableView: UITableView = {

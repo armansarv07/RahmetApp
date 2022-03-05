@@ -9,30 +9,68 @@ import UIKit
 
 
 class MenuHeaderView: UIView {
-    var collectionView: UICollectionView!
-    var dataSource: UICollectionViewDiffableDataSource<MenuSection, AnyHashable>!
     
     var gallery: [PhotoModel] = [] {
         didSet {
             self.reloadData()
+            self.pageView.text = "1/\(gallery.count)"
+            self.pageView.isHidden = false
+            self.menuButton.isHidden = false
         }
     }
     
     var segments: [Segment] = [] {
         didSet {
-            self.reloadData()
+            self.reloadSegmentsData()
         }
     }
     
-    var address: String!
+    var address: String = "" {
+        didSet {
+            addressLabel.text = address
+        }
+    }
+    
+    var collectionView: UICollectionView!
+    var segmentsView: UICollectionView!
+    var dataSource: UICollectionViewDiffableDataSource<MenuSection, AnyHashable>!
+    var segmentsDataSource: UICollectionViewDiffableDataSource<SegmentsSection, AnyHashable>!
+    
+    let addressLabel: UILabel = {
+        let label = UILabel()
+        label.font = .systemFont(ofSize: 14, weight: .medium)
+        label.textColor = .gray
+        return label
+    }()
+    
+    let menuButton: UIButton = {
+        let button = UIButton()
+        button.setImage(#imageLiteral(resourceName: "menu"), for: .normal)
+        button.isHidden = true
+        return button
+    }()
+    
+    let pageView: UILabel = {
+        let label = UILabel()
+        label.backgroundColor = .white.withAlphaComponent(0.8)
+        label.textColor = .black
+        label.textAlignment = .center
+        label.layer.cornerRadius = 8
+        label.clipsToBounds = true
+        label.isHidden = true
+        return label
+    }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.backgroundColor = .red
         setupCollectionView()
+        setupConstraints()
         createDataSource()
         reloadData()
-
+        setupSegments()
+        createSegmentsDataSource()
+        reloadSegmentsData()
+        setupPageLabel()
     }
     
     override func layoutSubviews() {
@@ -45,13 +83,30 @@ class MenuHeaderView: UIView {
 }
 
 extension MenuHeaderView {
+    private func setupConstraints() {
+        self.addSubview(addressLabel)
+        self.addSubview(menuButton)
+        self.addSubview(pageView)
+        addressLabel.frame = .init(x: 16, y: collectionView.bottom + 16, width: 250, height: 36)
+        menuButton.frame = .init(x: 16, y: addressLabel.bottom + 16, width: 30, height: 30)
+        pageView.snp.makeConstraints { make in
+            make.top.equalToSuperview().inset(180 - 42)
+            make.leading.equalToSuperview().inset(16)
+            make.height.equalTo(24)
+            make.width.equalTo(40)
+        }
+    }
+    private func setupPageLabel() {
+        pageView.text = "1/\(gallery.count)"
+    }
+}
+
+extension MenuHeaderView {
     private func setupCollectionView() {
-        collectionView = UICollectionView(frame: bounds, collectionViewLayout: createCompostionalLayout())
+        collectionView = UICollectionView(frame: .init(x: 0, y: 0, width: Constants.screenWidth, height: 180), collectionViewLayout: createCompostionalLayout())
         self.addSubview(collectionView)
         collectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         collectionView.register(PhotoCell.self, forCellWithReuseIdentifier: PhotoCell.reuseId)
-        collectionView.register(SegmentedCell.self, forCellWithReuseIdentifier: SegmentedCell.reuseId)
-        collectionView.register(SectionHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: SectionHeader.reuseId)
     }
     
     private func createCompostionalLayout() -> UICollectionViewLayout {
@@ -63,8 +118,6 @@ extension MenuHeaderView {
             switch section {
             case .photos:
                 return self.createPhotosSection()
-            case .segments:
-                return self.createSegmentsSection()
             }
         }
         return layout
@@ -83,30 +136,16 @@ extension MenuHeaderView {
                 if let url = urlImage {
                     photoCell.imageView.load(url: url)
                 }
-                photoCell.paginationLabel.text = "\(indexPath.item + 1)/\(self.gallery.count)"
+                
                 return photoCell
-            case .segments:
-                let segmentCell = collectionView.dequeueReusableCell(withReuseIdentifier: SegmentedCell.reuseId, for: indexPath) as! SegmentedCell
-                segmentCell.title.text = self.segments[indexPath.item].title
-                segmentCell.isFirst = indexPath.item == 0 ? true : false
-                return segmentCell
             }
         })
-        dataSource.supplementaryViewProvider = {
-            [weak self] collectionView, kind, indexPath in
-            guard let sectionHeader = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: SectionHeader.reuseId, for: indexPath) as? SectionHeader else {
-                fatalError("Section header is invalid")
-            }
-            sectionHeader.configure(text: self?.address ?? "", font: .systemFont(ofSize: 14), textColor: .gray)
-            return sectionHeader
-        }
     }
     
     private func reloadData() {
         var snapshot = NSDiffableDataSourceSnapshot<MenuSection, AnyHashable>()
-        snapshot.appendSections([.photos, .segments])
+        snapshot.appendSections([.photos])
         snapshot.appendItems(gallery, toSection: .photos)
-        snapshot.appendItems(segments, toSection: .segments)
         dataSource.apply(snapshot)
     }
     
@@ -118,30 +157,70 @@ extension MenuHeaderView {
         let section = NSCollectionLayoutSection(group: group)
         section.orthogonalScrollingBehavior = .paging
         section.interGroupSpacing = 0
+        section.visibleItemsInvalidationHandler = { [weak self] (items, offset, env) -> Void in
+            guard let strongSelf = self else { return }
+            strongSelf.pageView.text = "\(1 + Int(round(offset.x / Constants.screenWidth)))/\(strongSelf.gallery.count)"
+        }
         
-        let sectionHeader = createAddressFooter()
-        section.boundarySupplementaryItems = [sectionHeader]
         
         return section
+    }
+ }
+
+extension MenuHeaderView {
+    private func setupSegments() {
+        segmentsView = UICollectionView(frame: .init(x: menuButton.right, y: menuButton.top, width: Constants.screenWidth - menuButton.width - 16, height: menuButton.height), collectionViewLayout: createSegmentsLayout())
+        self.addSubview(segmentsView)
+        segmentsView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        segmentsView.register(SegmentedCell.self, forCellWithReuseIdentifier: SegmentedCell.reuseId)
+    }
+    
+    private func createSegmentsLayout() -> UICollectionViewLayout {
+        let layout = UICollectionViewCompositionalLayout {
+            (sectionIndex, layoutEnvironment) -> NSCollectionLayoutSection? in
+            guard let section = SegmentsSection(rawValue: sectionIndex) else {
+                fatalError("Invalid Section Kind")
+            }
+            switch section {
+            case .segments: return self.createSegmentsSection()
+            }
+        }
+        return layout
     }
     
     private func createSegmentsSection() -> NSCollectionLayoutSection {
         let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1))
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
-        let groupSize = NSCollectionLayoutSize(widthDimension: .estimated(200), heightDimension: .absolute(30))
-        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
+        let groupSize = NSCollectionLayoutSize(widthDimension: .estimated(180), heightDimension: .absolute(30))
+        let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitems: [item])
         let section = NSCollectionLayoutSection(group: group)
-        section.orthogonalScrollingBehavior = .continuous
-        section.interGroupSpacing = 30
+        section.orthogonalScrollingBehavior = .continuousGroupLeadingBoundary
+        section.interGroupSpacing = 0
         return section
     }
     
-    private func createAddressFooter() -> NSCollectionLayoutBoundarySupplementaryItem {
-        let sectionHeaderSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(1))
-        let sectionHeader = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: sectionHeaderSize, elementKind: UICollectionView.elementKindSectionHeader, alignment: .bottom)
-        return sectionHeader
+    private func createSegmentsDataSource() {
+        segmentsDataSource = UICollectionViewDiffableDataSource<SegmentsSection, AnyHashable>(collectionView: segmentsView, cellProvider: { collectionView, indexPath, data in
+            guard let section = SegmentsSection(rawValue: indexPath.section) else {
+                fatalError("Unknown section")
+            }
+            switch section {
+            case .segments:
+                let segment = data as! Segment
+                let cell = self.segmentsView.dequeueReusableCell(withReuseIdentifier: SegmentedCell.reuseId, for: indexPath) as! SegmentedCell
+                cell.title.text = segment.title
+                return cell
+            }
+        })
     }
- }
+    
+    private func reloadSegmentsData() {
+        var snapshot = NSDiffableDataSourceSnapshot<SegmentsSection, AnyHashable>()
+        snapshot.appendSections([.segments])
+        snapshot.appendItems(segments, toSection: .segments)
+        segmentsDataSource.apply(snapshot, animatingDifferences: true, completion: nil)
+    }
+}
 
 
 import SwiftUI
