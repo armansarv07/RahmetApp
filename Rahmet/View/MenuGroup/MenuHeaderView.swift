@@ -12,13 +12,6 @@ class MenuHeaderView: UIView {
     var collectionView: UICollectionView!
     var dataSource: UICollectionViewDiffableDataSource<MenuSection, AnyHashable>!
     
-    let gallery: [PhotoModel] = [
-        PhotoModel(id: 1, photoName: "rest1"),
-        PhotoModel(id: 2, photoName: "rest2"),
-        PhotoModel(id: 3, photoName: "rest3"),
-        PhotoModel(id: 4, photoName: "rest4")
-    ]
-    
     let segments = [
         Segment(id: 1, title: "Menu"),
         Segment(id: 2, title: "Пицца"),
@@ -27,13 +20,15 @@ class MenuHeaderView: UIView {
         Segment(id: 5, title: "Супы")
     ]
     
-    override init(frame: CGRect) {
+    var restaurantData: RestaurantDataModel
+    var gallery: [RestaurantImage] = []
+    
+    init(restaurantData: RestaurantDataModel, frame: CGRect) {
+        self.restaurantData = restaurantData
         super.init(frame: frame)
-        self.backgroundColor = .red
         setupCollectionView()
         createDataSource()
         reloadData()
-
     }
     
     override func layoutSubviews() {
@@ -78,9 +73,14 @@ extension MenuHeaderView {
             }
             switch section {
             case .photos:
-                let photo = data as! PhotoModel
+                let photo = data as! RestaurantImage
                 let photoCell = collectionView.dequeueReusableCell(withReuseIdentifier: PhotoCell.reuseId, for: indexPath) as! PhotoCell
-                photoCell.imageView.image = UIImage(named: photo.photoName)!
+                if let data = photo.imageURL {
+                    let urlImage = URL(string: data)
+                    if let url = urlImage {
+                        photoCell.imageView.load(url: url)
+                    }
+                }
                 photoCell.paginationLabel.text = "\(indexPath.item + 1)/\(self.gallery.count)"
                 return photoCell
             case .segments:
@@ -95,12 +95,13 @@ extension MenuHeaderView {
             guard let sectionHeader = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: SectionHeader.reuseId, for: indexPath) as? SectionHeader else {
                 fatalError("Section header is invalid")
             }
-            sectionHeader.configure(text: "ул. Панфилова 109", font: .systemFont(ofSize: 14), textColor: .gray)
+            sectionHeader.configure(text: self.restaurantData.restaurantData?.location ?? "", font: .systemFont(ofSize: 14), textColor: .gray)
             return sectionHeader
         }
     }
     
     private func reloadData() {
+        gallery = restaurantData.restaurantData?.images ?? []
         var snapshot = NSDiffableDataSourceSnapshot<MenuSection, AnyHashable>()
         snapshot.appendSections([.photos, .segments])
         snapshot.appendItems(gallery, toSection: .photos)
@@ -142,17 +143,17 @@ extension MenuHeaderView {
  }
 
 
-import SwiftUI
-struct MenuHeaderVCProvider: PreviewProvider {
-    static var previews: some View {
-        ContainerView().edgesIgnoringSafeArea(.all)
-    }
-    struct ContainerView: UIViewControllerRepresentable {
-        let menuVC = MenuViewController(restaurant: Restaurant(restaurant: RestaurantDataModel(restaurantData: DetailedRestaurant(id: 1, name: "Mamma Mia", location: "Baker Street 221B", createdAt: "20.02.2022", updatedAt: "20.02.2022", images: []), image: nil)))
-        func makeUIViewController(context: Context) -> some UIViewController {
-            return NavigationVCGenerator.generateNavigationController(rootViewController: menuVC, image: UIImage(), title: "Title", prefersLargeTitle: true)
-        }
-        func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {
-        }
-    }
-}
+//import SwiftUI
+//struct MenuHeaderVCProvider: PreviewProvider {
+//    static var previews: some View {
+//        ContainerView().edgesIgnoringSafeArea(.all)
+//    }
+//    struct ContainerView: UIViewControllerRepresentable {
+//        let menuVC = MenuViewController(restaurant: Restaurant(restaurant: RestaurantDataModel(restaurantData: DetailedRestaurant(id: 1, name: "Mamma Mia", location: "Baker Street 221B", createdAt: "20.02.2022", updatedAt: "20.02.2022", images: []), image: nil)))
+//        func makeUIViewController(context: Context) -> some UIViewController {
+//            return NavigationVCGenerator.generateNavigationController(rootViewController: menuVC, image: UIImage(), title: "Title", prefersLargeTitle: true)
+//        }
+//        func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {
+//        }
+//    }
+//}

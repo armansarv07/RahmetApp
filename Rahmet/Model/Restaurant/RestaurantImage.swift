@@ -5,7 +5,7 @@
 //  Created by Elvina Shamoi on 26.02.2022.
 //
 
-struct RestaurantImage: Codable {
+struct RestaurantImage: Codable, Hashable {
     var id: Int?
     var imageURL: String?
     var restaurantID: Int?
