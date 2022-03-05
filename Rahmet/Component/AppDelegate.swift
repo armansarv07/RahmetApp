@@ -21,6 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             self.window?.rootViewController = UINavigationController(rootViewController: MainTabBarController())
         }
         self.window?.makeKeyAndVisible()
+        self.window?.tintColor = .black
         return true
     }
 }

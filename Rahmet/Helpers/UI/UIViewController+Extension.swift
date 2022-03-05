@@ -14,5 +14,4 @@ extension UIViewController {
         cell.configure(with: value)
         return cell
     }
-    
 }

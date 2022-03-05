@@ -50,8 +50,10 @@ enum APIRouter: URLRequestConvertible {
     // MARK: - Parameters
     private var parameters: Parameters? {
         switch self {
-        case .restaurants, .menu, .order, .orders, .logout:
+        case .restaurants, .menu, .orders, .logout, .order:
             return nil
+//        case .order(let id):
+//            return ["id": id]
         case .login(let email, let password), .register(let email, let password):
             print(["email": email, "password": password])
             return ["email": email, "password": password]
@@ -80,7 +82,6 @@ enum APIRouter: URLRequestConvertible {
                 throw AFError.parameterEncodingFailed(reason: .jsonEncodingFailed(error: error))
             }
         }
-        
         return urlRequest
     }
 }

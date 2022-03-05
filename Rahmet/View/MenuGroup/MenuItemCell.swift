@@ -111,12 +111,12 @@ class MenuItemCell: UITableViewCell {
             make.left.equalTo(Constants.screenWidth * 0.72)
             make.right.equalToSuperview().inset(15)
             make.centerY.equalToSuperview()
-            make.width.equalTo(100)
+            make.height.equalTo(80)
         }
         counterView.snp.makeConstraints { make in
-            make.width.equalTo(productImageView.width)
-            make.left.right.equalTo(productImageView)
-            make.bottom.equalToSuperview().inset(5)
+            make.width.equalTo(productImageView.width).inset(20)
+            make.left.right.equalTo(productImageView).inset(5)
+            make.bottom.equalTo(productImageView.snp_bottomMargin)
             make.height.equalTo(30)
         }
     }

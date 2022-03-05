@@ -63,6 +63,13 @@ class MenuViewController: UIViewController {
         tableView.tableHeaderView = headerView
         tableView.register(MenuItemCell.self, forCellReuseIdentifier: MenuItemCell.reuseId)
     }
+    
+    let titleLabel: UILabel = {
+        let label = UILabel()
+        label.numberOfLines = 2
+        label.font = .boldSystemFont(ofSize: 22)
+        return label
+    }()
 }
 // MARK: Methods of Network logic
 extension MenuViewController {
@@ -151,7 +158,8 @@ extension MenuViewController: LayoutForNavigationVC {
     }
     
     func setupNavigationBar() {
-        navigationItem.title = restaurant.restaurant?.restaurantData?.name
+        navigationItem.titleView = titleLabel
+        titleLabel.text = restaurant.restaurant?.restaurantData?.name
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(toggleAction))
     }
     
