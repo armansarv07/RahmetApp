@@ -9,5 +9,5 @@ import Foundation
 
 
 enum MenuSection: Int, CaseIterable {
-    case photos, segments
+    case photos
 }

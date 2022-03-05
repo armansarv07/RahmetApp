@@ -10,23 +10,6 @@ import Alamofire
 import JGProgressHUD
 
 class MenuViewController: UIViewController {
-    private let spinner = JGProgressHUD(style: .dark)
-    
-    let gallery: [PhotoModel] = [
-        PhotoModel(id: 1, photoUrl: "rest1"),
-        PhotoModel(id: 2, photoUrl: "rest2"),
-        PhotoModel(id: 3, photoUrl: "rest3"),
-        PhotoModel(id: 4, photoUrl: "rest4")
-    ]
-    
-    let segments = [
-        Segment(id: 1, title: "Menu"),
-        Segment(id: 2, title: "Пицца"),
-        Segment(id: 3, title: "Напитки"),
-        Segment(id: 4, title: "Салаты"),
-        Segment(id: 5, title: "Супы")
-    ]
-    
     
     var categories: [ProductCategories] = []
     
@@ -34,8 +17,15 @@ class MenuViewController: UIViewController {
     
     let restaurant: Restaurant
     
-    
     var imagesData: [MenuRestaurantImage] = []
+    
+    var cartIsActive = false {
+        didSet {
+            if cartIsActive {
+                self.cartAppear()
+            }
+        }
+    }
     
     // MARK: UI Elements declaration
     
@@ -43,8 +33,13 @@ class MenuViewController: UIViewController {
     
     var headerView: MenuHeaderView!
     
+    private let spinner = JGProgressHUD(style: .dark)
+    
+    let cartButton = BlueButton(text: "Корзина")
+    
     // MARK: Internal methods of View Controller
     override func viewDidLoad() {
+        tabBarController?.tabBar.isHidden = true
         fetchData()
         setupNavigationBar()
         setupConstraints()
@@ -66,7 +61,6 @@ class MenuViewController: UIViewController {
         tableView.dataSource = self
         headerView = MenuHeaderView(frame: CGRect(x: 0, y: 0, width: Constants.screenWidth, height: 270))
         tableView.tableHeaderView = headerView
-        tableView.tableFooterView = MenuFooter(frame: CGRect(x: 0, y: 0, width: Constants.screenWidth, height: 90))
         tableView.register(MenuItemCell.self, forCellReuseIdentifier: MenuItemCell.reuseId)
     }
     
@@ -139,6 +133,10 @@ extension MenuViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        170
+    }
+    
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         180
     }
     
@@ -162,10 +160,31 @@ extension MenuViewController: LayoutForNavigationVC {
     func setupNavigationBar() {
         navigationItem.titleView = titleLabel
         titleLabel.text = restaurant.restaurant?.restaurantData?.name
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(toggleAction))
+    }
+    
+    func cartAppear() {
+        view.addSubview(cartButton)
+        cartButton.snp.remakeConstraints { make in
+            make.bottom.leading.trailing.equalToSuperview().inset(16)
+            make.height.equalTo(60)
+        }
+        
+        tableView.snp.remakeConstraints { make in
+            make.top.leading.trailing.equalToSuperview()
+            make.height.equalTo(Constants.screenHeight -
+            90)
+        }
     }
 }
 
 
+extension MenuViewController {
+    @objc private func toggleAction() {
+        cartIsActive.toggle()
+        print(cartIsActive)
+    }
+}
 
 
 import SwiftUI
