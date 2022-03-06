@@ -23,6 +23,8 @@ class MenuViewController: UIViewController {
         didSet {
             if cartIsActive {
                 self.cartAppear()
+            } else {
+                self.cartDisappear()
             }
         }
     }
@@ -163,8 +165,9 @@ extension MenuViewController: LayoutForNavigationVC {
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(toggleAction))
     }
     
-    func cartAppear() {
+    private func cartAppear() {
         view.addSubview(cartButton)
+        cartButton.isHidden = false
         cartButton.snp.remakeConstraints { make in
             make.bottom.leading.trailing.equalToSuperview().inset(16)
             make.height.equalTo(60)
@@ -174,6 +177,14 @@ extension MenuViewController: LayoutForNavigationVC {
             make.top.leading.trailing.equalToSuperview()
             make.height.equalTo(Constants.screenHeight -
             90)
+        }
+    }
+    
+    private func cartDisappear() {
+        cartButton.isHidden = true
+        cartButton.snp.removeConstraints()
+        tableView.snp.remakeConstraints { make in
+            make.edges.equalToSuperview()
         }
     }
 }
