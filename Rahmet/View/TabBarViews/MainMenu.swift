@@ -70,6 +70,7 @@ extension MainMenu: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cafeCell", for: indexPath) as! CafeCell
+        print(indexPath.section)
         cell.cafe = restaurants[indexPath.row].restaurant
         return cell
     }
@@ -84,7 +85,13 @@ extension MainMenu: UITableViewDataSource, UITableViewDelegate {
         let cafe = restaurants[indexPath.row]
         navigationController?.pushViewController(MenuViewController(restaurant: cafe), animated: true)
     }
-
+    func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        print(indexPath.section)
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        print(indexPath.section)
+    }
 }
 
 
