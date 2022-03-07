@@ -28,7 +28,7 @@ class MenuViewController: UIViewController, CartChangingDelegate {
     
     var sections = [CategorySection]()
     
-    let restaurant: RestaurantDataModel
+    let id: Int
     var cartProducts: [CartItem] = []
     var imagesData: [MenuRestaurantImage] = []
     
@@ -54,15 +54,15 @@ class MenuViewController: UIViewController, CartChangingDelegate {
     // MARK: Internal methods of View Controller
     override func viewDidLoad() {
         tabBarController?.tabBar.isHidden = true
-        
         fetchData()
         setupNavigationBar()
         setupConstraints()
         setupTableView()
     }
     
-    init(restaurant: RestaurantDataModel) {
-        self.restaurant = restaurant
+    init(id: Int) {
+        self.id = id
+        self.titleLabel.text = "Restaurant"
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -85,7 +85,8 @@ class MenuViewController: UIViewController, CartChangingDelegate {
     
     let titleLabel: UILabel = {
         let label = UILabel()
-        label.numberOfLines = 2
+        label.numberOfLines = 0
+        label.minimumScaleFactor = 0.4
         label.font = .boldSystemFont(ofSize: 22)
         return label
     }()
@@ -98,7 +99,6 @@ class MenuViewController: UIViewController, CartChangingDelegate {
     
     @objc func cartButtonTapped() {
         let vc = CartView()
-        vc.restaurant = restaurant
         vc.cartProducts = cartProducts
         vc.delegate = self
         navigationController?.pushViewController(vc, animated: false)
@@ -118,7 +118,7 @@ extension MenuViewController: UICollectionViewDelegate {
 extension MenuViewController {
     private func fetchData() {
         spinner.show(in: tableView)
-        AF.request(Constants.baseURL + "/menu/1").validate().responseDecodable(of: Menu.self) { [weak self] (response) in
+        AF.request(Constants.baseURL + "/menu/\(id)").validate().responseDecodable(of: Menu.self) { [weak self] (response) in
             guard let menu = response.value else { return }
             self?.imagesData = menu.data?.restaurantImages ?? []
             self?.categories = menu.data?.productCategories ?? []
@@ -126,6 +126,9 @@ extension MenuViewController {
             self?.headerView.segments = (self?.createSegments(menu.data?.productCategories ?? []))!
             self?.headerView.gallery = (self?.createPhotoModels(menu.data?.restaurantImages ?? []))!
             self?.headerView.address = menu.data?.location ?? ""
+            self?.titleLabel.text = menu.data?.restaurantName ?? ""
+            self?.navigationItem.title = menu.data?.restaurantName ?? ""
+            print(menu.data?.restaurantName ?? "")
             self?.tableView.reloadData()
         }
     }
@@ -207,9 +210,8 @@ extension MenuViewController: LayoutForNavigationVC {
     }
     
     func setupNavigationBar() {
-        navigationItem.titleView = titleLabel
-        titleLabel.text = restaurant.restaurantData?.name
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(toggleAction))
+
+        navigationItem.backButtonTitle = ""
     }
     
     private func cartAppear() {
@@ -235,25 +237,17 @@ extension MenuViewController: LayoutForNavigationVC {
         }
     }
 }
-
-
-extension MenuViewController {
-    @objc private func toggleAction() {
-        cartIsActive.toggle()
-        print(cartIsActive)
+import SwiftUI
+struct MenuVCProvider: PreviewProvider {
+    static var previews: some View {
+        ContainerView().edgesIgnoringSafeArea(.all)
+    }
+    struct ContainerView: UIViewControllerRepresentable {
+        let menuVC = MenuViewController(id: 1)
+        func makeUIViewController(context: Context) -> some UIViewController {
+            return NavigationVCGenerator.generateNavigationController(rootViewController: menuVC, image: UIImage(), title: "Title", prefersLargeTitle: true)
+        }
+        func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {
+        }
     }
 }
-//import SwiftUI
-//struct MenuVCProvider: PreviewProvider {
-//    static var previews: some View {
-//        ContainerView().edgesIgnoringSafeArea(.all)
-//    }
-//    struct ContainerView: UIViewControllerRepresentable {
-//        let menuVC = MenuViewController(restaurant: Restaurant(restaurant: RestaurantDataModel(restaurantData: DetailedRestaurant(id: 1, name: "Mamma Mia", location: "Baker Street 221B", createdAt: "20.02.2022", updatedAt: "20.02.2022", images: []), image: nil)))
-//        func makeUIViewController(context: Context) -> some UIViewController {
-//            return NavigationVCGenerator.generateNavigationController(rootViewController: menuVC, image: UIImage(), title: "Title", prefersLargeTitle: true)
-//        }
-//        func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {
-//        }
-//    }
-//}

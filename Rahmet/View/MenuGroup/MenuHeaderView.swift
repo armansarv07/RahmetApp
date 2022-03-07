@@ -6,7 +6,7 @@
 //
 
 import UIKit
-
+import SDWebImage
 
 class MenuHeaderView: UIView {
     
@@ -162,7 +162,7 @@ extension MenuHeaderView {
                 let photoCell = collectionView.dequeueReusableCell(withReuseIdentifier: PhotoCell.reuseId, for: indexPath) as! PhotoCell
                 let urlImage = URL(string: photo.photoUrl)
                 if let url = urlImage {
-                    photoCell.imageView.load(url: url)
+                    photoCell.imageView.sd_setImage(with: url, placeholderImage: #imageLiteral(resourceName: "placeholder-restaurant"), options: [.continueInBackground, .progressiveLoad], completed: nil)
                 }
                 
                 return photoCell
@@ -189,7 +189,6 @@ extension MenuHeaderView {
             guard let strongSelf = self else { return }
             strongSelf.pageView.text = "\(1 + Int(round(offset.x / Constants.screenWidth)))/\(strongSelf.gallery.count)"
         }
-        
         
         return section
     }
@@ -223,7 +222,7 @@ extension MenuHeaderView {
         let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitems: [item])
         let section = NSCollectionLayoutSection(group: group)
         section.orthogonalScrollingBehavior = .continuousGroupLeadingBoundary
-        section.interGroupSpacing = 25
+        section.interGroupSpacing = 0
         
         return section
     }

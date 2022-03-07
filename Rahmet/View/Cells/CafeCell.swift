@@ -19,9 +19,8 @@ class CafeCell: UITableViewCell {
                 addressLabel.text = address
             }
             if let cafeImgName = cafeItem.image?.imageURL {
-                var urlImage = URL(string: cafeImgName)
-                if let url = urlImage {
-                    cafeImageView.load(url: url)
+                if let url = URL(string: cafeImgName) {
+                    cafeImageView.sd_setImage(with: url, placeholderImage: #imageLiteral(resourceName: "cafePlaceholder") , options: [.continueInBackground, .progressiveLoad], completed: nil)
                 }
             }
         }

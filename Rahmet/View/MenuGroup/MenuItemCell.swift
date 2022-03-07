@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 class MenuItemCell: UITableViewCell {
     
@@ -22,7 +23,7 @@ class MenuItemCell: UITableViewCell {
             }
             if let imageName = cartItem.product.image {
                 if let url = URL(string: imageName) {
-                    productImageView.load(url: url)
+                    productImageView.sd_setImage(with: url, placeholderImage: #imageLiteral(resourceName: "dish"), options: [.continueInBackground, .progressiveLoad], completed: nil)
                 }
             }
             if let price = cartItem.product.price {
