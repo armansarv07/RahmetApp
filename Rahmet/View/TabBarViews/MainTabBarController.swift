@@ -22,17 +22,3 @@ class MainTabBarController: UITabBarController {
         ]
     }
 }
-
-
-//if let items = self.tabBar.items {
-//    for item in items {
-//        if let image = item.image {
-//            item.image = image.withRenderingMode(.alwaysOriginal)
-//        }
-//    }
-//}
-
-
-
-
-

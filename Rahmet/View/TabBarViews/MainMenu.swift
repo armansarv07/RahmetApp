@@ -84,7 +84,7 @@ extension MainMenu: UITableViewDataSource, UITableViewDelegate {
         tableView.deselectRow(at: indexPath, animated: true)
         var cafe = restaurants[indexPath.row]
         guard let restaurant = cafe.restaurant else { return }
-        navigationController?.pushViewController(MenuViewController(restaurant: restaurant), animated: true)
+        navigationController?.pushViewController(MenuViewController(id: cafe.restaurant?.restaurantData?.id ?? 0), animated: true)
     }
     func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         print(indexPath.section)
