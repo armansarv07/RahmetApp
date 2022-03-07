@@ -19,6 +19,10 @@ class MenuHeaderView: UIView {
         }
     }
     
+    var tableCompletion: ((Int) -> Void)?
+    
+    var deselectIndex: Int = 0
+    
     var segments: [Segment] = [] {
         didSet {
             self.reloadSegmentsData()
@@ -30,6 +34,10 @@ class MenuHeaderView: UIView {
             addressLabel.text = address
         }
     }
+    
+    var onCompletion: ((IndexPath) -> Void)?
+    
+    var selectedIndex: Int = 1
     
     var collectionView: UICollectionView!
     var segmentsView: UICollectionView!
@@ -71,6 +79,7 @@ class MenuHeaderView: UIView {
         createSegmentsDataSource()
         reloadSegmentsData()
         setupPageLabel()
+        setSelected()
     }
     
     override func layoutSubviews() {
@@ -80,6 +89,16 @@ class MenuHeaderView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+}
+
+extension MenuHeaderView: UICollectionViewDelegate {
+    
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        guard let collectionView = scrollView as? UICollectionView else { return }
+        collectionView.allowsSelection = false
+    }
+    
 }
 
 extension MenuHeaderView {
@@ -98,6 +117,15 @@ extension MenuHeaderView {
     }
     private func setupPageLabel() {
         pageView.text = "1/\(gallery.count)"
+    }
+    
+    private func setSelected() {
+        DispatchQueue.main.async {
+            guard let cell = self.segmentsView.cellForItem(at: IndexPath(item: self.selectedIndex, section: 0)) as? SegmentedCell else {
+                return
+            }
+            cell.titleButton.backgroundColor = .blue
+        }
     }
 }
 
@@ -189,13 +217,14 @@ extension MenuHeaderView {
     }
     
     private func createSegmentsSection() -> NSCollectionLayoutSection {
-        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1))
+        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(0.8))
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
-        let groupSize = NSCollectionLayoutSize(widthDimension: .estimated(180), heightDimension: .absolute(30))
+        let groupSize = NSCollectionLayoutSize(widthDimension: .estimated(220), heightDimension: .absolute(30))
         let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitems: [item])
         let section = NSCollectionLayoutSection(group: group)
         section.orthogonalScrollingBehavior = .continuousGroupLeadingBoundary
-        section.interGroupSpacing = 0
+        section.interGroupSpacing = 25
+        
         return section
     }
     
@@ -208,7 +237,12 @@ extension MenuHeaderView {
             case .segments:
                 let segment = data as! Segment
                 let cell = self.segmentsView.dequeueReusableCell(withReuseIdentifier: SegmentedCell.reuseId, for: indexPath) as! SegmentedCell
-                cell.title.text = segment.title
+                cell.titleButton.setTitle(segment.title, for: .normal)
+                cell.index = indexPath.item
+                cell.onCompletion = {[weak self] index in
+                    self?.segmentsView.deselectAllItems(animated: true)
+                    self?.tableCompletion?(index)
+                }
                 return cell
             }
         })
@@ -221,6 +255,8 @@ extension MenuHeaderView {
         segmentsDataSource.apply(snapshot, animatingDifferences: true, completion: nil)
     }
 }
+
+
 
 
 import SwiftUI

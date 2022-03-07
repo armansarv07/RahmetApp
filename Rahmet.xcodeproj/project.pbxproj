@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		AB20632442E66626A0D78CB3 /* Pods_Rahmet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A7E2C126E18E96CEF8D587C /* Pods_Rahmet.framework */; };
+		C242351227D656CE00AE2D70 /* UCollectionView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C242351127D656CE00AE2D70 /* UCollectionView+Extension.swift */; };
 		C2612AAD27CCAAA800DB50C1 /* CategorySection.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2612AAC27CCAAA700DB50C1 /* CategorySection.swift */; };
 		C273914F27B3E8C000B309BA /* LayoutForNavigationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C273914E27B3E8C000B309BA /* LayoutForNavigationVC.swift */; };
 		C275C8EB27B39B93001AF463 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C275C8EA27B39B93001AF463 /* MainTabBarController.swift */; };
@@ -92,6 +93,7 @@
 /* Begin PBXFileReference section */
 		1F34CB717506F012A307DEDF /* Pods-Rahmet.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Rahmet.release.xcconfig"; path = "Target Support Files/Pods-Rahmet/Pods-Rahmet.release.xcconfig"; sourceTree = "<group>"; };
 		5A7E2C126E18E96CEF8D587C /* Pods_Rahmet.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Rahmet.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C242351127D656CE00AE2D70 /* UCollectionView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UCollectionView+Extension.swift"; sourceTree = "<group>"; };
 		C2612AAC27CCAAA700DB50C1 /* CategorySection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategorySection.swift; sourceTree = "<group>"; };
 		C273914E27B3E8C000B309BA /* LayoutForNavigationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutForNavigationVC.swift; sourceTree = "<group>"; };
 		C275C8EA27B39B93001AF463 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
@@ -286,6 +288,7 @@
 				E50F2DF727B7CC8C004A06BB /* UIViewController+Extension.swift */,
 				C2F5E2D727B850D200AEBBCF /* UIView+Extension.swift */,
 				E50F2E1427BF52BE004A06BB /* ParametersView.swift */,
+				C242351127D656CE00AE2D70 /* UCollectionView+Extension.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -653,6 +656,7 @@
 				E50F2DF227B7CC24004A06BB /* BlueButton.swift in Sources */,
 				C2E59C7527D372C900F2109D /* SegmentsSection.swift in Sources */,
 				C2612AAD27CCAAA800DB50C1 /* CategorySection.swift in Sources */,
+				C242351227D656CE00AE2D70 /* UCollectionView+Extension.swift in Sources */,
 				E50F2DFE27B7CCFE004A06BB /* OrderCell.swift in Sources */,
 				E5C1F9D727C21B61000AE42B /* MenuModel.swift in Sources */,
 				E50F2E1527BF52BE004A06BB /* ParametersView.swift in Sources */,
