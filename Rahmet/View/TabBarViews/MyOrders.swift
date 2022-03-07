@@ -33,7 +33,7 @@ class MyOrders: UIViewController {
     }
     
     func getData() {
-        APIClient.getOrders(id: 1) { result in // temp
+        APIClient.getOrders() { result in // temp
             switch result {
             case .success(let message):
                 print(message)
@@ -48,8 +48,7 @@ class MyOrders: UIViewController {
 
 extension MyOrders: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        let vc = OrderDetailed(order: orders[indexPath.row])
-        let vc = CartView()
+        let vc = OrderDetailed(order: orders[indexPath.row])
         navigationController?.pushViewController(vc, animated: false)
     }
 }

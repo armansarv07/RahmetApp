@@ -9,14 +9,27 @@ import UIKit
 import Alamofire
 import JGProgressHUD
 
-class MenuViewController: UIViewController {
+class MenuViewController: UIViewController, CartChangingDelegate {
+    func changeQuantity(product: Product, quantity: Int) {
+        let index = cartProducts.firstIndex { $0.product == product }
+        if let idx = index {
+            cartProducts[idx].quantity = quantity
+            if quantity == 0 {
+                cartProducts.remove(at: idx)
+            }
+        } else {
+            cartProducts.append(CartItem(product: product, quantity: 1))
+        }
+        cartIsActive = !cartProducts.isEmpty
+        print("done")
+    }
     
     var categories: [ProductCategories] = []
     
     var sections = [CategorySection]()
     
-    let restaurant: Restaurant
-    
+    let restaurant: RestaurantDataModel
+    var cartProducts: [CartItem] = []
     var imagesData: [MenuRestaurantImage] = []
     
     var deselectIndex: Int = 0
@@ -34,12 +47,9 @@ class MenuViewController: UIViewController {
     // MARK: UI Elements declaration
     
     let tableView = UITableView(frame: .zero, style: .plain)
-    
     var headerView: MenuHeaderView!
     
     private let spinner = JGProgressHUD(style: .dark)
-    
-    let cartButton = BlueButton(text: "Корзина")
     
     // MARK: Internal methods of View Controller
     override func viewDidLoad() {
@@ -51,7 +61,7 @@ class MenuViewController: UIViewController {
         setupTableView()
     }
     
-    init(restaurant: Restaurant) {
+    init(restaurant: RestaurantDataModel) {
         self.restaurant = restaurant
         super.init(nibName: nil, bundle: nil)
     }
@@ -79,6 +89,20 @@ class MenuViewController: UIViewController {
         label.font = .boldSystemFont(ofSize: 22)
         return label
     }()
+    
+    lazy var cartButton: BlueButton = {
+        let button = BlueButton(text: "Корзина")
+        button.addTarget(self, action: #selector(cartButtonTapped), for: .touchUpInside)
+        return button
+    }()
+    
+    @objc func cartButtonTapped() {
+        let vc = CartView()
+        vc.restaurant = restaurant
+        vc.cartProducts = cartProducts
+        vc.delegate = self
+        navigationController?.pushViewController(vc, animated: false)
+    }
 }
 
 extension MenuViewController: UICollectionViewDelegate {
@@ -133,7 +157,9 @@ extension MenuViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: MenuItemCell.reuseId, for: indexPath) as! MenuItemCell
-        cell.product = categories[indexPath.section].products?[indexPath.row]
+        guard let product = categories[indexPath.section].products?[indexPath.row] else { return cell }
+        cell.cartItem = CartItem(product: product, quantity: 0)
+        cell.delegate = self
         cell.selectionStyle = .none
         tableView.indexPathsForVisibleRows?.forEach({
             print($0.section)
@@ -182,7 +208,7 @@ extension MenuViewController: LayoutForNavigationVC {
     
     func setupNavigationBar() {
         navigationItem.titleView = titleLabel
-        titleLabel.text = restaurant.restaurant?.restaurantData?.name
+        titleLabel.text = restaurant.restaurantData?.name
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(toggleAction))
     }
     
@@ -217,20 +243,17 @@ extension MenuViewController {
         print(cartIsActive)
     }
 }
-
-
-
-import SwiftUI
-struct MenuVCProvider: PreviewProvider {
-    static var previews: some View {
-        ContainerView().edgesIgnoringSafeArea(.all)
-    }
-    struct ContainerView: UIViewControllerRepresentable {
-        let menuVC = MenuViewController(restaurant: Restaurant(restaurant: RestaurantDataModel(restaurantData: DetailedRestaurant(id: 1, name: "Mamma Mia", location: "Baker Street 221B", createdAt: "20.02.2022", updatedAt: "20.02.2022", images: []), image: nil)))
-        func makeUIViewController(context: Context) -> some UIViewController {
-            return NavigationVCGenerator.generateNavigationController(rootViewController: menuVC, image: UIImage(), title: "Title", prefersLargeTitle: true)
-        }
-        func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {
-        }
-    }
-}
+//import SwiftUI
+//struct MenuVCProvider: PreviewProvider {
+//    static var previews: some View {
+//        ContainerView().edgesIgnoringSafeArea(.all)
+//    }
+//    struct ContainerView: UIViewControllerRepresentable {
+//        let menuVC = MenuViewController(restaurant: Restaurant(restaurant: RestaurantDataModel(restaurantData: DetailedRestaurant(id: 1, name: "Mamma Mia", location: "Baker Street 221B", createdAt: "20.02.2022", updatedAt: "20.02.2022", images: []), image: nil)))
+//        func makeUIViewController(context: Context) -> some UIViewController {
+//            return NavigationVCGenerator.generateNavigationController(rootViewController: menuVC, image: UIImage(), title: "Title", prefersLargeTitle: true)
+//        }
+//        func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {
+//        }
+//    }
+//}

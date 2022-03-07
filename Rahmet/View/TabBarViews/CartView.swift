@@ -11,11 +11,9 @@ import SwiftUI
 class CartView: UIViewController {
 
     let tableView = UITableView()
-    var myFakeOrders: [OrderItem] = [
-        OrderItem(itemName: "Пицца Маргарита", numberOfItems: 1, itemPrice: 1900, imgName: "cafeImage"),
-        OrderItem(itemName: "Пицца Пепперони", numberOfItems: 1, itemPrice: 1600, imgName: "cafeImage"),
-        OrderItem(itemName: "Пицца Маргарита 1", numberOfItems: 2, itemPrice: 1000, imgName: "cafeImage")
-    ]
+    var cartProducts: [CartItem] = []
+    var restaurant: RestaurantDataModel? = RestaurantDataModel()
+    var delegate: CartChangingDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,13 +21,11 @@ class CartView: UIViewController {
         setupViews()
         setupConstraints()
     }
-    
+
     let cafeNameView: ParametersView = {
         var view = ParametersView()
-        view.mainLabel.text = "Mamma mia"
         view.mainLabel.textColor = .black
         view.mainLabel.font = .boldSystemFont(ofSize: 16)
-        view.subLabel.text = "ул. Панфилова 109"
         view.subLabel.textColor = .gray
         return view
     }()
@@ -41,13 +37,29 @@ class CartView: UIViewController {
         return label
     }()
     
-    let paymentButton = BlueButton(text: "Оплатить", rightText: "4533 тг", leftText: "", isActive: true)
+    lazy var paymentButton = BlueButton(text: "Оплатить", rightText: "", leftText: "", isActive: true)
+    
+    @objc func payTapped() {
+        var products: [OrderCreateProduct] = NSArray() as! [OrderCreateProduct]
+        for product in cartProducts {
+            products.append(OrderCreateProduct(id: product.product.id, quantity: product.quantity))
+        }
+        let order: OrderInput = OrderInput(restaurantID: self.restaurant?.restaurantData?.id, products: products)
+        APIClient.postOrder(order: order) { result in
+            switch result {
+            case .success(let message):
+                print(message)
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+    }
 }
 
 extension CartView: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return myFakeOrders.count + 1
+        return cartProducts.count + 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -59,16 +71,18 @@ extension CartView: UITableViewDelegate, UITableViewDataSource {
             cell.rightLabel.font = .boldSystemFont(ofSize: 14)
             return cell
         }
-        let cell = tableView.dequeueReusableCell(withIdentifier: CartCell.reuseId, for: indexPath) as! CartCell
-        cell.item = myFakeOrders[indexPath.row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: MenuItemCell.reuseId, for: indexPath) as! MenuItemCell
+        cell.num = cartProducts[indexPath.row].quantity
+        cell.cartItem = cartProducts[indexPath.row]
+        cell.delegate = self
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if isLastRow(row: indexPath.row) {
-            return 50
+            return 80
         }
-        return 90
+        return 170
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -76,12 +90,29 @@ extension CartView: UITableViewDelegate, UITableViewDataSource {
     }
 }
 
+extension CartView: CartChangingDelegate {
+    func changeQuantity(product: Product, quantity: Int) {
+        let index = cartProducts.firstIndex { $0.product == product }
+        if let index = index {
+            cartProducts[index].quantity = quantity
+            if quantity == 0 {
+                cartProducts.remove(at: index)
+                tableView.reloadData()
+            }
+        }
+        tableView.reloadData()
+    }
+}
+
 extension CartView: LayoutForNavigationVC {
     
     func setupViews() {
+        paymentButton.addTarget(self, action: #selector(payTapped), for: .touchUpInside)
+        cafeNameView.mainLabel.text = restaurant?.restaurantData?.name
+        cafeNameView.subLabel.text = restaurant?.restaurantData?.location
         self.tabBarController?.tabBar.isHidden = true
         view.backgroundColor = .white
-        tableView.register(CartCell.self, forCellReuseIdentifier: CartCell.reuseId)
+        tableView.register(MenuItemCell.self, forCellReuseIdentifier: MenuItemCell.reuseId)
         tableView.register(OrderPositionsCell.self, forCellReuseIdentifier: OrderPositionsCell.reuseId)
         tableView.dataSource = self
         tableView.delegate = self
@@ -122,15 +153,15 @@ extension CartView: LayoutForNavigationVC {
         self.title = "Корзина"
     }
     
-    func countTotalSum() -> Double {
-        var sum = 0.0
-        for i in myFakeOrders {
-            sum += i.itemPrice ?? 0
+    func countTotalSum() -> Int {
+        var sum = 0
+        for i in cartProducts {
+            sum += (i.product.price ?? 0) * i.quantity
         }
         return sum
     }
     
     func isLastRow(row: Int) -> Bool {
-        return row == myFakeOrders.count
+        return row == cartProducts.count
     }
 }

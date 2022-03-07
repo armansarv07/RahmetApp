@@ -5,6 +5,8 @@
 //  Created by Elvina Shamoi on 28.02.2022.
 //
 
+import Foundation
+
 struct OrderInput: Codable {
     var restaurantID: Int?
     var products: [OrderCreateProduct]?

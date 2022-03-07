@@ -9,6 +9,8 @@ import UIKit
 
 class CounterView: UIView {
 
+    var didSelectItem: (()->())?
+    
     var cnt = 0 {
         didSet {
             counterLabel.text = String(cnt)
@@ -22,6 +24,12 @@ class CounterView: UIView {
             default:
                 break
             }
+        }
+    }
+
+    func itemSelected() {
+        if let didSelectItem = didSelectItem {
+           didSelectItem()
         }
     }
     
@@ -63,9 +71,7 @@ class CounterView: UIView {
         if cnt >= 1 {
             cnt -= 1
         }
-        
-        print(cnt)
-        // else: delete from cart
+        itemSelected()
     }
     
     func remakeViews() {
@@ -88,6 +94,7 @@ class CounterView: UIView {
     
     @objc func plusClicked() {
         cnt += 1
+        itemSelected()
     }
 
     
@@ -103,9 +110,6 @@ class CounterView: UIView {
             counterLabel.isHidden = false
         }
         self.layer.cornerRadius = 10
-//        [minusButton, counterLabel, plusButton].forEach {
-//            self.addSubview($0)
-//        }
     }
     
     func setupConstraints() {

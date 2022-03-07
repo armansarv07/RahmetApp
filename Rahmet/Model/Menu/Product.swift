@@ -5,7 +5,7 @@
 //  Created by Elvina Shamoi on 26.02.2022.
 //
 
-struct Product: Codable {
+struct Product: Codable, Equatable {
     var id: Int?
     var name: String?
     var price: Int?
