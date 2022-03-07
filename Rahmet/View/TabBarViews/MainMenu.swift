@@ -8,8 +8,11 @@
 import UIKit
 import SnapKit
 import Alamofire
+import JGProgressHUD
 
 class MainMenu: UIViewController {
+        
+    let spinner = JGProgressHUD(style: .dark)
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,9 +56,11 @@ extension MainMenu: LayoutForNavigationVC {
     }
     
     func fetchData() {
+        spinner.show(in: tableView)
         AF.request("https://intern.rahmetapp.kz/api/restaurants")
           .validate()
           .responseDecodable(of: [Restaurant].self) { (response) in
+              self.spinner.dismiss(animated: true)
             guard let rests = response.value else { return }
               self.restaurants = rests
               self.tableView.reloadData()

@@ -7,12 +7,15 @@
 
 import UIKit
 import SnapKit
+import JGProgressHUD
 
 class Registration: UIViewController {
     
     var email = ""
     var password = ""
     var isPassword = false
+    
+    let spinner = JGProgressHUD(style: .dark)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -139,10 +142,12 @@ class Registration: UIViewController {
     
     @objc func nextStep() {
         if password != "" && password.count >= 9 && email != "" && isPassword {
+            spinner.show(in: view)
             APIClient.register(email: self.email, password: self.password) { result in
                 print("CHECK", self.email, self.password)
                 switch result {
                 case .success(let message):
+                    self.spinner.dismiss(animated: true)
                     print(message)
                     let appDelegate = UIApplication.shared.delegate
                     appDelegate?.window??.rootViewController = UINavigationController(rootViewController: MainTabBarController())
@@ -220,18 +225,3 @@ class Registration: UIViewController {
     }
 }
 
-
-//import SwiftUI
-//struct LoginVCProvider: PreviewProvider {
-//    static var previews: some View {
-//        ContainerView().edgesIgnoringSafeArea(.all)
-//    }how
-//    struct ContainerView: UIViewControllerRepresentable {
-//        let loginVC = Registration()
-//        func makeUIViewController(context: Context) -> some UIViewController {
-//            return loginVC
-//        }
-//        func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {
-//        }
-//    }
-//}
