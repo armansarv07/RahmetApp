@@ -11,29 +11,48 @@ import UIKit
 class SegmentedCell: UICollectionViewCell, ConfigurableCell {
     static var reuseId: String = "SegmentCell"
     
+    var onCompletion: ((Int) -> Void)?
+    
+    var index: Int!
+    
     func configure<U>(with value: U) where U : Hashable {
         
     }
     
-    let title: UILabel = {
-        let label = UILabel()
-        label.backgroundColor = .white
-        label.font = .systemFont(ofSize: 17)
-        label.textColor = .gray
-        return label
+    let titleButton: UIButton = {
+        let button = UIButton()
+        button.backgroundColor = .white
+        button.titleLabel?.font = .systemFont(ofSize: 17)
+        button.layer.cornerRadius = 7
+        button.clipsToBounds = true
+        button.setTitleColor(.gray, for: .normal)
+        return button
     }()
+    
+    override var isSelected: Bool {
+        didSet {
+            titleButton.backgroundColor = isSelected ? .gray.withAlphaComponent(0.2) : .clear
+        }
+    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.addSubview(title)
+        self.addSubview(titleButton)
+        self.layer.cornerRadius = 7
+        self.clipsToBounds = true
+        titleButton.addTarget(self, action: #selector(callCompletion), for: .touchUpInside)
         setupConstraints()
     }
     
     func setupConstraints() {
-        title.snp.makeConstraints { make in
+        titleButton.snp.makeConstraints { make in
             make.leading.equalToSuperview().inset(8)
             make.top.bottom.equalToSuperview()
         }
+    }
+    
+    @objc private func callCompletion() {
+        onCompletion?(index)
     }
     
     
@@ -42,19 +61,3 @@ class SegmentedCell: UICollectionViewCell, ConfigurableCell {
         fatalError("init(coder:) has not been implemented")
     }
 }
-
-//
-//import SwiftUI
-//struct SegmentsCellProvider: PreviewProvider {
-//    static var previews: some View {
-//        ContainerView().edgesIgnoringSafeArea(.all)
-//    }
-//    struct ContainerView: UIViewControllerRepresentable {
-//        let menuVC = Menu(cafe: Cafe(name: "Mamma Mia", address: "ул. Бухар жырау, 66, уг. ул. Ауэзова", imgName: "cafeImage"))
-//        func makeUIViewController(context: Context) -> some UIViewController {
-//            return NavigationVCGenerator.generateNavigationController(rootViewController: menuVC, image: UIImage(), title: "Title", prefersLargeTitle: true)
-//        }
-//        func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {
-//        }
-//    }
-//}

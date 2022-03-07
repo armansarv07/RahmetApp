@@ -32,6 +32,8 @@ class MenuViewController: UIViewController, CartChangingDelegate {
     var cartProducts: [CartItem] = []
     var imagesData: [MenuRestaurantImage] = []
     
+    var deselectIndex: Int = 0
+    
     var cartIsActive = false {
         didSet {
             if cartIsActive {
@@ -52,6 +54,7 @@ class MenuViewController: UIViewController, CartChangingDelegate {
     // MARK: Internal methods of View Controller
     override func viewDidLoad() {
         tabBarController?.tabBar.isHidden = true
+        
         fetchData()
         setupNavigationBar()
         setupConstraints()
@@ -74,6 +77,10 @@ class MenuViewController: UIViewController, CartChangingDelegate {
         headerView = MenuHeaderView(frame: CGRect(x: 0, y: 0, width: Constants.screenWidth, height: 270))
         tableView.tableHeaderView = headerView
         tableView.register(MenuItemCell.self, forCellReuseIdentifier: MenuItemCell.reuseId)
+        headerView.tableCompletion = {
+            self.tableView.scrollToRow(at: IndexPath(row: 0, section: $0), at: .top, animated: true)
+            self.deselectIndex = $0
+        }
     }
     
     let titleLabel: UILabel = {
@@ -97,6 +104,16 @@ class MenuViewController: UIViewController, CartChangingDelegate {
         navigationController?.pushViewController(vc, animated: false)
     }
 }
+
+extension MenuViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard collectionView == headerView.segmentsView else {
+            return
+        }
+        tableView.scrollToRow(at: IndexPath(item: 0, section: indexPath.item), at: .top, animated: true)
+    }
+}
+
 // MARK: Methods of Network logic
 extension MenuViewController {
     private func fetchData() {
@@ -144,6 +161,10 @@ extension MenuViewController: UITableViewDelegate, UITableViewDataSource {
         cell.cartItem = CartItem(product: product, quantity: 0)
         cell.delegate = self
         cell.selectionStyle = .none
+        tableView.indexPathsForVisibleRows?.forEach({
+            print($0.section)
+            self.headerView.segmentsView.selectItem(at: IndexPath(item: $0.section, section: 0), animated: true, scrollPosition: .centeredVertically)
+        })
         return cell
     }
     
@@ -222,8 +243,6 @@ extension MenuViewController {
         print(cartIsActive)
     }
 }
-
-
 //import SwiftUI
 //struct MenuVCProvider: PreviewProvider {
 //    static var previews: some View {
