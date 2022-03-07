@@ -9,13 +9,15 @@ import UIKit
 
 class CartCell: UITableViewCell {
 
-    var item: OrderItem? {
+    var item: CartItem? {
         didSet {
-            if let num = item?.numberOfItems, let name = item?.itemName, let price = item?.itemPrice, let img = item?.imgName {
+            if let num = item?.quantity, let name = item?.product.name, let price = item?.product.price, let img = item?.product.image {
                 counterView.cnt = num
                 nameLabel.text = name
                 priceLabel.text = "\(price) тг"
-                itemImageView.image = UIImage.init(named: img)
+                if let url = URL(string: img) {
+                    itemImageView.load(url: url)
+                }
             }
         }
     }

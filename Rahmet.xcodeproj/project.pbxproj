@@ -74,6 +74,8 @@
 		E5A1259227CCD6E2006508E9 /* APIConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5A1259127CCD6E2006508E9 /* APIConfiguration.swift */; };
 		E5A1259427CCD74D006508E9 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5A1259327CCD74D006508E9 /* APIClient.swift */; };
 		E5A1259627CCD77F006508E9 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5A1259527CCD77F006508E9 /* User.swift */; };
+		E5A1259827D5E5BD006508E9 /* CartItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5A1259727D5E5BD006508E9 /* CartItem.swift */; };
+		E5A1259A27D5FDDD006508E9 /* CartChangingDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5A1259927D5FDDD006508E9 /* CartChangingDelegate.swift */; };
 		E5B251DA27B14DA800543C24 /* Registration.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B251D927B14DA800543C24 /* Registration.swift */; };
 		E5B4BE9E27B124DB00BE587C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B4BE9D27B124DB00BE587C /* AppDelegate.swift */; };
 		E5B4BEA027B124DB00BE587C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B4BE9F27B124DB00BE587C /* SceneDelegate.swift */; };
@@ -157,6 +159,8 @@
 		E5A1259127CCD6E2006508E9 /* APIConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConfiguration.swift; sourceTree = "<group>"; };
 		E5A1259327CCD74D006508E9 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		E5A1259527CCD77F006508E9 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		E5A1259727D5E5BD006508E9 /* CartItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartItem.swift; sourceTree = "<group>"; };
+		E5A1259927D5FDDD006508E9 /* CartChangingDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartChangingDelegate.swift; sourceTree = "<group>"; };
 		E5B251D927B14DA800543C24 /* Registration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Registration.swift; sourceTree = "<group>"; };
 		E5B4BE9A27B124DB00BE587C /* Rahmet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Rahmet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5B4BE9D27B124DB00BE587C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -295,6 +299,7 @@
 			children = (
 				C273914E27B3E8C000B309BA /* LayoutForNavigationVC.swift */,
 				E50F2DED27B7CB92004A06BB /* ConfigurableCell.swift */,
+				E5A1259927D5FDDD006508E9 /* CartChangingDelegate.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -331,6 +336,7 @@
 				E584EBC627CA592D0072AC0D /* ProductCategories.swift */,
 				E584EBC827CA598F0072AC0D /* Product.swift */,
 				E584EBC427CA58950072AC0D /* MenuRestaurantImage.swift */,
+				E5A1259727D5E5BD006508E9 /* CartItem.swift */,
 			);
 			path = Menu;
 			sourceTree = "<group>";
@@ -586,6 +592,7 @@
 				E5A1258D27CCA9BB006508E9 /* RestaurantDataModel.swift in Sources */,
 				E584EBC327CA57F60072AC0D /* MenuData.swift in Sources */,
 				C275C8EE27B39D05001AF463 /* NavigationVCGenerator.swift in Sources */,
+				E5A1259A27D5FDDD006508E9 /* CartChangingDelegate.swift in Sources */,
 				E584EBB927CA55110072AC0D /* Restaurant.swift in Sources */,
 				E584EBBB27CA55B00072AC0D /* RestaurantData.swift in Sources */,
 				E5B251DA27B14DA800543C24 /* Registration.swift in Sources */,
@@ -659,6 +666,7 @@
 				E5A1259627CCD77F006508E9 /* User.swift in Sources */,
 				E50F2E1927BF9FD0004A06BB /* CartView.swift in Sources */,
 				E50F2DF427B7CC3B004A06BB /* Bundle+Extension.swift in Sources */,
+				E5A1259827D5E5BD006508E9 /* CartItem.swift in Sources */,
 				E584EBC727CA592D0072AC0D /* ProductCategories.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -11,21 +11,21 @@ class MenuItemCell: UITableViewCell {
     
     static let reuseId: String = "MenuItemCell"
     
-    var product: Product? {
+    var cartItem: CartItem? {
         didSet {
-            guard let product = product else {return}
-            if let name = product.name{
+            guard let cartItem = cartItem else {return}
+            if let name = cartItem.product.name {
                 nameLabel.text = name
             }
-            if let desc = product.description {
+            if let desc = cartItem.product.description {
                 descriptionLabel.text = desc
             }
-            if let imageName = product.image {
+            if let imageName = cartItem.product.image {
                 if let url = URL(string: imageName) {
                     productImageView.load(url: url)
                 }
             }
-            if let price = product.price {
+            if let price = cartItem.product.price {
                 priceLabel.text = "\(price) тг"
             }
             counterView.cnt = num
@@ -33,22 +33,23 @@ class MenuItemCell: UITableViewCell {
     }
     
     var num: Int = 0
+    var delegate: CartChangingDelegate?
     
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
-        contentView.isUserInteractionEnabled = true
+    override func awakeFromNib() {
+        super.awakeFromNib()
+    }
+    
+    override func layoutSubviews() {
         setupViews()
         setupConstraints()
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
+        guard let item = cartItem else {return}
+//        delegate?.changeQuantity(product: item.product, quantity: counterView.cnt)
     }
 
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-    }
-    
     let productImageView: UIImageView = {
         let img = UIImageView()
         img.contentMode = .scaleAspectFill
@@ -94,6 +95,13 @@ class MenuItemCell: UITableViewCell {
     lazy var counterView = CounterView()
     
     func setupViews() {
+        counterView.didSelectItem = {
+            let cnt = self.counterView.cnt
+            self.num = cnt
+            print(cnt, self.num)
+            guard let product = self.cartItem?.product else { return }
+            self.delegate?.changeQuantity(product: product, quantity: self.num)
+        }
         counterView.layer.backgroundColor = UIColor.secondarySystemBackground.cgColor
         counterView.layer.cornerRadius = 10
         [nameLabel, descriptionLabel, priceLabel].forEach { stackView.addArrangedSubview($0)}
@@ -125,17 +133,17 @@ class MenuItemCell: UITableViewCell {
 
 
 
-import SwiftUI
-struct MenuViewCellProvider: PreviewProvider {
-    static var previews: some View {
-        ContainerView().edgesIgnoringSafeArea(.all)
-    }
-    struct ContainerView: UIViewControllerRepresentable {
-        let menuVC = MenuViewController(restaurant: Restaurant(restaurant: RestaurantDataModel(restaurantData: DetailedRestaurant(id: 1, name: "Mamma Mia", location: "Baker Street 221B", createdAt: "20.02.2022", updatedAt: "20.02.2022", images: []), image: nil)))
-        func makeUIViewController(context: Context) -> some UIViewController {
-            return NavigationVCGenerator.generateNavigationController(rootViewController: menuVC, image: UIImage(), title: "Title", prefersLargeTitle: true)
-        }
-        func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {
-        }
-    }
-}
+//import SwiftUI
+//struct MenuViewCellProvider: PreviewProvider {
+//    static var previews: some View {
+//        ContainerView().edgesIgnoringSafeArea(.all)
+//    }
+//    struct ContainerView: UIViewControllerRepresentable {
+//        let menuVC = MenuViewController(restaurant: Restaurant(restaurant: RestaurantDataModel(restaurantData: DetailedRestaurant(id: 1, name: "Mamma Mia", location: "Baker Street 221B", createdAt: "20.02.2022", updatedAt: "20.02.2022", images: []), image: nil)))
+//        func makeUIViewController(context: Context) -> some UIViewController {
+//            return NavigationVCGenerator.generateNavigationController(rootViewController: menuVC, image: UIImage(), title: "Title", prefersLargeTitle: true)
+//        }
+//        func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {
+//        }
+//    }
+//}

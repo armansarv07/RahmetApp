@@ -19,7 +19,6 @@ class APIClient {
 
     static func login(email: String, password: String, completion:@escaping (AFResult<LoginResponse>)->Void) {
         performRequest(route: APIRouter.login(email: email, password: password), completion: completion)
-        
     }
     
     static func register(email: String, password: String, completion:@escaping (AFResult<Response>)->Void) {
@@ -30,8 +29,14 @@ class APIClient {
         performRequest(route: APIRouter.logout, completion: completion)
     }
     
-    static func getOrders(id: Int, completion: @escaping (AFResult<OrderByID>) -> Void) {
-        performRequest(route: APIRouter.order(id: id), completion: completion)
+    static func getOrders(completion: @escaping (AFResult<OrderByID>) -> Void) {
+        performRequest(route: APIRouter.orders, completion: completion)
+    }
+
+    static func postOrder(order: OrderInput, completion:@escaping (AFResult<Response>) -> Void) {
+        guard let id = order.restaurantID, let products = order.products else { return }
+        
+        performRequest(route: APIRouter.createOrder(restaurantID: id, products: products), completion: completion)
     }
     
 }

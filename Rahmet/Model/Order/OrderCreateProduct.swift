@@ -7,5 +7,5 @@
 
 struct OrderCreateProduct: Codable {
     var id: Int?
-    var quantity: String?
+    var quantity: Int?
 }
