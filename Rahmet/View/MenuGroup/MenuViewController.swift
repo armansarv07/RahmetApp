@@ -180,10 +180,10 @@ extension MenuViewController: UITableViewDelegate, UITableViewDataSource {
         cell.delegate = self
         cell.selectionStyle = .none
         
-        tableView.indexPathsForVisibleRows?.forEach({
-            print($0.section)
-            self.headerView.segmentsView.selectItem(at: IndexPath(item: $0.section, section: 0), animated: true, scrollPosition: .centeredVertically)
-        })
+        if let firstVisibleIndexPath = tableView.indexPathsForVisibleRows?.first {
+            self.headerView.segmentsView.selectItem(at: IndexPath(item: firstVisibleIndexPath.section, section: 0), animated: true, scrollPosition: .centeredVertically)
+        }
+        
         return cell
     }
     
