@@ -9,27 +9,17 @@ import UIKit
 import Alamofire
 import JGProgressHUD
 
-class MenuViewController: UIViewController, CartChangingDelegate {
-    func changeQuantity(product: Product, quantity: Int) {
-        let index = cartProducts.firstIndex { $0.product == product }
-        if let idx = index {
-            cartProducts[idx].quantity = quantity
-            if quantity == 0 {
-                cartProducts.remove(at: idx)
-            }
-        } else {
-            cartProducts.append(CartItem(product: product, quantity: 1))
-        }
-        cartIsActive = !cartProducts.isEmpty
-        print("done")
-    }
+class MenuViewController: UIViewController {
+    // MARK: Data storage
     
     var categories: [ProductCategories] = []
     
     var sections = [CategorySection]()
     
     let id: Int
+    
     var cartProducts: [CartItem] = []
+    
     var imagesData: [MenuRestaurantImage] = []
     
     var deselectIndex: Int = 0
@@ -77,6 +67,7 @@ class MenuViewController: UIViewController, CartChangingDelegate {
         headerView = MenuHeaderView(frame: CGRect(x: 0, y: 0, width: Constants.screenWidth, height: 270))
         tableView.tableHeaderView = headerView
         tableView.register(MenuItemCell.self, forCellReuseIdentifier: MenuItemCell.reuseId)
+        headerView.menuButton.addTarget(self, action: #selector(categoriesButtonTapped), for: .touchUpInside)
         headerView.tableCompletion = {
             self.tableView.scrollToRow(at: IndexPath(row: 0, section: $0), at: .top, animated: true)
             self.deselectIndex = $0
@@ -103,16 +94,16 @@ class MenuViewController: UIViewController, CartChangingDelegate {
         vc.delegate = self
         navigationController?.pushViewController(vc, animated: false)
     }
-}
-
-extension MenuViewController: UICollectionViewDelegate {
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard collectionView == headerView.segmentsView else {
-            return
+    
+    @objc func categoriesButtonTapped() {
+        let vc = CategoriesViewController(categories: categories)
+        vc.scrollCompletion = {
+            self.tableView.scrollToRow(at: IndexPath(row: 0, section: $0), at: .top, animated: true)
         }
-        tableView.scrollToRow(at: IndexPath(item: 0, section: indexPath.item), at: .top, animated: true)
+        navigationController?.pushViewController(vc, animated: true)
     }
 }
+
 
 // MARK: Methods of Network logic
 extension MenuViewController {
@@ -132,7 +123,30 @@ extension MenuViewController {
             self?.tableView.reloadData()
         }
     }
+}
+
+// MARK: Delegating
+
+extension MenuViewController: CartChangingDelegate {
+    func changeQuantity(product: Product, quantity: Int) {
+        let index = cartProducts.firstIndex { $0.product == product }
+        if let idx = index {
+            cartProducts[idx].quantity = quantity
+            if quantity == 0 {
+                cartProducts.remove(at: idx)
+            }
+        } else {
+            cartProducts.append(CartItem(product: product, quantity: 1))
+        }
+        cartIsActive = !cartProducts.isEmpty
+        print("done")
+    }
     
+}
+
+// MARK: Data converters
+
+extension MenuViewController {
     private func createSegments(_ value: [ProductCategories]) -> [Segment] {
         var segments = [Segment]()
         for category in value {
@@ -153,6 +167,7 @@ extension MenuViewController {
 }
 
 
+
 extension MenuViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         self.categories[section].name
@@ -164,6 +179,7 @@ extension MenuViewController: UITableViewDelegate, UITableViewDataSource {
         cell.cartItem = CartItem(product: product, quantity: 0)
         cell.delegate = self
         cell.selectionStyle = .none
+        
         tableView.indexPathsForVisibleRows?.forEach({
             print($0.section)
             self.headerView.segmentsView.selectItem(at: IndexPath(item: $0.section, section: 0), animated: true, scrollPosition: .centeredVertically)
@@ -205,27 +221,31 @@ extension MenuViewController: LayoutForNavigationVC {
     func setupConstraints() {
         view.addSubview(tableView)
         tableView.snp.makeConstraints { make in
-            make.top.bottom.leading.trailing.equalToSuperview()
+            make.edges.equalToSuperview()
         }
     }
     
     func setupNavigationBar() {
-
-        navigationItem.backButtonTitle = ""
+        navigationItem.backButtonTitle = " "
+        navigationItem.rightBarButtonItem = .init(title: "Вверх", style: .plain, target: self, action: #selector(scrollToTop))
+    }
+    
+    @objc private func scrollToTop() {
+        tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .bottom, animated: true)
     }
     
     private func cartAppear() {
         view.addSubview(cartButton)
         cartButton.isHidden = false
         cartButton.snp.remakeConstraints { make in
-            make.bottom.leading.trailing.equalToSuperview().inset(16)
-            make.height.equalTo(60)
+            make.bottom.leading.trailing.equalToSuperview().inset(20)
+            make.height.equalTo(48)
         }
         
         tableView.snp.remakeConstraints { make in
             make.top.leading.trailing.equalToSuperview()
             make.height.equalTo(Constants.screenHeight -
-            90)
+            68)
         }
     }
     

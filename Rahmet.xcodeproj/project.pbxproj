@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		AB20632442E66626A0D78CB3 /* Pods_Rahmet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A7E2C126E18E96CEF8D587C /* Pods_Rahmet.framework */; };
 		C242351227D656CE00AE2D70 /* UCollectionView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C242351127D656CE00AE2D70 /* UCollectionView+Extension.swift */; };
+		C25EA18327D7BC290020D3BA /* CategoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25EA18227D7BC290020D3BA /* CategoriesViewController.swift */; };
+		C25EA18527D7C16E0020D3BA /* CategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25EA18427D7C16E0020D3BA /* CategoryTableViewCell.swift */; };
 		C2612AAD27CCAAA800DB50C1 /* CategorySection.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2612AAC27CCAAA700DB50C1 /* CategorySection.swift */; };
 		C273914F27B3E8C000B309BA /* LayoutForNavigationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C273914E27B3E8C000B309BA /* LayoutForNavigationVC.swift */; };
 		C275C8EB27B39B93001AF463 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C275C8EA27B39B93001AF463 /* MainTabBarController.swift */; };
@@ -96,6 +98,8 @@
 		1F34CB717506F012A307DEDF /* Pods-Rahmet.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Rahmet.release.xcconfig"; path = "Target Support Files/Pods-Rahmet/Pods-Rahmet.release.xcconfig"; sourceTree = "<group>"; };
 		5A7E2C126E18E96CEF8D587C /* Pods_Rahmet.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Rahmet.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C242351127D656CE00AE2D70 /* UCollectionView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UCollectionView+Extension.swift"; sourceTree = "<group>"; };
+		C25EA18227D7BC290020D3BA /* CategoriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesViewController.swift; sourceTree = "<group>"; };
+		C25EA18427D7C16E0020D3BA /* CategoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryTableViewCell.swift; sourceTree = "<group>"; };
 		C2612AAC27CCAAA700DB50C1 /* CategorySection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategorySection.swift; sourceTree = "<group>"; };
 		C273914E27B3E8C000B309BA /* LayoutForNavigationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutForNavigationVC.swift; sourceTree = "<group>"; };
 		C275C8EA27B39B93001AF463 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
@@ -230,6 +234,7 @@
 				C2D01D6427CF264400BD9950 /* MenuSection.swift */,
 				C2E59C7427D372C900F2109D /* SegmentsSection.swift */,
 				C2B9814F27D1D1A9007C0C6B /* MenuItemCell.swift */,
+				C25EA18227D7BC290020D3BA /* CategoriesViewController.swift */,
 			);
 			path = MenuGroup;
 			sourceTree = "<group>";
@@ -275,6 +280,7 @@
 				E5C1F9CB27BFA541000AE42B /* CartCell.swift */,
 				E5C1F9D827C21B90000AE42B /* PhotoCell.swift */,
 				E5C1F9DA27C21B9E000AE42B /* SegmentedCell.swift */,
+				C25EA18427D7C16E0020D3BA /* CategoryTableViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -605,6 +611,7 @@
 				C275C8F227B3A227001AF463 /* MainMenu.swift in Sources */,
 				E50F2E0D27BA664A004A06BB /* MenuCell.swift in Sources */,
 				E50F2DF627B7CC6D004A06BB /* UIStackView+Extension.swift in Sources */,
+				C25EA18527D7C16E0020D3BA /* CategoryTableViewCell.swift in Sources */,
 				E5A1258027CCA593006508E9 /* OrderProduct.swift in Sources */,
 				E5B4BE9E27B124DB00BE587C /* AppDelegate.swift in Sources */,
 				E5A1257727CCA081006508E9 /* Category.swift in Sources */,
@@ -657,6 +664,7 @@
 				E5A1257C27CCA3FB006508E9 /* OrderCreateProduct.swift in Sources */,
 				E50F2E0727BA41DC004A06BB /* Dish.swift in Sources */,
 				E584EBBD27CA56210072AC0D /* DetailedRestaurant.swift in Sources */,
+				C25EA18327D7BC290020D3BA /* CategoriesViewController.swift in Sources */,
 				E5A1257E27CCA426006508E9 /* OrderInput.swift in Sources */,
 				E5C1F9D527C21B53000AE42B /* PhotoModel.swift in Sources */,
 				E50F2E0527BA416B004A06BB /* CategoryFake.swift in Sources */,

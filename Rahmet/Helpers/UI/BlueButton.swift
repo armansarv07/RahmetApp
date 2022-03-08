@@ -11,30 +11,40 @@ class BlueButton: UIButton {
         let attributes: [NSAttributedString.Key: Any] = [.font: UIFont.systemFont(ofSize: 16, weight: .bold), .foregroundColor: UIColor.white]
         let title = NSAttributedString(string: text, attributes: attributes)
         self.setAttributedTitle(title, for: .normal)
-
         
-        if let rightText = rightText {
-            let rightLabel = UILabel()
-            rightLabel.text = rightText
-            rightLabel.font = UIFont.systemFont(ofSize: 14, weight: .medium)
-            rightLabel.textColor = .white
-            self.addSubview(rightLabel)
-            rightLabel.snp.makeConstraints { make in
-                make.trailing.equalToSuperview().inset(15)
-                make.centerY.equalToSuperview()
-            }
+        let rightLabel: UILabel = {
+            let label = UILabel()
+            label.font = .systemFont(ofSize: 14, weight: .medium)
+            label.textColor = .white
+            return label
+        }()
+        
+        let leftLabel: UILabel = {
+            let label = UILabel()
+            label.font = .systemFont(ofSize: 14, weight: .medium)
+            label.textColor = .white
+            return label
+        }()
+        
+        self.addSubview(rightLabel)
+        self.addSubview(leftLabel)
+        
+        rightLabel.snp.makeConstraints {
+            $0.trailing.equalToSuperview().inset(15)
+            $0.centerY.equalToSuperview()
         }
         
+        leftLabel.snp.makeConstraints {
+            $0.leading.equalToSuperview().inset(15)
+            $0.centerY.equalToSuperview()
+        }
+        
+        if let rightText = rightText {
+            rightLabel.text = rightText
+        }
+
         if let leftText = leftText {
-            let leftLabel = UILabel()
             leftLabel.text = leftText
-            leftLabel.font = UIFont.systemFont(ofSize: 14, weight: .medium)
-            leftLabel.textColor = .white
-            self.addSubview(leftLabel)
-            leftLabel.snp.makeConstraints { make in
-                make.leading.equalToSuperview().inset(15)
-                make.centerY.equalToSuperview()
-            }
         }
         
         if !isActive {

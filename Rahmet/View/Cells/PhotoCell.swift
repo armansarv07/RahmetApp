@@ -7,13 +7,8 @@
 
 import UIKit
 
-class PhotoCell: UICollectionViewCell, ConfigurableCell {
+class PhotoCell: UICollectionViewCell {
     static var reuseId: String = "PhotoCell"
-    
-    func configure<U>(with value: U) where U : Hashable {
-        guard let photos: PhotoModel = value as? PhotoModel else { return }
-        
-    }
     
     
     let imageView: UIImageView = {

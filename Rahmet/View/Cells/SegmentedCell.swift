@@ -8,30 +8,27 @@
 import UIKit
 
 
-class SegmentedCell: UICollectionViewCell, ConfigurableCell {
+class SegmentedCell: UICollectionViewCell {
     static var reuseId: String = "SegmentCell"
     
     var onCompletion: ((Int) -> Void)?
     
     var index: Int!
     
-    func configure<U>(with value: U) where U : Hashable {
-        
-    }
-    
     let titleButton: UIButton = {
         let button = UIButton()
         button.backgroundColor = .white
-        button.titleLabel?.font = .systemFont(ofSize: 17)
         button.layer.cornerRadius = 7
         button.clipsToBounds = true
         button.setTitleColor(.gray, for: .normal)
+        button.titleLabel?.minimumScaleFactor = 0.4
+        button.titleLabel?.adjustsFontSizeToFitWidth = true
         return button
     }()
     
     override var isSelected: Bool {
         didSet {
-            titleButton.backgroundColor = isSelected ? .gray.withAlphaComponent(0.2) : .clear
+            backgroundColor = isSelected ? .gray.withAlphaComponent(0.2) : .clear
         }
     }
     
@@ -40,15 +37,13 @@ class SegmentedCell: UICollectionViewCell, ConfigurableCell {
         self.addSubview(titleButton)
         self.layer.cornerRadius = 7
         self.clipsToBounds = true
+        titleButton.backgroundColor = .clear
         titleButton.addTarget(self, action: #selector(callCompletion), for: .touchUpInside)
         setupConstraints()
     }
     
     func setupConstraints() {
-        titleButton.snp.makeConstraints { make in
-            make.leading.equalToSuperview().inset(8)
-            make.top.bottom.equalToSuperview()
-        }
+        titleButton.snp.makeConstraints { $0.edges.equalToSuperview() }
     }
     
     @objc private func callCompletion() {
