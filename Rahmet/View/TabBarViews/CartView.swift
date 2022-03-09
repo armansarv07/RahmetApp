@@ -91,15 +91,20 @@ extension CartView: UITableViewDelegate, UITableViewDataSource {
 }
 
 extension CartView: CartChangingDelegate {
+    func reloadCart(cart: [CartItem]?) {
+        
+    }
+    
     func changeQuantity(product: Product, quantity: Int) {
         let index = cartProducts.firstIndex { $0.product == product }
         if let index = index {
             cartProducts[index].quantity = quantity
             if quantity == 0 {
                 cartProducts.remove(at: index)
-                tableView.reloadData()
             }
         }
+        delegate?.changeQuantity(product: product, quantity: quantity)
+        delegate?.reloadCart(cart: cartProducts)
         tableView.reloadData()
     }
 }

@@ -91,13 +91,13 @@ extension MainMenu: UITableViewDataSource, UITableViewDelegate {
         guard let restaurant = cafe.restaurant else { return }
         navigationController?.pushViewController(MenuViewController(id: cafe.restaurant?.restaurantData?.id ?? 0), animated: true)
     }
-    func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        print(indexPath.section)
-    }
-    
-    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        print(indexPath.section)
-    }
+//    func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+//        print(indexPath.section)
+//    }
+//
+//    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+//        print(indexPath.section)
+//    }
 }
 
 
