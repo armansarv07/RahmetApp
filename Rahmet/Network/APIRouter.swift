@@ -44,7 +44,7 @@ enum APIRouter: URLRequestConvertible {
         case .logout:
             return "/logout"
         case .createOrder:
-            return "/orders/create"
+            return "/orders"
         }
     }
     
