@@ -64,30 +64,39 @@ enum APIRouter: URLRequestConvertible {
     func asURLRequest() throws -> URLRequest {
         var url = URL(string: "")
         switch self {
-        case .orders, .login, .register, .logout, .createOrder:
+        case .orders, .createOrder, .logout, .register, .login:
             url = try Constants.oldURL.asURL()
         case .menu, .restaurants:
             url = try Constants.baseURL.asURL()
         }
-//        let url = try Constants.baseURL.asURL()
         var urlRequest = URLRequest(url: url!.appendingPathComponent(path))
-//        var token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xNDIuOTMuMTA3LjIzOFwvYXBpXC9sb2dpbiIsImlhdCI6MTY0NjEyNTYxNCwiZXhwIjoxNjQ2MTI5MjE0LCJuYmYiOjE2NDYxMjU2MTQsImp0aSI6IkJiQ3BXOXZIbEVSak81UWQiLCJzdWIiOjUsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.zmNT8rVGjqLbBV0Uol7yzj-mhXzbznOzYPiWfcXQVSg"
         
         // HTTP Method
         urlRequest.httpMethod = method.rawValue
         
-//        // Common Headers
+        // Common Headers
         urlRequest.setValue(ContentType.json.rawValue, forHTTPHeaderField: HTTPHeaderField.acceptType.rawValue)
         urlRequest.setValue(ContentType.json.rawValue, forHTTPHeaderField: HTTPHeaderField.contentType.rawValue)
-        urlRequest.addValue("Bearer \(String(describing: Constants.accessToken))", forHTTPHeaderField: HTTPHeaderField.authentication.rawValue)
+        if let token = Constants.accessToken {
+            urlRequest.addValue("Bearer " + token, forHTTPHeaderField: HTTPHeaderField.authentication.rawValue)
+        }
         // Parameters
-        guard let parameters = parameters, let array = parameters["arrayParametersKey"] else {
+        guard let parameters = parameters else {
             return urlRequest
         }
-        do {
-            urlRequest.httpBody = try JSONSerialization.data(withJSONObject: array, options: [])
-        } catch {
-            throw AFError.parameterEncodingFailed(reason: .jsonEncodingFailed(error: error))
+
+        if let array = parameters["arrayParametersKey"] {
+            do {
+                urlRequest.httpBody = try JSONSerialization.data(withJSONObject: array, options: [])
+            } catch {
+                throw AFError.parameterEncodingFailed(reason: .jsonEncodingFailed(error: error))
+            }
+        } else {
+            do {
+                urlRequest.httpBody = try JSONSerialization.data(withJSONObject: parameters, options: [])
+            } catch {
+                throw AFError.parameterEncodingFailed(reason: .jsonEncodingFailed(error: error))
+            }
         }
         return urlRequest
     }

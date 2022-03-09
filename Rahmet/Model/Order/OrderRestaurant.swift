@@ -5,7 +5,7 @@
 //  Created by Elvina Shamoi on 28.02.2022.
 //
 
-struct OrderRestaurant: Codable {
+struct OrderRestaurant: Codable, Hashable {
     var id: Int?
     var name: String?
     var location: String?

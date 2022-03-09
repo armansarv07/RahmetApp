@@ -19,6 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if accessToken != nil {
             // if user already logged in -> we should open main tabbar page
             self.window?.rootViewController = UINavigationController(rootViewController: MainTabBarController())
+            print(KeychainWrapper.standard.string(forKey: Constants.tokenKey))
         }
         self.window?.makeKeyAndVisible()
         self.window?.tintColor = .black

@@ -18,6 +18,8 @@ class MenuViewController: UIViewController {
     var cartProducts: [CartItem] = []
     var imagesData: [MenuRestaurantImage] = []
     var deselectIndex: Int = 0
+    var restaurant: RestaurantDataModel
+    
     var cartIsActive = false {
         didSet {
             if cartIsActive {
@@ -44,9 +46,10 @@ class MenuViewController: UIViewController {
         setupTableView()
     }
     
-    init(id: Int) {
+    init(id: Int, restaurant: RestaurantDataModel) {
         self.id = id
         self.titleLabel.text = "Restaurant"
+        self.restaurant = restaurant
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -262,17 +265,4 @@ extension MenuViewController: LayoutForNavigationVC {
         }
     }
 }
-import SwiftUI
-struct MenuVCProvider: PreviewProvider {
-    static var previews: some View {
-        ContainerView().edgesIgnoringSafeArea(.all)
-    }
-    struct ContainerView: UIViewControllerRepresentable {
-        let menuVC = MenuViewController(id: 1)
-        func makeUIViewController(context: Context) -> some UIViewController {
-            return NavigationVCGenerator.generateNavigationController(rootViewController: menuVC, image: UIImage(), title: "Title", prefersLargeTitle: true)
-        }
-        func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {
-        }
-    }
-}
+

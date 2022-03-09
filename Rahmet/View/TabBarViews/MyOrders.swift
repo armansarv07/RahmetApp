@@ -15,11 +15,9 @@ enum Section: Int, CaseIterable {
 class MyOrders: UIViewController {
 
     var loggedIn = KeychainWrapper.standard.string(forKey: Constants.tokenKey) != nil ? true : false
-    
-    let orders = Bundle.main.decode([TemporaryOrder].self, from: "choco.json")
-    var userOrders: [OrderByID] = []
+    var userOrders: [OrdersData] = []
     var collectionView: UICollectionView!
-    var dataSource: UICollectionViewDiffableDataSource<Section, TemporaryOrder>!
+    var dataSource: UICollectionViewDiffableDataSource<Section, OrdersData>!
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .secondarySystemBackground
@@ -37,10 +35,13 @@ class MyOrders: UIViewController {
             switch result {
             case .success(let message):
                 print(message)
+                if let orders = message.data?.order {
+                    self.userOrders = orders
+                }
+                self.reloadData()
             case .failure(let error):
                 print(error.errorDescription)
                 print(result)
-                
             }
         }
     }
@@ -48,7 +49,7 @@ class MyOrders: UIViewController {
 
 extension MyOrders: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let vc = OrderDetailed(order: orders[indexPath.row])
+        let vc = OrderDetailed(order: userOrders[indexPath.row])
         navigationController?.pushViewController(vc, animated: false)
     }
 }
@@ -154,7 +155,7 @@ extension MyOrders: LayoutForNavigationVC {
     }
     
     func createDataSource() {
-        dataSource = UICollectionViewDiffableDataSource<Section, TemporaryOrder>(collectionView: collectionView) { (collectionView, indexPath, order) -> UICollectionViewCell? in
+        dataSource = UICollectionViewDiffableDataSource<Section, OrdersData>(collectionView: collectionView) { (collectionView, indexPath, order) -> UICollectionViewCell? in
             guard let section = Section(rawValue: indexPath.section) else {
                 fatalError("Unknown section")
             }
@@ -167,33 +168,10 @@ extension MyOrders: LayoutForNavigationVC {
     }
     
     func reloadData() {
-        var snapshot = NSDiffableDataSourceSnapshot<Section, TemporaryOrder>()
+        var snapshot = NSDiffableDataSourceSnapshot<Section, OrdersData>()
         snapshot.appendSections([.order])
-        snapshot.appendItems(orders, toSection: .order)
+        snapshot.appendItems(userOrders, toSection: .order)
         dataSource.apply(snapshot, animatingDifferences: true)
     }
     
-}
-
-
-
-
-import SwiftUI
-
-struct MyOrdersProvider: PreviewProvider {
-    static var previews: some View {
-        ContainerView().edgesIgnoringSafeArea(.all)
-    }
-    
-    struct ContainerView: UIViewControllerRepresentable {
-        let ordersVC = MainTabBarController()
-        
-        func makeUIViewController(context: Context) -> some UIViewController {
-            return ordersVC
-        }
-        
-        func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {
-            
-        }
-    }
 }
