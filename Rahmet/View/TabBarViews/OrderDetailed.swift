@@ -9,7 +9,7 @@ import UIKit
 
 class OrderDetailed: UIViewController {
 
-    var order: TemporaryOrder
+    var order: OrdersData
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,7 +18,7 @@ class OrderDetailed: UIViewController {
         setupConstraints()
     }
     
-    init(order: TemporaryOrder) {
+    init(order: OrdersData) {
         self.order = order
         super.init(nibName: nil, bundle: nil)
     }
@@ -29,10 +29,8 @@ class OrderDetailed: UIViewController {
 
     let cafeNameView: ParametersView = {
         var view = ParametersView()
-        view.mainLabel.text = "ChocoCafe"
         view.mainLabel.textColor = .black
         view.mainLabel.font = .boldSystemFont(ofSize: 16)
-        view.subLabel.text = "1.2 км • Коктем 3-й микрорайон"
         view.subLabel.textColor = .gray
         return view
     }()
@@ -40,21 +38,18 @@ class OrderDetailed: UIViewController {
     let statusView: ParametersView = {
         var view = ParametersView()
         view.mainLabel.text = "Статус заказа"
-        view.subLabel.text = "Завершен"
         return view
     }()
     
     let dateView: ParametersView = {
         var view = ParametersView()
         view.mainLabel.text = "Дата"
-        view.subLabel.text = "22.04.2021, 12:43"
         return view
     }()
     
     let orderNumView: ParametersView = {
         var view = ParametersView()
         view.mainLabel.text = "Номер заказа"
-        view.subLabel.text = "№3161389"
         return view
     }()
     
@@ -79,19 +74,19 @@ class OrderDetailed: UIViewController {
 extension OrderDetailed: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return (order.orderItems?.count ?? 1) + 1
+        return (order.orderDetail?.count ?? 1) + 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: OrderPositionsCell.reuseId, for: indexPath) as! OrderPositionsCell
-        if indexPath.row == order.orderItems?.count{
+        if indexPath.row == order.orderDetail?.count {
             cell.leftLabel.text = "Итого"
             cell.leftLabel.font = .boldSystemFont(ofSize: 14)
-            cell.rightLabel.text = "\(countTotalSum()) тг"
+            cell.rightLabel.text = "\(order.total) тг"
             cell.rightLabel.font = .boldSystemFont(ofSize: 14)
             return cell
         }
-        if let items = order.orderItems {
+        if let items = order.orderDetail {
             cell.item = items[indexPath.row]
         }
         return cell
@@ -148,10 +143,10 @@ extension OrderDetailed: LayoutForNavigationVC {
     
     func countTotalSum() -> Double {
         var sum = 0.0
-        if let items = order.orderItems {
-            for i in items {
-                sum += i.itemPrice ?? 0
-            }
+        if let items = order.orderDetail {
+//            for i in items {
+//                sum += i.price ?? 0
+//            }
         }
         return sum
     }

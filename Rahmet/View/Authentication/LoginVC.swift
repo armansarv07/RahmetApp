@@ -87,8 +87,10 @@ class LoginVC: UIViewController {
                 case .success(let message):
                     self.spinner.dismiss(animated: true)
                     if let accessToken = message.data?.accessToken, let type = message.data?.tokenType {
-                        let saveAccessToken: Bool = KeychainWrapper.standard.set(accessToken, forKey: Constants.tokenKey)
-                        print("The access token saved results \(saveAccessToken) \(type) \(accessToken)")
+//                        let saveAccessToken: Bool = KeychainWrapper.standard.set(accessToken, forKey: Constants.tokenKey)
+                        print(KeychainWrapper.standard.string(forKey: Constants.tokenKey))
+                        KeychainWrapper.standard.set(accessToken, forKey: Constants.tokenKey)
+                        print(KeychainWrapper.standard.string(forKey: Constants.tokenKey))
                         print(message)
                         let appDelegate = UIApplication.shared.delegate
                         appDelegate?.window??.rootViewController = UINavigationController(rootViewController: MainTabBarController())

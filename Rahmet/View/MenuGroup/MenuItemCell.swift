@@ -33,7 +33,11 @@ class MenuItemCell: UITableViewCell {
         }
     }
     
-    var num: Int = 0
+    var num: Int = 0 {
+        didSet {
+            counterView.cnt = num
+        }
+    }
     var delegate: CartChangingDelegate?
     
     override func awakeFromNib() {
@@ -99,7 +103,7 @@ class MenuItemCell: UITableViewCell {
         counterView.didSelectItem = {
             let cnt = self.counterView.cnt
             self.num = cnt
-            print(cnt, self.num)
+//            print(cnt, self.num)
             guard let product = self.cartItem?.product else { return }
             self.delegate?.changeQuantity(product: product, quantity: self.num)
         }

@@ -7,5 +7,5 @@
 
 struct OrderByID: Codable {
     var message: String?
-    var data: OrdersData?
+    var data: DataOfOrder?
 }

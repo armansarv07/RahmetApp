@@ -9,11 +9,11 @@ import UIKit
 
 class OrderPositionsCell: UITableViewCell {
 
-    var item: OrderItem? {
+    var item: OrderDetail? {
         didSet {
-            if let num = item?.numberOfItems, let name = item?.itemName, let price = item?.itemPrice {
+            if let num = item?.quantity, let name = item?.productID, let price = item?.productID {
                 leftLabel.text = "\(num) x \(name)"
-                rightLabel.text = "\(Double(num) * price) тг"
+                rightLabel.text = "\(num * price) тг"
             }
         }
     }

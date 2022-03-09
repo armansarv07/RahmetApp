@@ -53,11 +53,11 @@ class OrderCell: UICollectionViewCell, ConfigurableCell {
     }
     
     func configure<U>(with value: U) where U : Hashable {
-        guard let order: TemporaryOrder = value as? TemporaryOrder else { return }
-        restaurantTitleLabel.text = order.restaurantName
-        orderDateLabel.text = order.orderDate
-        orderAmountLabel.text = "\(order.totalPrice) тг"
-        statusCreator(status: order.orderStatus ?? "done")
+        guard let order: OrdersData = value as? OrdersData else { return }
+        restaurantTitleLabel.text = order.restaurant?.name
+        orderDateLabel.text = "\(order.id)" // TODO
+        orderAmountLabel.text = "\(order.total) тг"
+        statusCreator(status: order.orderStatus ?? 0)
     }
 }
 
@@ -88,23 +88,23 @@ extension OrderCell {
         }
     }
     
-    func statusCreator(status: String) {
+    func statusCreator(status: Int) {
         let attributeColor: UIColor
         let statusAttribute = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 16, weight: .regular),
                                NSAttributedString.Key.foregroundColor: UIColor.gray]
         let statusAttribtedString = NSMutableAttributedString(string: "Статус - ", attributes: statusAttribute)
         let localizedString: String
         switch status {
-        case "processing":
+        case 0:
             attributeColor = #colorLiteral(red: 0.1019881442, green: 0.676645577, blue: 1, alpha: 1)
             localizedString = "В обработке"
-        case "in the kitchen":
+        case 1:
             attributeColor = #colorLiteral(red: 0.9535714984, green: 0.4975312948, blue: 0.148396194, alpha: 1)
             localizedString = "На кухне"
-        case "ready":
+        case 2:
             attributeColor = #colorLiteral(red: 0.1394651532, green: 0.6525734067, blue: 0.2758979797, alpha: 1)
             localizedString = "Готов"
-        case "completed":
+        case 3:
             attributeColor = UIColor.gray
             localizedString = "Завершен"
         default:

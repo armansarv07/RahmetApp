@@ -13,16 +13,12 @@ class MenuViewController: UIViewController {
     // MARK: Data storage
     
     var categories: [ProductCategories] = []
-    
     var sections = [CategorySection]()
-    
     let id: Int
-    
     var cartProducts: [CartItem] = []
-    
     var imagesData: [MenuRestaurantImage] = []
-    
     var deselectIndex: Int = 0
+    var restaurant: RestaurantDataModel
     
     var cartIsActive = false {
         didSet {
@@ -50,9 +46,10 @@ class MenuViewController: UIViewController {
         setupTableView()
     }
     
-    init(id: Int) {
+    init(id: Int, restaurant: RestaurantDataModel) {
         self.id = id
         self.titleLabel.text = "Restaurant"
+        self.restaurant = restaurant
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -60,7 +57,6 @@ class MenuViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-   
     private func setupTableView() {
         tableView.delegate = self
         tableView.dataSource = self
@@ -119,7 +115,7 @@ extension MenuViewController {
             self?.headerView.address = menu.data?.location ?? ""
             self?.titleLabel.text = menu.data?.restaurantName ?? ""
             self?.navigationItem.title = menu.data?.restaurantName ?? ""
-            print(menu.data?.restaurantName ?? "")
+//            print(menu.data?.restaurantName ?? "")
             self?.tableView.reloadData()
         }
     }
@@ -128,6 +124,13 @@ extension MenuViewController {
 // MARK: Delegating
 
 extension MenuViewController: CartChangingDelegate {
+    func reloadCart(cart: [CartItem]?) {
+        if let cart = cart {
+            cartProducts = cart
+        }
+        tableView.reloadData()
+    }
+    
     func changeQuantity(product: Product, quantity: Int) {
         let index = cartProducts.firstIndex { $0.product == product }
         if let idx = index {
@@ -139,7 +142,7 @@ extension MenuViewController: CartChangingDelegate {
             cartProducts.append(CartItem(product: product, quantity: 1))
         }
         cartIsActive = !cartProducts.isEmpty
-        print("done")
+        tableView.reloadData()
     }
     
 }
@@ -179,7 +182,12 @@ extension MenuViewController: UITableViewDelegate, UITableViewDataSource {
         cell.cartItem = CartItem(product: product, quantity: 0)
         cell.delegate = self
         cell.selectionStyle = .none
-        
+        let index = cartProducts.firstIndex { $0.product == product }
+        if let idx = index {
+            cell.num = cartProducts[idx].quantity
+        } else {
+            cell.num = 0
+        }
         if let firstVisibleIndexPath = tableView.indexPathsForVisibleRows?.first {
             self.headerView.segmentsView.selectItem(at: IndexPath(item: firstVisibleIndexPath.section, section: 0), animated: true, scrollPosition: .centeredVertically)
         }
@@ -258,17 +266,4 @@ extension MenuViewController: LayoutForNavigationVC {
     }
 }
 
-import SwiftUI
-struct MenuVCProvider: PreviewProvider {
-    static var previews: some View {
-        ContainerView().edgesIgnoringSafeArea(.all)
-    }
-    struct ContainerView: UIViewControllerRepresentable {
-        let menuVC = MenuViewController(id: 1)
-        func makeUIViewController(context: Context) -> some UIViewController {
-            return NavigationVCGenerator.generateNavigationController(rootViewController: menuVC, image: UIImage(), title: "Title", prefersLargeTitle: true)
-        }
-        func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {
-        }
-    }
-}
+
