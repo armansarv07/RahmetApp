@@ -222,7 +222,7 @@ extension MenuHeaderView {
         let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitems: [item])
         let section = NSCollectionLayoutSection(group: group)
         section.orthogonalScrollingBehavior = .continuous
-        section.interGroupSpacing = 0
+        section.interGroupSpacing = 15
         
         return section
     }

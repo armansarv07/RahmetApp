@@ -153,6 +153,8 @@ class Registration: UIViewController {
                     appDelegate?.window??.rootViewController = UINavigationController(rootViewController: MainTabBarController())
                 case .failure(let error):
                     print(error.localizedDescription)
+                    self.present(AuthAlertController(description: error.localizedDescription), animated: true, completion: nil)
+                    self.spinner.dismiss(animated: true)
                 }
             }
         } else if password.count < 9 && isPassword {
