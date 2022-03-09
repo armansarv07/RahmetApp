@@ -75,7 +75,7 @@ extension MainMenu: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cafeCell", for: indexPath) as! CafeCell
-        print(indexPath.section)
+//        print(indexPath.section)
         cell.cafe = restaurants[indexPath.row].restaurant
         return cell
     }
@@ -89,7 +89,8 @@ extension MainMenu: UITableViewDataSource, UITableViewDelegate {
         tableView.deselectRow(at: indexPath, animated: true)
         var cafe = restaurants[indexPath.row]
         guard let restaurant = cafe.restaurant else { return }
-        navigationController?.pushViewController(MenuViewController(id: cafe.restaurant?.restaurantData?.id ?? 0), animated: true)
+        var vc = MenuViewController(id: restaurant.restaurantData?.id ?? 0, restaurant: restaurant)
+        navigationController?.pushViewController(vc, animated: true)
     }
 //    func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
 //        print(indexPath.section)
