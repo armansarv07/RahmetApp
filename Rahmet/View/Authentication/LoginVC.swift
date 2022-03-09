@@ -95,10 +95,16 @@ class LoginVC: UIViewController {
                     }
                 case .failure(let error):
                     print(error.localizedDescription)
+                    self.present(AuthAlertController(description: error.localizedDescription), animated: true, completion: nil)
+                    self.spinner.dismiss(animated: true)
                 }
             }
         }
     }
+    
+    
+    
+    
     
     func setUpViews() {
         view.backgroundColor = .white

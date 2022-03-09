@@ -19,6 +19,7 @@
 		C275C8F227B3A227001AF463 /* MainMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = C275C8F127B3A227001AF463 /* MainMenu.swift */; };
 		C2933EC927B3A89F00E3B8DD /* ImageResizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2933EC827B3A89F00E3B8DD /* ImageResizer.swift */; };
 		C2933ECB27B3AA3F00E3B8DD /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2933ECA27B3AA3F00E3B8DD /* UIImage+Extension.swift */; };
+		C2A5922C27D8726800BABAC9 /* AuthAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2A5922B27D8726800BABAC9 /* AuthAlertController.swift */; };
 		C2B9815027D1D1A9007C0C6B /* MenuItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B9814F27D1D1A9007C0C6B /* MenuItemCell.swift */; };
 		C2D01D5F27CE29AC00BD9950 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D01D5E27CE29AC00BD9950 /* MenuViewController.swift */; };
 		C2D01D6127CE2EB100BD9950 /* MenuHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D01D6027CE2EB100BD9950 /* MenuHeaderView.swift */; };
@@ -108,6 +109,7 @@
 		C275C8F127B3A227001AF463 /* MainMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenu.swift; sourceTree = "<group>"; };
 		C2933EC827B3A89F00E3B8DD /* ImageResizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageResizer.swift; sourceTree = "<group>"; };
 		C2933ECA27B3AA3F00E3B8DD /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
+		C2A5922B27D8726800BABAC9 /* AuthAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthAlertController.swift; sourceTree = "<group>"; };
 		C2B9814F27D1D1A9007C0C6B /* MenuItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItemCell.swift; sourceTree = "<group>"; };
 		C2D01D5E27CE29AC00BD9950 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		C2D01D6027CE2EB100BD9950 /* MenuHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuHeaderView.swift; sourceTree = "<group>"; };
@@ -318,6 +320,7 @@
 			children = (
 				E5B251D927B14DA800543C24 /* Registration.swift */,
 				E50F2DE927B7B4BD004A06BB /* LoginVC.swift */,
+				C2A5922B27D8726800BABAC9 /* AuthAlertController.swift */,
 			);
 			path = Authentication;
 			sourceTree = "<group>";
@@ -608,6 +611,7 @@
 				E50F2DE427B4DC6D004A06BB /* CafeCell.swift in Sources */,
 				E50F2E0327BA411A004A06BB /* CategoryCell.swift in Sources */,
 				C2D01D6127CE2EB100BD9950 /* MenuHeaderView.swift in Sources */,
+				C2A5922C27D8726800BABAC9 /* AuthAlertController.swift in Sources */,
 				C275C8F227B3A227001AF463 /* MainMenu.swift in Sources */,
 				E50F2E0D27BA664A004A06BB /* MenuCell.swift in Sources */,
 				E50F2DF627B7CC6D004A06BB /* UIStackView+Extension.swift in Sources */,

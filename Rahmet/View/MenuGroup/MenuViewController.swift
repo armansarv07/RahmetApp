@@ -257,6 +257,7 @@ extension MenuViewController: LayoutForNavigationVC {
         }
     }
 }
+
 import SwiftUI
 struct MenuVCProvider: PreviewProvider {
     static var previews: some View {
