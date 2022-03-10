@@ -55,8 +55,15 @@ class OrderCell: UICollectionViewCell, ConfigurableCell {
     func configure<U>(with value: U) where U : Hashable {
         guard let order: OrdersData = value as? OrdersData else { return }
         restaurantTitleLabel.text = order.restaurant?.name
-        orderDateLabel.text = "\(order.id)" // TODO
-        orderAmountLabel.text = "\(order.total) тг"
+        if let date = order.createdAt, let total = order.total {
+            let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+                let date = dateFormatter.date(from: date)
+                dateFormatter.dateFormat = "dd.MM.yyyy, HH:mm"
+                let timeStamp = dateFormatter.string(from: date!)
+            orderDateLabel.text = "\(timeStamp)"
+            orderAmountLabel.text = "\(total) тг"
+        }
         statusCreator(status: order.orderStatus ?? 0)
     }
 }

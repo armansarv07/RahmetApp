@@ -7,6 +7,7 @@
 import Alamofire
 import SwiftKeychainWrapper
 import Foundation
+import SwiftyJSON
 
 enum APIRouter: URLRequestConvertible {
     
@@ -16,7 +17,7 @@ enum APIRouter: URLRequestConvertible {
     case login(email: String, password: String)
     case register(email: String, password: String)
     case logout
-    case createOrder(restaurantID: Int, products: [OrderCreateProduct])
+    case createOrder(order: OrderInput)
     
     // MARK: - HTTPMethod
     private var method: HTTPMethod {
@@ -56,17 +57,16 @@ enum APIRouter: URLRequestConvertible {
         case .login(let email, let password), .register(let email, let password):
             print(["email": email, "password": password])
             return ["email": email, "password": password]
-        case .createOrder(let restaurantID, let products):
-            return ["restaurant_id": restaurantID, "products": products]
+        case .createOrder(let order):
+            let products = order.products.map({ ["id": $0.id, "quantity": $0.quantity] })
+            return ["restaurant_id": order.restaurantID, "products": products]
         }
     }
     
     func asURLRequest() throws -> URLRequest {
         var url = URL(string: "")
         switch self {
-        case .orders, .createOrder, .logout, .register, .login:
-            url = try Constants.oldURL.asURL()
-        case .menu, .restaurants:
+        case .menu, .restaurants, .orders, .createOrder, .logout, .register, .login:
             url = try Constants.baseURL.asURL()
         }
         var urlRequest = URLRequest(url: url!.appendingPathComponent(path))
@@ -81,13 +81,13 @@ enum APIRouter: URLRequestConvertible {
             urlRequest.addValue("Bearer " + token, forHTTPHeaderField: HTTPHeaderField.authentication.rawValue)
         }
         // Parameters
-        guard let parameters = parameters else {
+        guard var parameters = parameters else {
             return urlRequest
         }
-
-        if let array = parameters["arrayParametersKey"] {
+        
+        if parameters["restaurant_id"] != nil {
             do {
-                urlRequest.httpBody = try JSONSerialization.data(withJSONObject: array, options: [])
+                urlRequest.httpBody = try JSONSerialization.data(withJSONObject: parameters, options: .fragmentsAllowed)
             } catch {
                 throw AFError.parameterEncodingFailed(reason: .jsonEncodingFailed(error: error))
             }
@@ -99,12 +99,5 @@ enum APIRouter: URLRequestConvertible {
             }
         }
         return urlRequest
-    }
-}
-
-extension Array {
-    /// Convert the receiver array to a `Parameters` object.
-    func asParameters() -> Parameters {
-        return ["arrayParametersKey": self]
     }
 }

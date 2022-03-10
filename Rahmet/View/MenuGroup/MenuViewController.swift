@@ -85,7 +85,7 @@ class MenuViewController: UIViewController {
     }()
     
     @objc func cartButtonTapped() {
-        let vc = CartView()
+        let vc = CartViewController()
         vc.cartProducts = cartProducts
         vc.restaurant = self.restaurant
         vc.delegate = self

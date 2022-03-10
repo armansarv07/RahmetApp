@@ -34,9 +34,7 @@ class APIClient {
     }
 
     static func postOrder(order: OrderInput, completion:@escaping (AFResult<Response>) -> Void) {
-        guard let id = order.restaurantID, let products = order.products else { return }
-        
-        performRequest(route: APIRouter.createOrder(restaurantID: id, products: products), completion: completion)
+        performRequest(route: APIRouter.createOrder(order: order), completion: completion)
     }
     
 }

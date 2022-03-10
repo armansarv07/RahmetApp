@@ -40,6 +40,7 @@ class LoginVC: UIViewController {
         textField.font = .boldSystemFont(ofSize: 16)
         textField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: textField.frame.height))
         textField.placeholder = "Введите почтовый адрес"
+        textField.autocapitalizationType = UITextAutocapitalizationType.none
         textField.leftViewMode = .always
         return textField
     }()
@@ -49,6 +50,7 @@ class LoginVC: UIViewController {
         textField.layer.cornerRadius = 5
         textField.borderStyle = .roundedRect
         textField.layer.borderWidth = 0.3
+        textField.autocapitalizationType = UITextAutocapitalizationType.none
         textField.font = .boldSystemFont(ofSize: 16)
         textField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: textField.frame.height))
         textField.placeholder = "Введите пароль"
