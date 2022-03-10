@@ -6,7 +6,6 @@ PODS:
   - SDWebImage/Core (5.12.2)
   - SnapKit (5.0.1)
   - SwiftKeychainWrapper (4.0.1)
-  - SwiftyJSON (4.3.0)
 
 DEPENDENCIES:
   - Alamofire (~> 5.5)
@@ -14,7 +13,6 @@ DEPENDENCIES:
   - SDWebImage
   - SnapKit (~> 5.0.0)
   - SwiftKeychainWrapper
-  - SwiftyJSON (~> 4.0)
 
 SPEC REPOS:
   trunk:
@@ -23,7 +21,6 @@ SPEC REPOS:
     - SDWebImage
     - SnapKit
     - SwiftKeychainWrapper
-    - SwiftyJSON
 
 SPEC CHECKSUMS:
   Alamofire: 1c4fb5369c3fe93d2857c780d8bbe09f06f97e7c
@@ -31,8 +28,7 @@ SPEC CHECKSUMS:
   SDWebImage: 240e5c12b592fb1268c1d03b8c90d90e8c2ffe82
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
   SwiftKeychainWrapper: 807ba1d63c33a7d0613288512399cd1eda1e470c
-  SwiftyJSON: 6faa0040f8b59dead0ee07436cbf76b73c08fd08
 
-PODFILE CHECKSUM: 79eed16b85abb7dd1b06130d482d9af63045828c
+PODFILE CHECKSUM: 330c4bff005c4f5a4968747f6e40ac2fe750f1ba
 
 COCOAPODS: 1.11.2
