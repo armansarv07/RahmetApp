@@ -1,5 +1,5 @@
 //
-//  CartView.swift
+//  CartViewController.swift
 //  Rahmet
 //
 //  Created by Elvina Shamoi on 18.02.2022.
@@ -7,8 +7,9 @@
 
 import UIKit
 import SwiftUI
+import Alamofire
 
-class CartView: UIViewController {
+class CartViewController: UIViewController {
 
     let tableView = UITableView()
     var cartProducts: [CartItem] = []
@@ -40,23 +41,63 @@ class CartView: UIViewController {
     lazy var paymentButton = BlueButton(text: "Оплатить", rightText: "", leftText: "", isActive: true)
     
     @objc func payTapped() {
-        var products: [OrderCreateProduct] = NSArray() as! [OrderCreateProduct]
+        var products: [OrderCreateProduct] = []
         for product in cartProducts {
             products.append(OrderCreateProduct(id: product.product.id, quantity: product.quantity))
         }
         let order: OrderInput = OrderInput(restaurantID: self.restaurant?.restaurantData?.id, products: products)
+        sendData(order: order)
+    }
+    
+    func sendData(order: OrderInput) {
         APIClient.postOrder(order: order) { result in
             switch result {
             case .success(let message):
                 print(message)
+                self.showAlert(title: "Готово", message: "Заказ успешно создан!")
+                self.cartProducts.removeAll()
             case .failure(let error):
                 print(error.localizedDescription)
             }
         }
     }
+    
+    func showAlert(title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: "Окей", style: UIAlertAction.Style.default, handler: { action in
+            let vc = MainTabBarController()
+            self.navigationController?.popToRootViewController(animated: true)
+        }))
+        self.present(alert, animated: true, completion: nil)
+    }
+}
+    
+extension Dictionary {
+    func percentEncoded() -> Data? {
+        return map { key, value in
+            let escapedKey = "\(key)".addingPercentEncoding(withAllowedCharacters: .urlQueryValueAllowed) ?? ""
+            let escapedValue = "\(value)".addingPercentEncoding(withAllowedCharacters: .urlQueryValueAllowed) ?? ""
+            return escapedKey + "=" + escapedValue
+        }
+        .joined(separator: "&")
+        .data(using: .utf8)
+    }
 }
 
-extension CartView: UITableViewDelegate, UITableViewDataSource {
+
+extension CharacterSet {
+    static let urlQueryValueAllowed: CharacterSet = {
+        let generalDelimitersToEncode = ":#[]@" // does not include "?" or "/" due to RFC 3986 - Section 3.4
+        let subDelimitersToEncode = "!$&'()*+,;="
+
+        var allowed = CharacterSet.urlQueryAllowed
+        allowed.remove(charactersIn: "\(generalDelimitersToEncode)\(subDelimitersToEncode)")
+        return allowed
+    }()
+}
+    
+
+extension CartViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return cartProducts.count + 1
@@ -90,7 +131,7 @@ extension CartView: UITableViewDelegate, UITableViewDataSource {
     }
 }
 
-extension CartView: CartChangingDelegate {
+extension CartViewController: CartChangingDelegate {
     func reloadCart(cart: [CartItem]?) {
         
     }
@@ -109,7 +150,7 @@ extension CartView: CartChangingDelegate {
     }
 }
 
-extension CartView: LayoutForNavigationVC {
+extension CartViewController: LayoutForNavigationVC {
     
     func setupViews() {
         paymentButton.addTarget(self, action: #selector(payTapped), for: .touchUpInside)

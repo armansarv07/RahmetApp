@@ -15,7 +15,6 @@ struct PhotoModel: Hashable, Codable {
       hasher.combine(id)
     }
 
-    
     static func == (lhs: PhotoModel, rhs: PhotoModel) -> Bool {
       lhs.id == rhs.id
     }

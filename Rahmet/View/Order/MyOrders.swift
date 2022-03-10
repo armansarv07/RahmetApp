@@ -159,7 +159,6 @@ extension MyOrders: LayoutForNavigationVC {
             guard let section = Section(rawValue: indexPath.section) else {
                 fatalError("Unknown section")
             }
-            
             switch section {
             case .order:
                 return self.configure(collectionView: collectionView, cellType: OrderCell.self, with: order, for: indexPath)

@@ -52,6 +52,7 @@ class Registration: UIViewController {
         textField.layer.cornerRadius = 5
         textField.borderStyle = .roundedRect
         textField.layer.borderWidth = 0.3
+        textField.autocapitalizationType = UITextAutocapitalizationType.none
         textField.font = .boldSystemFont(ofSize: 16)
         textField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: textField.frame.height)) // to make padding in placeholder
         textField.leftViewMode = .always

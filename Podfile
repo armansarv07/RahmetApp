@@ -11,4 +11,5 @@ pod 'Alamofire', '~> 5.5'
 pod 'SwiftKeychainWrapper'
 pod 'JGProgressHUD'
 pod 'SDWebImage'
+pod 'SwiftyJSON', '~> 4.0'
 end

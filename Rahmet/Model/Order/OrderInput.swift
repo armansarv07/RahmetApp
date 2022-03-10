@@ -9,7 +9,7 @@ import Foundation
 
 struct OrderInput: Codable {
     var restaurantID: Int?
-    var products: [OrderCreateProduct]?
+    var products: [OrderCreateProduct]
     
     enum CodingKeys: String, CodingKey {
         case restaurantID = "restaurant_id"
