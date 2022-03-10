@@ -6,13 +6,18 @@
 //
 
 import UIKit
+import Alamofire
+import JGProgressHUD
 
 class OrderDetailed: UIViewController {
+    let spinner = JGProgressHUD(style: .dark)
 
     var order: OrdersData
+    var products: [ProductCategories] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        fetchMenu()
         setupNavigationBar()
         setupViews()
         setupConstraints()
@@ -79,15 +84,18 @@ extension OrderDetailed: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: OrderPositionsCell.reuseId, for: indexPath) as! OrderPositionsCell
+        if let items = order.orderDetail {
+            cell.item = items[indexPath.row]
+        }
         if indexPath.row == order.orderDetail?.count {
             cell.leftLabel.text = "Итого"
             cell.leftLabel.font = .boldSystemFont(ofSize: 14)
-            cell.rightLabel.text = "\(order.total) тг"
+            cell.rightLabel.text = "\(order.total ?? 0) тг"
             cell.rightLabel.font = .boldSystemFont(ofSize: 14)
             return cell
-        }
-        if let items = order.orderDetail {
-            cell.item = items[indexPath.row]
+        } else {
+            cell.rightLabel.text = "\(self.findProduct(id: order.orderDetail?[indexPath.row].id ?? 0).name ?? "")"
+            cell.leftLabel.text = "\(self.findProduct(id: order.orderDetail?[indexPath.row].id ?? 0).price ?? 0)"
         }
         return cell
     }
@@ -139,6 +147,45 @@ extension OrderDetailed: LayoutForNavigationVC {
             make.left.right.equalToSuperview()
             make.bottom.equalToSuperview()
         }
+    }
+    
+    func setupData() {
+        cafeNameView.subLabel.text = order.restaurant?.name
+        var statusTitle: String = ""
+        switch order.orderStatus {
+        case 0: statusTitle = "В обработке"; statusView.subLabel.textColor = #colorLiteral(red: 0, green: 0.6025887132, blue: 1, alpha: 1)
+        case 1: statusTitle = "На кухне" ; statusView.subLabel.textColor = #colorLiteral(red: 0.9535714984, green: 0.4975312352, blue: 0.1409159303, alpha: 1)
+        case 2: statusTitle = "Готов" ; statusView.subLabel.textColor = #colorLiteral(red: 0.2856111825, green: 0.6951665282, blue: 0.3649486899, alpha: 1)
+        case 4: statusTitle = "Завершен" ; statusView.subLabel.textColor = .gray
+        default: break
+        }
+        
+        statusView.subLabel.text = statusTitle
+        dateView.subLabel.text = order.createdAt
+        orderNumView.subLabel.text = "№\(String(describing: order.id))"
+        
+    }
+    
+    func fetchMenu() {
+        spinner.show(in: view)
+        guard let url = URL(string: Constants.baseURL + "/menu/\(String(describing: order.restaurantID))") else { return }
+        AF.request(url).validate().responseDecodable(of: Menu.self) {
+            guard let menu = $0.value else { return }
+            self.spinner.dismiss(animated: true)
+            self.products = menu.data?.productCategories ?? []
+        }
+    }
+    
+    func findProduct(id: Int) -> Product {
+        let product = Product(id: 0, name: "", price: 0, description: "", image: "")
+        for sect in products {
+            for prod in sect.products! {
+                if id == prod.id {
+                    return prod
+                }
+            }
+        }
+        return product
     }
     
     func countTotalSum() -> Double {

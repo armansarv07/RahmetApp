@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		AB20632442E66626A0D78CB3 /* Pods_Rahmet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A7E2C126E18E96CEF8D587C /* Pods_Rahmet.framework */; };
+		C210BA0E27D9B6EC00BBE34D /* DateFormatterLocal.swift in Sources */ = {isa = PBXBuildFile; fileRef = C210BA0D27D9B6EC00BBE34D /* DateFormatterLocal.swift */; };
 		C242351227D656CE00AE2D70 /* UCollectionView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C242351127D656CE00AE2D70 /* UCollectionView+Extension.swift */; };
 		C25EA18327D7BC290020D3BA /* CategoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25EA18227D7BC290020D3BA /* CategoriesViewController.swift */; };
 		C25EA18527D7C16E0020D3BA /* CategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25EA18427D7C16E0020D3BA /* CategoryTableViewCell.swift */; };
@@ -98,6 +99,7 @@
 /* Begin PBXFileReference section */
 		1F34CB717506F012A307DEDF /* Pods-Rahmet.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Rahmet.release.xcconfig"; path = "Target Support Files/Pods-Rahmet/Pods-Rahmet.release.xcconfig"; sourceTree = "<group>"; };
 		5A7E2C126E18E96CEF8D587C /* Pods_Rahmet.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Rahmet.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C210BA0D27D9B6EC00BBE34D /* DateFormatterLocal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatterLocal.swift; sourceTree = "<group>"; };
 		C242351127D656CE00AE2D70 /* UCollectionView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UCollectionView+Extension.swift"; sourceTree = "<group>"; };
 		C25EA18227D7BC290020D3BA /* CategoriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesViewController.swift; sourceTree = "<group>"; };
 		C25EA18427D7C16E0020D3BA /* CategoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryTableViewCell.swift; sourceTree = "<group>"; };
@@ -411,6 +413,7 @@
 			isa = PBXGroup;
 			children = (
 				E5A1257927CCA3AA006508E9 /* Response.swift */,
+				C210BA0D27D9B6EC00BBE34D /* DateFormatterLocal.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -605,6 +608,7 @@
 				E584EBC327CA57F60072AC0D /* MenuData.swift in Sources */,
 				C275C8EE27B39D05001AF463 /* NavigationVCGenerator.swift in Sources */,
 				E5A1259A27D5FDDD006508E9 /* CartChangingDelegate.swift in Sources */,
+				C210BA0E27D9B6EC00BBE34D /* DateFormatterLocal.swift in Sources */,
 				E584EBB927CA55110072AC0D /* Restaurant.swift in Sources */,
 				E584EBBB27CA55B00072AC0D /* RestaurantData.swift in Sources */,
 				E5B251DA27B14DA800543C24 /* Registration.swift in Sources */,
